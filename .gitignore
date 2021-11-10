@@ -1,0 +1,10 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# VSCode settings and keybindings
+.vscode
+
+# Environment varibales
+.env*
+!.env*.example

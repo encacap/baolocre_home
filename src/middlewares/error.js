@@ -38,12 +38,14 @@ const errorHandler = (err, req, res, next) => {
         logger.error(err);
     }
 
+    res.status(statusCode);
+
     if (statusCode === httpStatus.NOT_FOUND) {
         res.render("errors/404");
         return;
     }
 
-    res.status(statusCode).send(response);
+    res.send(response);
 };
 
 module.exports = {

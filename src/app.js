@@ -23,7 +23,20 @@ if (config.env !== "test") {
 }
 
 // set security HTTP headers
-app.use(helmet());
+app.use(
+    helmet({
+        contentSecurityPolicy: {
+            useDefaults: false,
+            directives: {
+                defaultSrc: ["'self' 'unsafe-inline'", "i.icomoon.io"],
+                scriptSrc: ["'self'", "unpkg.com"],
+                connectSrc: ["'self'", "unpkg.com"],
+                objectSrc: ["'none'"],
+                upgradeInsecureRequests: [],
+            },
+        },
+    })
+);
 
 // parse json request body
 app.use(express.json());

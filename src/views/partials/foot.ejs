@@ -1,0 +1,30 @@
+<% const { js } = locals %>
+<% const renderScriptTag = (path, type) => { %>
+    <% if (type === 'module') { %>
+        <script src="<%= path %>" type="module" defer></script>
+    <% } else { %>
+        <script src="<%= path %>" defer></script>
+    <% } %> 
+<% } %> 
+<% if (js?.length > 0) { %>
+    <% js.forEach(function(file) { %>
+        <% if (typeof file === 'string') { %>
+            <% if (file.includes("http") || file.includes("https")) { %>
+                <% renderScriptTag(file) %>
+            <% } else if (file.includes(".js")) { %>
+                <% renderScriptTag(`/assets/js/${file}`) %>
+            <% } else { %>
+                <% renderScriptTag(`/assets/js/${file}.min.js`) %>
+            <% } %>
+        <% } else { %>
+            <% const {src, type} = file %>
+            <% if (src.includes("http") || src.includes("https")) { %>
+                <% renderScriptTag(src, type) %>
+            <% } else if (src.includes(".js")) { %>
+                <% renderScriptTag(`/assets/js/${src}`, type) %>
+            <% } else { %>
+                <% renderScriptTag(`/assets/js/${src}.min.js`, type) %>
+            <% } %>
+        <% } %>
+    <% }) %>
+<% } %>

@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@import "splide";
+
+nav a {
+    @apply relative;
+}
+
+nav a::after {
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-encacap-main duration-200;
+    content: "";
+}
+
+nav a:hover::after,
+a.active::after {
+    @apply w-full;
+}
+
+.header-nav--mobile a {
+    @apply relative;
+}
+
+.header-nav--mobile a::after {
+    @apply absolute bottom-0 left-0 w-full h-0.5;
+    content: "";
+}

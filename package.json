@@ -14,6 +14,10 @@
         "start": "pm2 start ecosystem.config.json --no-daemon",
         "dev": "cross-env NODE_ENV=development nodemon src/index.js",
         "dev:nomailer": "cross-env NODE_ENV=development nodemon src/index.js --nomailer",
+        "build:css": "postcss ./src/resources/css/app.css ./src/resources/css/home.css ./src/resources/css/real_estate_detail.css -d ./src/assets/css/ --map --ext .min.css",
+        "build:js": "webpack --config webpack.config.js",
+        "watch:js": "npm run build:js -- -w",
+        "watch:css": "npm run build:css -- -w",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "prettier": "prettier --check **/*.js",
@@ -67,6 +71,10 @@
         "xss-clean": "^0.1.1"
     },
     "devDependencies": {
+        "@splidejs/splide": "^3.2.7",
+        "@tailwindcss/line-clamp": "^0.2.2",
+        "autoprefixer": "^10.4.0",
+        "cssnano": "^5.0.10",
         "eslint": "^7.0.0",
         "eslint-config-airbnb-base": "^14.0.0",
         "eslint-config-prettier": "^8.1.0",
@@ -76,6 +84,13 @@
         "lint-staged": "^11.0.0",
         "node-mocks-http": "^1.8.0",
         "nodemon": "^2.0.0",
-        "prettier": "^2.0.5"
+        "postcss": "^8.3.11",
+        "postcss-cli": "^9.0.2",
+        "postcss-import": "^14.0.2",
+        "postcss-nested": "^5.0.6",
+        "prettier": "^2.0.5",
+        "tailwindcss": "^2.2.19",
+        "webpack": "^5.63.0",
+        "webpack-cli": "^4.9.1"
     }
 }

@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/assets/css/app.min.css" />
+        <link rel="stylesheet" href="/assets/css/home.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://i.icomoon.io/public/temp/9389675b83/UntitledProject/style.css"
+        />
+        <link
+            rel="shortcut icon"
+            href="/assets/images/logo.png"
+            type="image/x-icon"
+        />
+        <title>Encacap Estate</title>
+    </head>
+    <body>
+        <header class="header w-full shadow-md lg:px-10 px-4">
+            <div class="flex items-center justify-between h-20 md:h-20">
+                <div class="flex items-center">
+                    <a href="/" class="header-logo flex items-center">
+                        <img
+                            src="/assets/images/product-logo.jpg"
+                            alt="Encacap Estate Logo"
+                            class="w-12 border-2 border-encacap-main rounded-lg"
+                        />
+                        <div class="header-logo-text ml-4 uppercase">
+                            <div class="mt-1 ml-px text-xs font-semibold">
+                                BĐS nghỉ dưỡng
+                            </div>
+                            <div class="font-bold text-2xl text-encacap-main">
+                                Bảo Lộc
+                            </div>
+                        </div>
+                    </a>
+                    <nav class="hidden md:flex ml-4 lg:ml-10 font-semibold">
+                        <a href="/real_estate_list.html" class="py-2"
+                            >Bất động sản bán</a
+                        >
+                        <a href="/news_list.html" class="mx-5 py-2">Tin tức</a>
+                        <a href="/bat-dong-san-ban" class="py-2"
+                            >Thư viện nhà mẫu</a
+                        >
+                    </nav>
+                </div>
+                <div class="header-information hidden lg:flex">
+                    <a
+                        href=""
+                        class="
+                            flex
+                            items-center
+                            justify-center
+                            w-11
+                            h-11
+                            mr-2
+                            rounded-full
+                            border-2
+                            bg-gray-100
+                            text-xl text-gray-500
+                            hover:border-red-500
+                            hover:text-red-500
+                            hover:bg-red-100
+                            duration-200
+                        "
+                    >
+                        <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                    <a
+                        href=""
+                        class="
+                            flex
+                            items-center
+                            justify-center
+                            w-11
+                            h-11
+                            md:mr-2
+                            rounded-full
+                            border-2
+                            bg-gray-100
+                            text-xl text-gray-500
+                            hover:border-blue-500
+                            hover:text-blue-500
+                            hover:bg-blue-100
+                            duration-200
+                        "
+                    >
+                        <span class="icon-facebook-f"></span>
+                    </a>
+                    <a
+                        href="tel:0582419433"
+                        class="
+                            hidden
+                            md:flex
+                            items-center
+                            border-2 border-encacap-main
+                            rounded-full
+                            px-4
+                            py-2
+                            font-semibold
+                            duration-200
+                            text-encacap-main
+                            hover:bg-encacap-main hover:text-white
+                        "
+                    >
+                        <ion-icon name="call" class="text-lg"></ion-icon>
+                        <span class="ml-2">0582 419 433</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <!-- Slider -->
+            <section class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list flex items-center h-full">
+                        <li class="splide__slide">
+                            <img
+                                src="/assets/images/slider/01.jpg"
+                                alt="Slider 01"
+                                style="
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                "
+                            />
+                        </li>
+                        <li class="splide__slide h-full">
+                            <img
+                                src="/assets/images/slider/02.webp"
+                                alt="Slider 01"
+                                class="w-full object-cover"
+                            />
+                        </li>
+                        <li class="splide__slide">
+                            <img
+                                src="/assets/images/slider/03.webp"
+                                alt="Slider 01"
+                                class="w-full object-contain object-center"
+                            />
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- Search -->
+            <section
+                class="
+                    relative
+                    z-10
+                    border-b-2 border-gray-100
+                    md:border-b-0 md:shadow-md md:rounded-md md:mx-4
+                    lg:mx-10
+                    xl:mx-48
+                    overflow-hidden
+                "
+                id="searchContainer"
+            >
+                <div
+                    class="
+                        hidden
+                        md:flex
+                        items-center
+                        bg-encacap-blue
+                        px-4
+                        md:px-6
+                        py-4
+                        text-white
+                        font-medium
+                        uppercase
+                    "
+                >
+                    <ion-icon name="search" class="mr-2"></ion-icon>
+                    Tìm kiếm bất động sản
+                </div>
+                <div class="py-5 md:py-6">
+                    <div
+                        class="
+                            flex
+                            mx-4
+                            md:mx-6
+                            rounded-md
+                            border-2 border-gray-200
+                            bg-gray-100
+                        "
+                    >
+                        <div
+                            class="
+                                hidden
+                                md:flex
+                                items-center
+                                border-r-2 border-gray-200
+                                px-4
+                                py-3
+                            "
+                        >
+                            <ion-icon name="home-outline"></ion-icon>
+                            <span class="ml-2 mr-3"
+                                >Loại
+                                <span class="hidden md:inline-block">
+                                    bất động sản</span
+                                ></span
+                            >
+                            <ion-icon
+                                name="chevron-down-outline"
+                                class="mt-1"
+                            ></ion-icon>
+                        </div>
+                        <div class="flex-1 relative">
+                            <input
+                                type="text"
+                                class="
+                                    w-full
+                                    h-full
+                                    outline-none
+                                    rounded-md
+                                    md:rounded-l-none
+                                    bg-transparent
+                                    px-4
+                                    py-3.5
+                                    focus:ring-2
+                                    ring-encacap-main
+                                "
+                                name="search"
+                                id="search"
+                                placeholder="Tìm kiếm địa điểm, khu vực, ..."
+                            />
+                            <button
+                                class="
+                                    flex
+                                    items-center
+                                    absolute
+                                    right-2
+                                    top-2
+                                    rounded-md
+                                    px-3
+                                    py-1
+                                    bg-encacap-main
+                                    font-semibold
+                                    text-white
+                                    duration-200
+                                    hover:bg-yellow-600
+                                "
+                            >
+                                <ion-icon name="search" class="mr-2"></ion-icon>
+                                <span>Tìm</span>
+                                <span class="hidden md:inline-block md:ml-1"
+                                    >kiếm</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="
+                            hidden
+                            md:grid
+                            grid-cols-2
+                            md:grid-cols-3
+                            gap-4
+                            md:gap-6
+                            mx-4
+                            md:mx-6
+                            mt-4
+                            md:mt-6
+                        "
+                    >
+                        <div
+                            class="
+                                flex
+                                rounded-md
+                                border-2 border-gray-200
+                                bg-gray-100
+                                px-4
+                                py-2.5
+                            "
+                        >
+                            <div class="flex-1">Mức giá</div>
+                            <ion-icon
+                                name="chevron-down-outline"
+                                class="mt-1.5"
+                            ></ion-icon>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                rounded-md
+                                border-2 border-gray-200
+                                bg-gray-100
+                                px-4
+                                py-2.5
+                            "
+                        >
+                            <div class="flex-1">Diện tích</div>
+                            <ion-icon
+                                name="chevron-down-outline"
+                                class="mt-1.5"
+                            ></ion-icon>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                rounded-md
+                                border-2 border-gray-200
+                                bg-gray-100
+                                px-4
+                                py-2.5
+                            "
+                        >
+                            <div class="flex-1">Hướng nhà</div>
+                            <ion-icon
+                                name="chevron-down-outline"
+                                class="mt-1.5"
+                            ></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Category -->
+            <section class="lg:px-10 xl:px-48 pt-8 md:pt-20 md:pb-4">
+                <div class="flex flex-col items-center">
+                    <div class="">
+                        <div
+                            class="
+                                text-center text-gray-400
+                                uppercase
+                                tracking-widest
+                                text-xs
+                                font-semibold
+                            "
+                        >
+                            Mọi thứ bạn cần
+                        </div>
+                        <div class="pt-3 md:pb-3 text-2xl md:text-4xl">
+                            Các danh mục
+                        </div>
+                        <div
+                            class="
+                                hidden
+                                md:block
+                                mx-auto
+                                mt-4
+                                w-20
+                                h-1
+                                bg-encacap-main
+                            "
+                        ></div>
+                    </div>
+                    <div
+                        class="
+                            grid grid-cols-3
+                            gap-4
+                            lg:gap-10
+                            w-full
+                            md:mt-10 md:pb-10
+                            px-4
+                            lg:px-0
+                        "
+                    >
+                        <a
+                            href="/real_estate_list.html"
+                            class="
+                                flex flex-col
+                                md:justify-center
+                                items-center
+                                w-full
+                                rounded-lg
+                                py-8
+                                md:px-10
+                                duration-200
+                                border-2 border-transparent
+                                md:border-gray-100
+                                hover:shadow-lg
+                                hover:text-encacap-main
+                                hover:border-encacap-main
+                            "
+                        >
+                            <div
+                                class="
+                                    flex
+                                    items-center
+                                    w-20
+                                    md:w-32
+                                    h-20
+                                    md:h-32
+                                    border-2 border-gray-100
+                                    rounded-full
+                                    overflow-hidden
+                                "
+                            >
+                                <img
+                                    src="/assets/images/icons/bat-dong-san-nghi-duong.jpg"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                    "
+                                    alt="Bất động sản bán"
+                                />
+                            </div>
+                            <div class="pt-6 text-center font-medium">
+                                Bất động sản bán
+                            </div>
+                        </a>
+                        <a
+                            href="/news_list.html"
+                            class="
+                                flex flex-col
+                                md:justify-center
+                                items-center
+                                w-full
+                                rounded-lg
+                                py-8
+                                md:px-10
+                                duration-200
+                                border-2 border-transparent
+                                md:border-gray-100
+                                hover:shadow-lg
+                                hover:text-encacap-main
+                                hover:border-encacap-main
+                            "
+                        >
+                            <div
+                                class="
+                                    flex
+                                    items-center
+                                    w-20
+                                    md:w-32
+                                    h-20
+                                    md:h-32
+                                    border-2 border-gray-100
+                                    rounded-full
+                                    overflow-hidden
+                                "
+                            >
+                                <img
+                                    src="/assets/images/icons/news.png"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                    "
+                                    alt="Tin tức"
+                                />
+                            </div>
+                            <div class="pt-6 text-center font-medium">
+                                Tin tức
+                            </div>
+                        </a>
+                        <a
+                            href="/real_estate_list.html"
+                            class="
+                                flex flex-col
+                                md:justify-center
+                                items-center
+                                w-full
+                                rounded-lg
+                                py-8
+                                md:px-10
+                                duration-200
+                                border-2 border-transparent
+                                md:border-gray-100
+                                hover:shadow-lg
+                                hover:text-encacap-main
+                                hover:border-encacap-main
+                            "
+                        >
+                            <div
+                                class="
+                                    flex
+                                    items-center
+                                    w-20
+                                    md:w-32
+                                    h-20
+                                    md:h-32
+                                    border-2 border-gray-100
+                                    rounded-full
+                                    overflow-hidden
+                                "
+                            >
+                                <img
+                                    src="/assets/images/icons/thu-vien-nha-mau.png"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                    "
+                                    alt="Thư viện nhà mẫu"
+                                />
+                            </div>
+                            <div class="pt-6 text-center font-medium">
+                                Thư viện nhà mẫu
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- Real Estate Sell -->
+            <section
+                class="
+                    border-t-2 border-b-2
+                    md:border-t-0 md:border-b-0
+                    border-gray-100
+                    md:px-4
+                    lg:px-10
+                    xl:px-48
+                    py-10
+                    md:py-20 md:bg-gray-100
+                "
+            >
+                <div class="px-4 md:px-0 flex flex-col items-center">
+                    <div
+                        class="
+                            text-center text-gray-400
+                            uppercase
+                            tracking-widest
+                            text-xs
+                            font-semibold
+                        "
+                    >
+                        Dành cho bạn
+                    </div>
+                    <div class="py-3 text-2xl md:text-4xl text-center">
+                        Bất động sản đang bán
+                    </div>
+                    <div class="mx-auto mt-4 w-20 h-1 bg-encacap-main"></div>
+                </div>
+                <div class="mt-10 px-4 md:px-0">
+                    <div
+                        class="
+                            grid
+                            md:grid-cols-2
+                            lg:grid-cols-3
+                            xl:grid-cols-4
+                            md:gap-4
+                        "
+                    >
+                        <a
+                            href="/real_estate_detail.html"
+                            class="
+                                md:shadow-md md:rounded-md
+                                border-b-2
+                                md:border-b-0
+                                border-gray-100
+                                bg-white
+                                overflow-hidden
+                                duration-200
+                                md:hover:shadow-lg
+                            "
+                        >
+                            <div class="group block mb-4 md:mb-0">
+                                <div
+                                    class="
+                                        w-full
+                                        h-44
+                                        md:h-44
+                                        mx-0
+                                        mb-4
+                                        md:mb-0
+                                    "
+                                >
+                                    <img
+                                        src="/assets/images/slider/01.jpg"
+                                        class="
+                                            object-cover object-center
+                                            w-full
+                                            h-full
+                                            rounded-md
+                                            md:rounded-none
+                                        "
+                                        alt="Bất động sản đang bán 1"
+                                    />
+                                </div>
+                                <div
+                                    class="
+                                        flex-1 flex flex-col
+                                        justify-center
+                                        md:block
+                                        py-0
+                                        md:py-4
+                                        pr-4
+                                        md:px-5
+                                    "
+                                >
+                                    <div
+                                        class="
+                                            block
+                                            md:h-12
+                                            mb-1
+                                            md:mb-0
+                                            font-semibold
+                                            uppercase
+                                            md:line-clamp-2
+                                            text-encacap-main
+                                            duration-200
+                                        "
+                                    >
+                                        Đất công xã Phước Khánh Nhơn Trạch
+                                    </div>
+                                    <div
+                                        class="
+                                            mb-1
+                                            md:mb-2 md:mt-2
+                                            font-semibold
+                                        "
+                                    >
+                                        <span>16 triệu/m<sup>2</sup></span>
+                                        <span class="px-1 md:px-2 text-gray-400"
+                                            >·</span
+                                        >
+                                        <span>120 m<sup>2</sup></span>
+                                    </div>
+                                    <div
+                                        class="flex items-center"
+                                        style="margin-left: -2px"
+                                    >
+                                        <ion-icon
+                                            name="location-outline"
+                                            class="mr-2"
+                                        ></ion-icon>
+                                        Nhơn Trạch, Đồng Nai
+                                    </div>
+                                    <div class="flex md:hidden">
+                                        <div
+                                            class="
+                                                flex-1 flex
+                                                items-center
+                                                justify-center
+                                                border-2 border-gray-100
+                                                bg-gray-50
+                                                rounded-md
+                                                mt-3
+                                                md:mt-5 md:my-2
+                                                py-2
+                                                px-2
+                                                text-center
+                                                font-semibold
+                                                text-sm
+                                            "
+                                        >
+                                            <ion-icon
+                                                name="call-outline"
+                                                class="mr-2 md:mt-0.5"
+                                            ></ion-icon>
+                                            0582 419 433
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a
+                            href="/real_estate_detail.html"
+                            class="
+                                group
+                                md:shadow-md md:rounded-md
+                                border-b-2
+                                md:border-b-0
+                                border-gray-100
+                                bg-white
+                                overflow-hidden
+                                duration-200
+                                md:hover:shadow-lg
+                            "
+                        >
+                            <div
+                                class="
+                                    block
+                                    md:hidden
+                                    py-3
+                                    md:px-4
+                                    font-semibold
+                                    uppercase
+                                    duration-200
+                                    text-encacap-main
+                                "
+                            >
+                                Đất công xã Phước Khánh Nhơn Trạch
+                            </div>
+                            <div class="flex md:block mb-4 md:mb-0">
+                                <div
+                                    class="
+                                        md:w-full
+                                        w-28
+                                        h-28
+                                        md:h-44
+                                        mr-4
+                                        md:mr-0
+                                    "
+                                >
+                                    <img
+                                        src="/assets/images/slider/01.jpg"
+                                        class="
+                                            object-cover object-center
+                                            w-full
+                                            h-full
+                                            rounded-md
+                                            md:rounded-none
+                                        "
+                                        alt="Bất động sản đang bán 1"
+                                    />
+                                </div>
+                                <div
+                                    class="
+                                        flex-1 flex flex-col
+                                        justify-center
+                                        md:block
+                                        py-0
+                                        md:py-4 md:px-5
+                                    "
+                                >
+                                    <div
+                                        class="
+                                            hidden
+                                            md:block md:h-12
+                                            font-semibold
+                                            text-encacap-main
+                                            uppercase
+                                            duration-200
+                                            md:line-clamp-2
+                                        "
+                                    >
+                                        Đất công xã Phước Khánh Nhơn Trạch
+                                    </div>
+                                    <div
+                                        class="
+                                            mb-1
+                                            md:mb-2 md:mt-2
+                                            font-semibold
+                                        "
+                                    >
+                                        <span>16 triệu/m<sup>2</sup></span>
+                                        <span class="px-1 md:px-2 text-gray-400"
+                                            >·</span
+                                        >
+                                        <span>120 m<sup>2</sup></span>
+                                    </div>
+                                    <div
+                                        class="flex items-center"
+                                        style="margin-left: -3px"
+                                    >
+                                        <ion-icon
+                                            name="location-outline"
+                                            class="mr-2"
+                                        ></ion-icon>
+                                        Nhơn Trạch, Đồng Nai
+                                    </div>
+                                    <div class="flex md:hidden">
+                                        <div
+                                            class="
+                                                flex-1 flex
+                                                items-center
+                                                justify-center
+                                                border-2 border-gray-100
+                                                bg-gray-50
+                                                rounded-md
+                                                mt-3
+                                                md:mt-5 md:my-2
+                                                py-2
+                                                px-2
+                                                text-center
+                                                font-semibold
+                                                text-sm
+                                            "
+                                        >
+                                            <ion-icon
+                                                name="call-outline"
+                                                class="mr-2 md:mt-0.5"
+                                            ></ion-icon>
+                                            0582 419 433
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a
+                            href="/real_estate_detail.html"
+                            class="
+                                group
+                                md:shadow-md md:rounded-md
+                                border-b-2
+                                md:border-b-0
+                                border-gray-100
+                                bg-white
+                                overflow-hidden
+                                duration-200
+                                md:hover:shadow-lg
+                            "
+                        >
+                            <div
+                                class="
+                                    block
+                                    md:hidden
+                                    py-3
+                                    md:px-4
+                                    font-semibold
+                                    uppercase
+                                    text-encacap-main
+                                "
+                            >
+                                Đất công xã Phước Khánh Nhơn Trạch
+                            </div>
+                            <div class="flex md:block mb-4 md:mb-0">
+                                <div
+                                    class="
+                                        md:w-full
+                                        w-28
+                                        h-28
+                                        md:h-44
+                                        mr-4
+                                        md:mr-0
+                                    "
+                                >
+                                    <img
+                                        src="/assets/images/slider/01.jpg"
+                                        class="
+                                            object-cover object-center
+                                            w-full
+                                            h-full
+                                            rounded-md
+                                            md:rounded-none
+                                        "
+                                        alt="Bất động sản đang bán 1"
+                                    />
+                                </div>
+                                <div
+                                    class="
+                                        flex-1 flex flex-col
+                                        justify-center
+                                        md:block
+                                        py-0
+                                        md:py-4 md:px-5
+                                    "
+                                >
+                                    <div
+                                        class="
+                                            hidden
+                                            md:block md:h-12
+                                            font-semibold
+                                            text-encacap-main
+                                            uppercase
+                                            duration-200
+                                            md:line-clamp-2
+                                        "
+                                    >
+                                        Đất công xã Phước Khánh Nhơn Trạch
+                                    </div>
+                                    <div
+                                        class="
+                                            mb-1
+                                            md:mb-2 md:mt-2
+                                            font-semibold
+                                        "
+                                    >
+                                        <span>16 triệu/m<sup>2</sup></span>
+                                        <span class="px-1 md:px-2 text-gray-400"
+                                            >·</span
+                                        >
+                                        <span>120 m<sup>2</sup></span>
+                                    </div>
+                                    <div
+                                        class="flex items-center"
+                                        style="margin-left: -3px"
+                                    >
+                                        <ion-icon
+                                            name="location-outline"
+                                            class="mr-2"
+                                        ></ion-icon>
+                                        Nhơn Trạch, Đồng Nai
+                                    </div>
+                                    <div class="flex md:hidden">
+                                        <div
+                                            class="
+                                                flex-1 flex
+                                                items-center
+                                                justify-center
+                                                border-2 border-gray-100
+                                                bg-gray-50
+                                                rounded-md
+                                                mt-3
+                                                md:mt-5 md:my-2
+                                                py-2
+                                                px-2
+                                                text-center
+                                                font-semibold
+                                                text-sm
+                                            "
+                                        >
+                                            <ion-icon
+                                                name="call-outline"
+                                                class="mr-2 md:mt-0.5"
+                                            ></ion-icon>
+                                            0582 419 433
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a
+                            href="/real_estate_detail.html"
+                            class="
+                                group
+                                md:shadow-md md:rounded-md
+                                border-b-2
+                                md:border-b-0
+                                border-gray-100
+                                bg-white
+                                overflow-hidden
+                                duration-200
+                                md:hover:shadow-lg
+                            "
+                        >
+                            <div
+                                class="
+                                    block
+                                    md:hidden
+                                    py-3
+                                    md:px-4
+                                    font-semibold
+                                    uppercase
+                                    text-encacap-main
+                                "
+                            >
+                                Đất công xã Phước Khánh Nhơn Trạch
+                            </div>
+                            <div class="flex md:block mb-4 md:mb-0">
+                                <div
+                                    class="
+                                        md:w-full
+                                        w-28
+                                        h-28
+                                        md:h-44
+                                        mr-4
+                                        md:mr-0
+                                    "
+                                >
+                                    <img
+                                        src="/assets/images/slider/01.jpg"
+                                        class="
+                                            object-cover object-center
+                                            w-full
+                                            h-full
+                                            rounded-md
+                                            md:rounded-none
+                                        "
+                                        alt="Bất động sản đang bán 1"
+                                    />
+                                </div>
+                                <div
+                                    class="
+                                        flex-1 flex flex-col
+                                        justify-center
+                                        md:block
+                                        py-0
+                                        md:py-4 md:px-5
+                                    "
+                                >
+                                    <div
+                                        class="
+                                            hidden
+                                            md:block md:h-12
+                                            font-semibold
+                                            text-encacap-main
+                                            uppercase
+                                            duration-200
+                                            md:line-clamp-2
+                                        "
+                                    >
+                                        Đất công xã Phước Khánh Nhơn Trạch
+                                    </div>
+                                    <div
+                                        class="
+                                            mb-1
+                                            md:mb-2 md:mt-2
+                                            font-semibold
+                                        "
+                                    >
+                                        <span>16 triệu/m<sup>2</sup></span>
+                                        <span class="px-1 md:px-2 text-gray-400"
+                                            >·</span
+                                        >
+                                        <span>120 m<sup>2</sup></span>
+                                    </div>
+                                    <div
+                                        class="flex items-center"
+                                        style="margin-left: -3px"
+                                    >
+                                        <ion-icon
+                                            name="location-outline"
+                                            class="mr-2"
+                                        ></ion-icon>
+                                        Nhơn Trạch, Đồng Nai
+                                    </div>
+                                    <div class="flex md:hidden">
+                                        <div
+                                            class="
+                                                flex-1 flex
+                                                items-center
+                                                justify-center
+                                                border-2 border-gray-100
+                                                bg-gray-50
+                                                rounded-md
+                                                mt-3
+                                                md:mt-5 md:my-2
+                                                py-2
+                                                px-2
+                                                text-center
+                                                font-semibold
+                                                text-sm
+                                            "
+                                        >
+                                            <ion-icon
+                                                name="call-outline"
+                                                class="mr-2 md:mt-0.5"
+                                            ></ion-icon>
+                                            0582 419 433
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a
+                            href="/real_estate_detail.html"
+                            class="
+                                group
+                                md:shadow-md md:rounded-md
+                                border-b-2
+                                md:border-b-0
+                                border-gray-100
+                                bg-white
+                                overflow-hidden
+                                duration-200
+                                md:hover:shadow-lg
+                            "
+                        >
+                            <div
+                                class="
+                                    block
+                                    md:hidden
+                                    py-3
+                                    md:px-4
+                                    font-semibold
+                                    uppercase
+                                    text-encacap-main
+                                "
+                            >
+                                Đất công xã Phước Khánh Nhơn Trạch
+                            </div>
+                            <div class="flex md:block mb-4 md:mb-0">
+                                <div
+                                    class="
+                                        md:w-full
+                                        w-28
+                                        h-28
+                                        md:h-44
+                                        mr-4
+                                        md:mr-0
+                                    "
+                                >
+                                    <img
+                                        src="/assets/images/slider/01.jpg"
+                                        class="
+                                            object-cover object-center
+                                            w-full
+                                            h-full
+                                            rounded-md
+                                            md:rounded-none
+                                        "
+                                        alt="Bất động sản đang bán 1"
+                                    />
+                                </div>
+                                <div
+                                    class="
+                                        flex-1 flex flex-col
+                                        justify-center
+                                        md:block
+                                        py-0
+                                        md:py-4 md:px-5
+                                    "
+                                >
+                                    <div
+                                        class="
+                                            hidden
+                                            md:block md:h-12
+                                            font-semibold
+                                            text-encacap-main
+                                            uppercase
+                                            duration-200
+                                            md:line-clamp-2
+                                        "
+                                    >
+                                        Đất công xã Phước Khánh Nhơn Trạch
+                                    </div>
+                                    <div
+                                        class="
+                                            mb-1
+                                            md:mb-2 md:mt-2
+                                            font-semibold
+                                        "
+                                    >
+                                        <span>16 triệu/m<sup>2</sup></span>
+                                        <span class="px-1 md:px-2 text-gray-400"
+                                            >·</span
+                                        >
+                                        <span>120 m<sup>2</sup></span>
+                                    </div>
+                                    <div
+                                        class="flex items-center"
+                                        style="margin-left: -3px"
+                                    >
+                                        <ion-icon
+                                            name="location-outline"
+                                            class="mr-2"
+                                        ></ion-icon>
+                                        Nhơn Trạch, Đồng Nai
+                                    </div>
+                                    <div class="flex md:hidden">
+                                        <div
+                                            class="
+                                                flex-1 flex
+                                                items-center
+                                                justify-center
+                                                border-2 border-gray-100
+                                                bg-gray-50
+                                                rounded-md
+                                                mt-3
+                                                md:mt-5 md:my-2
+                                                py-2
+                                                px-2
+                                                text-center
+                                                font-semibold
+                                                text-sm
+                                            "
+                                        >
+                                            <ion-icon
+                                                name="call-outline"
+                                                class="mr-2 md:mt-0.5"
+                                            ></ion-icon>
+                                            0582 419 433
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a
+                            href="/real_estate_detail.html"
+                            class="
+                                group
+                                md:shadow-md md:rounded-md
+                                border-b-2
+                                md:border-b-0
+                                border-gray-100
+                                bg-white
+                                overflow-hidden
+                                duration-200
+                                md:hover:shadow-lg
+                            "
+                        >
+                            <div
+                                class="
+                                    block
+                                    md:hidden
+                                    py-3
+                                    md:px-4
+                                    font-semibold
+                                    uppercase
+                                    text-encacap-main
+                                "
+                            >
+                                Đất công xã Phước Khánh Nhơn Trạch
+                            </div>
+                            <div class="flex md:block mb-4 md:mb-0">
+                                <div
+                                    class="
+                                        md:w-full
+                                        w-28
+                                        h-28
+                                        md:h-44
+                                        mr-4
+                                        md:mr-0
+                                    "
+                                >
+                                    <img
+                                        src="/assets/images/slider/01.jpg"
+                                        class="
+                                            object-cover object-center
+                                            w-full
+                                            h-full
+                                            rounded-md
+                                            md:rounded-none
+                                        "
+                                        alt="Bất động sản đang bán 1"
+                                    />
+                                </div>
+                                <div
+                                    class="
+                                        flex-1 flex flex-col
+                                        justify-center
+                                        md:block
+                                        py-0
+                                        md:py-4 md:px-5
+                                    "
+                                >
+                                    <div
+                                        class="
+                                            hidden
+                                            md:block md:h-12
+                                            font-semibold
+                                            text-encacap-main
+                                            uppercase
+                                            duration-200
+                                            md:line-clamp-2
+                                        "
+                                    >
+                                        Đất công xã Phước Khánh Nhơn Trạch
+                                    </div>
+                                    <div
+                                        class="
+                                            mb-1
+                                            md:mb-2 md:mt-2
+                                            font-semibold
+                                        "
+                                    >
+                                        <span>16 triệu/m<sup>2</sup></span>
+                                        <span class="px-1 md:px-2 text-gray-400"
+                                            >·</span
+                                        >
+                                        <span>120 m<sup>2</sup></span>
+                                    </div>
+                                    <div
+                                        class="flex items-center"
+                                        style="margin-left: -3px"
+                                    >
+                                        <ion-icon
+                                            name="location-outline"
+                                            class="mr-2"
+                                        ></ion-icon>
+                                        Nhơn Trạch, Đồng Nai
+                                    </div>
+                                    <div class="flex md:hidden">
+                                        <div
+                                            class="
+                                                flex-1 flex
+                                                items-center
+                                                justify-center
+                                                border-2 border-gray-100
+                                                bg-gray-50
+                                                rounded-md
+                                                mt-3
+                                                md:mt-5 md:my-2
+                                                py-2
+                                                px-2
+                                                text-center
+                                                font-semibold
+                                                text-sm
+                                            "
+                                        >
+                                            <ion-icon
+                                                name="call-outline"
+                                                class="mr-2 md:mt-0.5"
+                                            ></ion-icon>
+                                            0582 419 433
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a
+                            href="/real_estate_detail.html"
+                            class="
+                                group
+                                md:shadow-md md:rounded-md
+                                border-b-2
+                                md:border-b-0
+                                border-gray-100
+                                bg-white
+                                overflow-hidden
+                                duration-200
+                                md:hover:shadow-lg
+                            "
+                        >
+                            <div
+                                class="
+                                    block
+                                    md:hidden
+                                    py-3
+                                    md:px-4
+                                    font-semibold
+                                    uppercase
+                                    text-encacap-main
+                                "
+                            >
+                                Đất công xã Phước Khánh Nhơn Trạch
+                            </div>
+                            <div class="flex md:block mb-4 md:mb-0">
+                                <div
+                                    class="
+                                        md:w-full
+                                        w-28
+                                        h-28
+                                        md:h-44
+                                        mr-4
+                                        md:mr-0
+                                    "
+                                >
+                                    <img
+                                        src="/assets/images/slider/01.jpg"
+                                        class="
+                                            object-cover object-center
+                                            w-full
+                                            h-full
+                                            rounded-md
+                                            md:rounded-none
+                                        "
+                                        alt="Bất động sản đang bán 1"
+                                    />
+                                </div>
+                                <div
+                                    class="
+                                        flex-1 flex flex-col
+                                        justify-center
+                                        md:block
+                                        py-0
+                                        md:py-4 md:px-5
+                                    "
+                                >
+                                    <div
+                                        class="
+                                            hidden
+                                            md:block md:h-12
+                                            font-semibold
+                                            text-encacap-main
+                                            uppercase
+                                            duration-200
+                                            md:line-clamp-2
+                                        "
+                                    >
+                                        Đất công xã Phước Khánh Nhơn Trạch
+                                    </div>
+                                    <div
+                                        class="
+                                            mb-1
+                                            md:mb-2 md:mt-2
+                                            font-semibold
+                                        "
+                                    >
+                                        <span>16 triệu/m<sup>2</sup></span>
+                                        <span class="px-1 md:px-2 text-gray-400"
+                                            >·</span
+                                        >
+                                        <span>120 m<sup>2</sup></span>
+                                    </div>
+                                    <div
+                                        class="flex items-center"
+                                        style="margin-left: -3px"
+                                    >
+                                        <ion-icon
+                                            name="location-outline"
+                                            class="mr-2"
+                                        ></ion-icon>
+                                        Nhơn Trạch, Đồng Nai
+                                    </div>
+                                    <div class="flex md:hidden">
+                                        <div
+                                            class="
+                                                flex-1 flex
+                                                items-center
+                                                justify-center
+                                                border-2 border-gray-100
+                                                bg-gray-50
+                                                rounded-md
+                                                mt-3
+                                                md:mt-5 md:my-2
+                                                py-2
+                                                px-2
+                                                text-center
+                                                font-semibold
+                                                text-sm
+                                            "
+                                        >
+                                            <ion-icon
+                                                name="call-outline"
+                                                class="mr-2 md:mt-0.5"
+                                            ></ion-icon>
+                                            0582 419 433
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a
+                            href="/real_estate_detail.html"
+                            class="
+                                group
+                                md:shadow-md md:rounded-md
+                                border-b-2
+                                md:border-b-0
+                                border-gray-100
+                                bg-white
+                                overflow-hidden
+                                duration-200
+                                md:hover:shadow-lg
+                            "
+                        >
+                            <div
+                                class="
+                                    block
+                                    md:hidden
+                                    py-3
+                                    md:px-4
+                                    font-semibold
+                                    uppercase
+                                    text-encacap-main
+                                "
+                            >
+                                Đất công xã Phước Khánh Nhơn Trạch
+                            </div>
+                            <div class="flex md:block mb-4 md:mb-0">
+                                <div
+                                    class="
+                                        md:w-full
+                                        w-28
+                                        h-28
+                                        md:h-44
+                                        mr-4
+                                        md:mr-0
+                                    "
+                                >
+                                    <img
+                                        src="/assets/images/slider/01.jpg"
+                                        class="
+                                            object-cover object-center
+                                            w-full
+                                            h-full
+                                            rounded-md
+                                            md:rounded-none
+                                        "
+                                        alt="Bất động sản đang bán 1"
+                                    />
+                                </div>
+                                <div
+                                    class="
+                                        flex-1 flex flex-col
+                                        justify-center
+                                        md:block
+                                        py-0
+                                        md:py-4 md:px-5
+                                    "
+                                >
+                                    <div
+                                        class="
+                                            hidden
+                                            md:block md:h-12
+                                            font-semibold
+                                            text-encacap-main
+                                            uppercase
+                                            duration-200
+                                            md:line-clamp-2
+                                        "
+                                    >
+                                        Đất công xã Phước Khánh Nhơn Trạch
+                                    </div>
+                                    <div
+                                        class="
+                                            mb-1
+                                            md:mb-2 md:mt-2
+                                            font-semibold
+                                        "
+                                    >
+                                        <span>16 triệu/m<sup>2</sup></span>
+                                        <span class="px-1 md:px-2 text-gray-400"
+                                            >·</span
+                                        >
+                                        <span>120 m<sup>2</sup></span>
+                                    </div>
+                                    <div
+                                        class="flex items-center"
+                                        style="margin-left: -3px"
+                                    >
+                                        <ion-icon
+                                            name="location-outline"
+                                            class="mr-2"
+                                        ></ion-icon>
+                                        Nhơn Trạch, Đồng Nai
+                                    </div>
+                                    <div class="flex md:hidden">
+                                        <div
+                                            class="
+                                                flex-1 flex
+                                                items-center
+                                                justify-center
+                                                border-2 border-gray-100
+                                                bg-gray-50
+                                                rounded-md
+                                                mt-3
+                                                md:mt-5 md:my-2
+                                                py-2
+                                                px-2
+                                                text-center
+                                                font-semibold
+                                                text-sm
+                                            "
+                                        >
+                                            <ion-icon
+                                                name="call-outline"
+                                                class="mr-2 md:mt-0.5"
+                                            ></ion-icon>
+                                            0582 419 433
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-10">
+                    <a
+                        href="/real_estate_list.html"
+                        class="
+                            flex
+                            items-center
+                            bg-white
+                            rounded-full
+                            border-2 border-gray-300
+                            px-6
+                            py-3
+                            font-semibold
+                            duration-200
+                            hover:border-encacap-main hover:text-encacap-main
+                        "
+                    >
+                        Xem tất cả bất động sản đang bán
+                        <ion-icon
+                            name="arrow-forward-outline"
+                            class="ml-2"
+                        ></ion-icon>
+                    </a>
+                </div>
+            </section>
+            <!-- Latest News -->
+            <section class="px-4 lg:px-10 xl:px-48 py-10 md:py-20">
+                <div class="flex flex-col items-center">
+                    <div
+                        class="
+                            text-center text-gray-400
+                            uppercase
+                            tracking-widest
+                            text-xs
+                            font-semibold
+                        "
+                    >
+                        Mới và nổi bật nhất
+                    </div>
+                    <div class="py-3 text-2xl md:text-4xl">Tin tức</div>
+                    <div class="mx-auto mt-4 w-20 h-1 bg-encacap-main"></div>
+                </div>
+                <div
+                    class="
+                        grid
+                        md:grid-cols-2
+                        lg:grid-cols-3
+                        md:gap-5
+                        mt-10
+                        md:divide-x-2
+                        border-b-2
+                        md:border-b-0
+                        border-gray-100
+                    "
+                >
+                    <div
+                        class="
+                            md:mr-5
+                            border-b-2 border-gray-100
+                            pb-4
+                            md:border-b-0 md:pb-0
+                            hover:text-encacap-main
+                        "
+                    >
+                        <div class="h-40">
+                            <img
+                                src="/assets/images/slider/03.webp"
+                                alt="News"
+                                class="
+                                    w-full
+                                    h-full
+                                    object-cover object-center
+                                    rounded-md
+                                "
+                            />
+                        </div>
+                        <div class="pt-4">
+                            <div class="font-semibold">
+                                Cấp thiết làm đường sắt nối sân bay
+                            </div>
+                            <div
+                                class="
+                                    flex
+                                    items-center
+                                    mt-2
+                                    text-gray-500 text-sm
+                                "
+                            >
+                                <ion-icon
+                                    name="time-outline"
+                                    class="mr-2"
+                                ></ion-icon>
+                                12/10/2021
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:pl-10 md:pr-5 divide-y-2 divide-gray-100">
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:pb-2 md:pt-0
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:py-2
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:pt-2 md:pb-0
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="
+                            lg:pl-10
+                            border-t-2
+                            md:hidden
+                            lg:block
+                            border-gray-100
+                            md:border-t-0
+                            divide-y-2 divide-gray-100
+                        "
+                    >
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:pt-0 md:pb-2
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:py-2
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:py-2
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-10">
+                    <a
+                        href="/real_estate_list.html"
+                        class="
+                            flex
+                            items-center
+                            bg-white
+                            rounded-full
+                            border-2 border-gray-300
+                            px-6
+                            py-3
+                            font-semibold
+                            duration-200
+                            hover:border-encacap-main hover:text-encacap-main
+                        "
+                    >
+                        Xem tất cả tin tức
+                        <ion-icon
+                            name="arrow-forward-outline"
+                            class="ml-2"
+                        ></ion-icon>
+                    </a>
+                </div>
+            </section>
+            <!-- Home Model Collection -->
+            <section
+                class="
+                    border-t-2 border-b-2
+                    md:border-0
+                    border-gray-100
+                    md:px-4
+                    lg:px-10
+                    xl:px-48
+                    py-10
+                    md:py-20 md:bg-gray-200
+                "
+            >
+                <div class="flex flex-col items-center">
+                    <div
+                        class="
+                            text-center text-gray-400
+                            uppercase
+                            tracking-widest
+                            text-xs
+                            font-semibold
+                        "
+                    >
+                        Dành cho bạn
+                    </div>
+                    <div class="py-3 text-2xl md:text-4xl">
+                        Thư viện nhà mẫu
+                    </div>
+                    <div class="mx-auto mt-4 w-20 h-1 bg-encacap-main"></div>
+                </div>
+            </section>
+            <section>
+                <a
+                    href="tel:0582419433"
+                    class="
+                        flex
+                        items-center
+                        fixed
+                        z-50
+                        bottom-20
+                        md:bottom-28
+                        right-4
+                        md:right-10
+                        w-14
+                        md:w-auto
+                        h-14
+                        md:h-auto
+                        border-2
+                        rounded-full
+                        px-3
+                        md:px-4
+                        py-2
+                        md:py-4
+                        font-semibold
+                        bg-white
+                        duration-200
+                        hover:text-encacap-main hover:bg-white
+                    "
+                    style="border-color: #0180c7; color: #0180c7"
+                >
+                    <img
+                        src="/assets/images/icons/zalo_text.svg"
+                        alt="Zalo"
+                        class="h-3"
+                    />
+                </a>
+                <a
+                    href="tel:0582419433"
+                    class="
+                        flex
+                        items-center
+                        fixed
+                        z-50
+                        bottom-4
+                        md:bottom-10
+                        right-4
+                        md:right-10
+                        w-14
+                        md:w-auto
+                        h-14
+                        md:h-auto
+                        border-2 border-encacap-main
+                        rounded-full
+                        px-4
+                        py-2
+                        md:py-3
+                        font-semibold
+                        bg-encacap-main
+                        text-white
+                        shadow-md
+                        duration-200
+                        hover:text-encacap-main hover:bg-white
+                    "
+                >
+                    <ion-icon
+                        name="call"
+                        class="text-2xl md:text-lg"
+                    ></ion-icon>
+                    <span class="hidden md:block ml-2">0582 419 433</span>
+                </a>
+            </section>
+            <footer class="px-4 lg:px-10 pt-4 lg:pt-10 bg-gray-100 lg:bg-none">
+                <div class="lg:flex">
+                    <div class="flex justify-between">
+                        <a href="/" class="header-logo flex items-center">
+                            <img
+                                src="/assets/images/product-logo.jpg"
+                                alt="Encacap Estate Logo"
+                                class="
+                                    w-12
+                                    border-2 border-encacap-main
+                                    rounded-lg
+                                "
+                            />
+                            <div class="header-logo-text ml-4 uppercase">
+                                <div class="mt-1 ml-0.5 text-xs font-semibold">
+                                    BĐS nghỉ dưỡng
+                                </div>
+                                <div
+                                    class="font-bold text-2xl text-encacap-main"
+                                >
+                                    Bảo Lộc
+                                </div>
+                            </div>
+                        </a>
+                        <div>
+                            <div class="flex lg:hidden">
+                                <a
+                                    href=""
+                                    class="
+                                        flex
+                                        items-center
+                                        justify-center
+                                        w-11
+                                        h-11
+                                        mr-4
+                                        lg:ml-16
+                                        rounded-full
+                                        border-2
+                                        bg-gray-100
+                                        text-xl text-gray-500
+                                        hover:border-red-500
+                                        hover:text-red-500
+                                        hover:bg-red-100
+                                        duration-200
+                                    "
+                                >
+                                    <ion-icon name="logo-youtube"></ion-icon>
+                                </a>
+                                <a
+                                    href=""
+                                    class="
+                                        flex
+                                        items-center
+                                        justify-center
+                                        w-11
+                                        h-11
+                                        rounded-full
+                                        border-2
+                                        bg-gray-100
+                                        text-xl text-gray-500
+                                        hover:border-blue-500
+                                        hover:text-blue-500
+                                        hover:bg-blue-100
+                                        duration-200
+                                    "
+                                >
+                                    <?xml version="1.0"?><svg
+                                        fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 30 30"
+                                        class="w-6"
+                                    >
+                                        <path
+                                            d="M12,27V15H8v-4h4V8.852C12,4.785,13.981,3,17.361,3c1.619,0,2.475,0.12,2.88,0.175V7h-2.305C16.501,7,16,7.757,16,9.291V11 h4.205l-0.571,4H16v12H12z"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="block lg:hidden w-full h-0.5 bg-gray-200 mt-4"
+                    ></div>
+                    <div
+                        class="
+                            flex-1
+                            lg:flex
+                            justify-end
+                            items-center
+                            mt-4
+                            lg:mt-0
+                        "
+                    >
+                        <div class="flex items-center">
+                            <div
+                                class="
+                                    flex-shrink-0
+                                    w-12
+                                    lg:w-auto
+                                    text-center text-2xl
+                                    lg:text-4xl
+                                    mt-2
+                                    mr-4
+                                "
+                            >
+                                <ion-icon name="call-outline"></ion-icon>
+                            </div>
+                            <div>
+                                <div class="text-sm">Điện thoại</div>
+                                <div class="font-semibold">0582 419 433</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-3 lg:mt-0 lg:ml-16">
+                            <div
+                                class="
+                                    flex-shrink-0
+                                    w-12
+                                    lg:w-auto
+                                    text-center text-2xl
+                                    lg:text-4xl
+                                    mt-2
+                                    mr-4
+                                "
+                            >
+                                <ion-icon name="location-outline"></ion-icon>
+                            </div>
+                            <div>
+                                <div class="text-sm">Địa chỉ</div>
+                                <div class="font-semibold">
+                                    202 Nguyễn Thị Búp, P. Hiệp Thành, Q.12, Hồ
+                                    Chí Minh
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden lg:flex">
+                            <a
+                                href=""
+                                class="
+                                    flex
+                                    items-center
+                                    justify-center
+                                    w-11
+                                    h-11
+                                    mr-4
+                                    lg:ml-16
+                                    rounded-full
+                                    border-2
+                                    bg-gray-100
+                                    text-xl text-gray-500
+                                    hover:border-red-500
+                                    hover:text-red-500
+                                    hover:bg-red-100
+                                    duration-200
+                                "
+                            >
+                                <ion-icon name="logo-youtube"></ion-icon>
+                            </a>
+                            <a
+                                href=""
+                                class="
+                                    flex
+                                    items-center
+                                    justify-center
+                                    w-11
+                                    h-11
+                                    rounded-full
+                                    border-2
+                                    bg-gray-100
+                                    text-xl text-gray-500
+                                    hover:border-blue-500
+                                    hover:text-blue-500
+                                    hover:bg-blue-100
+                                    duration-200
+                                "
+                            >
+                                <?xml version="1.0"?><svg
+                                    fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 30 30"
+                                    class="w-6"
+                                >
+                                    <path
+                                        d="M12,27V15H8v-4h4V8.852C12,4.785,13.981,3,17.361,3c1.619,0,2.475,0.12,2.88,0.175V7h-2.305C16.501,7,16,7.757,16,9.291V11 h4.205l-0.571,4H16v12H12z"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t-2 mt-4 lg:mt-10 py-4 text-center">
+                    Copyrights © 2021. All rights reserved by
+                    <a
+                        href="https://www.facebook.com/khackhanh.encacap/"
+                        class="font-semibold"
+                        >Encacap</a
+                    >
+                </div>
+            </footer>
+        </main>
+        <script src="/assets/js/home.min.js"></script>
+    </body>
+</html>

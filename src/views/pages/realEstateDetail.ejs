@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', { title: "Bất động sản đang bán", css: ["real_estate_detail"] }) %>
+    <body class="overflow-x-hidden">
+        <%- include('../components/header', { activeIndex: 2 }) %>
+        <main class="mx-4 lg:mx-10 xl:mx-48 pt-4 lg:pt-10 pb-10">
+            <div class="grid grid-cols-4 gap-10">
+                <div class="col-span-4 lg:col-span-3">
+                    <%- include('../components/category', {categories: [
+                        {
+                            name: "BĐS nghỉ dưỡng",
+                            url: "/bat-dong-san-ban/bat-dong-san-nghi-duong",
+                            icon: "/assets/images/icons/bat-dong-san-nghi-duong.jpg"
+                        },
+                        {
+                            name: "Đất nền",
+                            url: "/bat-dong-san-ban/dat-nen",
+                            icon: "/assets/images/icons/dat-nen.jpg"
+                        },
+                        {
+                            name: "Nhà phố",
+                            url: "/bat-dong-san-ban/nha-pho",
+                            icon: "/assets/images/icons/nha-pho.jpg"
+                        }
+                    ]}) %>
+                    <div>
+                        <div class="splide bg-black rounded-md overflow-hidden">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="splide__slide">
+                                        <img
+                                            src="/assets/images/slider/01.jpg"
+                                            alt="Chi tiết Bất động sản bán"
+                                            class="w-full h-full object-contain object-center"
+                                        />
+                                    </li>
+                                    <li class="splide__slide">
+                                        <img
+                                            src="/assets/images/slider/02.webp"
+                                            alt="Chi tiết Bất động sản bán"
+                                            class="w-full h-full object-contain object-center"
+                                        />
+                                    </li>
+                                    <li class="splide__slide">
+                                        <img
+                                            src="/assets/images/slider/03.webp"
+                                            alt="Chi tiết Bất động sản bán"
+                                            class="w-full h-full object-contain object-center"
+                                        />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="thumbnail-slider" class="splide mt-2">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="splide__slide box-border">
+                                        <img
+                                            src="/assets/images/slider/01.jpg"
+                                            alt="Chi tiết Bất động sản bán"
+                                            class="w-full h-full object-cover object-center"
+                                        />
+                                    </li>
+                                    <li class="splide__slide">
+                                        <img src="/assets/images/slider/02.webp" alt="Chi tiết Bất động sản bán" />
+                                    </li>
+                                    <li class="splide__slide">
+                                        <img src="/assets/images/slider/03.webp" alt="Chi tiết Bất động sản bán" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <div>
+                            <span class="text-gray-400">Bất động sản bán</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="text-gray-400">Đất nền</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="text-gray-400">Đồng Nai</span>
+                            <span class="text-gray-400">/</span>
+                            <span class="text-gray-400">Nhơn Trạch</span>
+                            <span class="text-gray-400">/</span>
+                            <span>Phước Khánh</span>
+                        </div>
+                        <div class="font-semibold py-2 text-2xl text-encacap-main uppercase">
+                            Đất công xã Phước Khánh Nhơn Trạch
+                        </div>
+                        <div class="flex items-center font-semibold">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                class="w-4 mr-2"
+                            >
+                                <path
+                                    d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                ></path>
+                                <path
+                                    d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                ></path>
+                            </svg>
+                            Đối diện cái gì đó, Phước Khánh, Nhơn Trạch, Đồng Nai
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap my-4 pb-1 border-b-2 border-gray-100">
+                        <div class="mr-4 mb-4 px-4 md:px-5 py-3 rounded-md border-2 border-encacap-main">
+                            <div class="text-encacap-main mb-1 text-sm">Giá bán</div>
+                            <div class="font-semibold md:text-lg text-encacap-main">1,25 tỷ</div>
+                        </div>
+                        <div class="mr-4 mb-4 px-4 md:px-5 py-3 rounded-md border-2 border-encacap-main">
+                            <div class="text-sm mb-1 text-encacap-main">Mã số</div>
+                            <div class="font-semibold md:text-lg text-encacap-main">#1</div>
+                        </div>
+                        <div class="mr-4 mb-4 px-4 md:px-5 py-3 rounded-md bg-gray-100">
+                            <div class="text-gray-400 text-sm mb-1">Diện tích</div>
+                            <div class="font-semibold md:text-lg">1500 m<sup>2</sup></div>
+                        </div>
+                        <div class="mr-4 mb-4 px-4 md:px-5 py-3 rounded-md bg-gray-100">
+                            <div class="text-gray-400 text-sm mb-1">Diện tích</div>
+                            <div class="font-semibold md:text-lg">1500 m<sup>2</sup></div>
+                        </div>
+                        <div class="mr-4 mb-4 px-4 md:px-5 py-3 rounded-md bg-gray-100">
+                            <div class="text-gray-400 text-sm mb-1">Diện tích</div>
+                            <div class="font-semibold md:text-lg">1500 m<sup>2</sup></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:hidden items-center mt-5 p-1 border-b-2 border-gray-100">
+                        <div class="border-4 border-gray-200 rounded-full overflow-hidden">
+                            <img src="/assets/images/product-logo.jpg" alt="Avatar" class="w-20 h-20" />
+                        </div>
+                        <div class="mt-4 font-semibold">Nguyễn Khắc Khánh</div>
+                        <div class="flex mt-5 mb-6">
+                            <a
+                                href="tel:0582419433"
+                                class="
+                                    flex
+                                    justify-center
+                                    items-center
+                                    rounded-md
+                                    px-3
+                                    py-2
+                                    font-semibold
+                                    border-2 border-encacap-main
+                                    text-encacap-main
+                                    duration-200
+                                    hover:bg-encacap-main hover:border-encacap-main hover:text-white
+                                "
+                            >
+                                <ion-icon name="call" class="mr-2"></ion-icon>
+                                0582 419 433
+                            </a>
+                            <a
+                                href=""
+                                class="
+                                    flex
+                                    justify-center
+                                    items-center
+                                    rounded-md
+                                    ml-4
+                                    px-4
+                                    py-2
+                                    font-semibold
+                                    border-2 border-gray-200
+                                    duration-200
+                                    bg-white
+                                    hover:bg-gray-100
+                                "
+                                style="border-color: #0180c7; color: #0180c7"
+                            >
+                                Zalo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="py-4 md:pt-0 md:border-b-2 border-gray-100">
+                        <div class="font-semibold text-lg">Thông tin chi tiết</div>
+                        <div class="mt-2 mb-1">
+                            <p>Cần bán lô đất nền mặt tiền Hùng Vương Vĩnh Thanh Nhơn Trạch</p>
+                            <p>Thông Tin Chi Tiết:</p>
+                            <ul>
+                                <li>Tờ 28 thửa 248 Xã Vĩnh Thanh Nhơn Trạch Mặt tiền Hùng Vương</li>
+                                <li>Ngang 5 dài 27 (138m2)</li>
+                                <li>
+                                    Khu vực ngay trung tâm hành chính xã Vĩnh Thanh Thuân tiện xây nhà, mở công ty, cửa
+                                    hàng buôn bán, kinh doanh dịch vụ ẩm thực, giải trí…
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="grid grid-cols-2 gap-4 md:gap-10 mt-4 mb-2">
+                                <div
+                                    class="
+                                        flex
+                                        justify-center
+                                        items-center
+                                        rounded-md
+                                        px-4
+                                        py-2
+                                        text-center text-white
+                                        font-semibold
+                                    "
+                                    style="background-color: #03a5fa"
+                                >
+                                    <div class="mr-4">
+                                        <img src="/assets/images/icons/zalo_text_white.svg" class="w-6" alt="Zalo" />
+                                    </div>
+                                    Chia sẻ
+                                </div>
+                                <div
+                                    class="
+                                        flex
+                                        justify-center
+                                        items-center
+                                        rounded-md
+                                        px-4
+                                        py-2
+                                        text-center text-white
+                                        font-semibold
+                                    "
+                                    style="background-color: #1877f2"
+                                >
+                                    <div class="mr-4 flex items-center text-lg">
+                                        <ion-icon name="logo-facebook"></ion-icon>
+                                    </div>
+                                    Chia sẻ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="md:hidden h-2 bg-gray-100"
+                        style="width: calc(100% + 40px); margin-left: -20px; margin-right: -20px"
+                    ></div>
+                    <div class="pt-4 md:pb-4">
+                        <div class="font-semibold text-lg mt-1 mb-0 md:mb-6">
+                            Bất động sản khác tại Nhơn Trạch, Đồng Nai
+                        </div>
+                        <%- include('../components/estatesHorizontal.ejs', {
+                            grid: {
+                                cols: 1,
+                                mdCols: 2,
+                                lgCols: 3,
+                                mdGap: 4,
+                            },
+                            results: 3,
+                        }) %>
+                    </div>
+                    <div
+                        class="md:hidden h-2 bg-gray-100"
+                        style="width: calc(100% + 40px); margin-left: -20px; margin-right: -20px"
+                    ></div>
+                    <div class="md:mt-4 md:pt-4 border-t-0 md:border-t-2 border-gray-100">
+                        <div class="font-semibold text-lg mt-5 md:mt-1">Có thể bạn quan tâm</div>
+                        <div class="md:mt-6">
+                            <%- include('../components/estatesHorizontal.ejs', {
+                                grid: {
+                                    cols: 1,
+                                    mdCols: 2,
+                                    lgCols: 3,
+                                    mdGap: 4,
+                                },
+                                results: 6
+                            }) %>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="border-2 border-gray-100 rounded-md py-4 px-5">
+                        <div class="flex flex-col items-center mt-5">
+                            <div class="border-4 border-gray-200 rounded-full overflow-hidden">
+                                <img src="/assets/images/product-logo.jpg" alt="Avatar" class="w-20 h-20" />
+                            </div>
+                            <div class="mt-4 font-semibold">Nguyễn Khắc Khánh</div>
+                            <div class="mt-5 mb-6">
+                                <a
+                                    href="tel:0582419433"
+                                    class="
+                                        flex
+                                        justify-center
+                                        items-center
+                                        rounded-md
+                                        px-3
+                                        py-2
+                                        font-semibold
+                                        bg-encacap-main
+                                        border-2 border-encacap-main
+                                        text-white
+                                        duration-200
+                                        hover:bg-white
+                                        hover:text-encacap-main
+                                    "
+                                >
+                                    <ion-icon name="call" class="mr-2"></ion-icon>
+                                    0582 419 433
+                                </a>
+                                <a
+                                    href=""
+                                    class="
+                                        flex
+                                        justify-center
+                                        mt-4
+                                        items-center
+                                        rounded-md
+                                        px-4
+                                        py-2
+                                        font-semibold
+                                        border-2 border-gray-200
+                                        duration-200
+                                        bg-white
+                                        hover:bg-gray-100
+                                    "
+                                    style="border-color: #0180c7; color: #0180c7"
+                                >
+                                    Liên hệ qua Zalo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10 border-2 border-gray-100 rounded-md py-4 px-5">
+                        <div class="border-b-2 border-gray-100 pb-4 font-semibold">BĐS tại Đồng Nai</div>
+                        <div class="mt-3">
+                            <a href="#" class="block py-1 duration-200 hover:text-encacap-main">Nhơn Trạch (123)</a>
+                            <a href="#" class="block py-1 duration-200 hover:text-encacap-main">Phước Khánh (123)</a>
+                        </div>
+                    </div>
+                    <div class="mt-10 border-2 border-gray-100 rounded-md py-4 px-5">
+                        <div class="border-b-2 border-gray-100 pb-4 font-semibold">BĐS theo khu vực</div>
+                        <div class="mt-3">
+                            <a href="#" class="block py-1 duration-200 hover:text-encacap-main">Đồng Nai (123)</a>
+                            <a href="#" class="block py-1 duration-200 hover:text-encacap-main">Hồ Chí Minh (123)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('../components/footer') %>
+        <%- include('../partials/foot', { js: ["real_estate_detail"] }) %> 
+    </body>
+</html>

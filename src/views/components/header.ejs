@@ -1,3 +1,25 @@
+<% 
+    const { isShowMobileMenu, activeIndex } = locals;
+    const menu = [
+        {
+            name: 'Trang chủ',
+            url: '/'
+        },
+        {
+            name: 'Bất động sản bán',
+            shortName: 'BĐS Bán',
+            url: '/bat-dong-san-ban'
+        },
+        {
+            name: 'Tin tức',
+            url: '/tin-tuc'
+        },
+        {
+            name: 'Thư viện nhà mẫu',
+            url: '/thu-vien-nha-mau'
+        },
+    ];
+%>
 <header class="header w-full shadow-md lg:px-10 px-4">
     <div class="flex items-center justify-between h-20 md:h-20">
         <div class="flex items-center">
@@ -16,12 +38,18 @@
                     </div>
                 </div>
             </a>
-            <nav class="hidden md:flex ml-4 lg:ml-10 font-semibold">
-                <a href="/real_estate_list.html" class="py-2"
-                    >Bất động sản bán</a
-                >
-                <a href="/news_list.html" class="mx-5 py-2">Tin tức</a>
-                <a href="/bat-dong-san-ban" class="py-2">Thư viện nhà mẫu</a>
+            <nav class="hidden md:flex items-center ml-4 lg:ml-10 mr-4 font-semibold">
+                <% menu.forEach((item, index) => {%>
+                    <%
+                        let className = "py-2 mr-6";
+                        if ((activeIndex - 1) === index || (!activeIndex && index === 0)) {
+                            className += " active text-encacap-main";
+                        }
+                    %>
+                    <a href="<%= item.url %>" class="<%= className %>">
+                        <%= item.name %>
+                    </a>
+                <%}) %>
             </nav>
         </div>
         <div class="header-information hidden lg:flex">
@@ -111,6 +139,21 @@
             </a>
         </div>
     </div>
+    <% if (isShowMobileMenu !== -1) {%>
+        <div class="header-nav--mobile flex md:hidden border-t-2 border-gray-100">
+            <% menu.forEach((item, index) => { %>
+                <%
+                    let className = "mr-6 py-2";
+                    if ((activeIndex - 1) === index) {
+                        className += " active text-encacap-main font-semibold";
+                    }
+                %>
+                <% if (index !== 0) { %>
+                    <a href="<%= item.url %>" class="<%= className %>"><%= item.shortName || item.name %></a>
+                <% } %>
+            <% }); %>
+        </div>
+    <% } %>
 </header>
 
 <div>

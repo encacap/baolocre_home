@@ -2,7 +2,7 @@
 <html lang="vi">
     <%- include('../partials/head', { title: "Trang chủ", css: ["home"] }) %>
     <body>
-        <%- include('../components/header') %>
+        <%- include('../components/header', { isShowMobileMenu: -1 }) %>
         <main>
             <!-- Slider -->
             <section class="splide">
@@ -63,8 +63,19 @@
                         uppercase
                     "
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mr-2">
-                        <path d="M11.5 21a9.5 9.5 0 1 0 0-19 9.5 9.5 0 0 0 0 19ZM22 22l-2-2" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-2"
+                    >
+                        <path
+                            d="M11.5 21a9.5 9.5 0 1 0 0-19 9.5 9.5 0 0 0 0 19ZM22 22l-2-2"
+                            stroke="currentColor"
+                            stroke-width="2.0"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path>
                     </svg>
                     Tìm kiếm bất động sản
                 </div>
@@ -252,7 +263,7 @@
                         "
                     >
                         <a
-                            href="/real_estate_list.html"
+                            href="/bat-dong-san-ban"
                             class="
                                 flex flex-col
                                 md:justify-center
@@ -420,7 +431,7 @@
                     <div class="mx-auto mt-4 w-20 h-1 bg-encacap-main"></div>
                 </div>
                 <div class="mt-10 px-4 md:px-0">
-                    <%- include("../components/cardHorizontal", {
+                    <%- include("../components/estatesHorizontal", {
                         grid: {
                             cols: 1,
                             mdCols: 2,
@@ -430,11 +441,12 @@
                             mdGap: 4,
                         },
                         isHighlight: true,
+                        results: 8,
                     }) %> 
                 </div>
                 <div class="flex justify-center mt-10">
                     <a
-                        href="/real_estate_list.html"
+                        href="/bat-dong-san-ban"
                         class="
                             flex
                             items-center
@@ -531,10 +543,27 @@
                                     text-gray-500 text-sm
                                 "
                             >
-                                <ion-icon
-                                    name="time-outline"
-                                    class="mr-2"
-                                ></ion-icon>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    class="w-4 mr-2"
+                                >
+                                    <path
+                                        d="M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    ></path>
+                                    <path
+                                        d="m15.71 15.18-3.1-1.85c-.54-.32-.98-1.09-.98-1.72v-4.1"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
                                 12/10/2021
                             </div>
                         </div>

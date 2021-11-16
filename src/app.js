@@ -13,7 +13,7 @@ const { jwtStrategy } = require("./config/passport");
 const { authLimiter } = require("./middlewares/rateLimiter");
 const routes = require("./routes");
 const { errorConverter, errorHandler } = require("./middlewares/error");
-const ApiError = require("./utils/ApiError");
+const ThrowError = require("./utils/ThrowError");
 
 const app = express();
 
@@ -76,10 +76,10 @@ app.use("/", routes);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
-    next(new ApiError(httpStatus.NOT_FOUND, "Not found"));
+    next(new ThrowError(httpStatus.NOT_FOUND, "Not found"));
 });
 
-// convert error to ApiError, if needed
+// convert error to ThrowError, if needed
 app.use(errorConverter);
 
 // handle error

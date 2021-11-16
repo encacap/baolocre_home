@@ -4,7 +4,7 @@ const httpStatus = require("http-status");
 const config = require("../config/config");
 const userService = require("./user.service");
 const { Token } = require("../models");
-const ApiError = require("../utils/ApiError");
+const ThrowError = require("../utils/ThrowError");
 const { tokenTypes } = require("../config/tokens");
 
 /**
@@ -117,7 +117,7 @@ const generateAuthTokens = async (user) => {
 const generateResetPasswordToken = async (email) => {
     const user = await userService.getUserByEmail(email);
     if (!user) {
-        throw new ApiError(
+        throw new ThrowError(
             httpStatus.NOT_FOUND,
             "No users found with this email"
         );

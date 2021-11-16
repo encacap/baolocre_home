@@ -1,0 +1,78 @@
+<% 
+    const { grid: gridConfigs, results } = locals;
+    const { cols, mdCols, lgCols, xlCols, gap, mdGap, lgGap, xlGap } = gridConfigs;
+    let gridClasses = "grid";
+    if (cols) gridClasses += ` grid-cols-${cols}`;
+    if (mdCols) gridClasses += ` md:grid-cols-${mdCols}`;
+    if (lgCols) gridClasses += ` lg:grid-cols-${lgCols}`;
+    if (xlCols) gridClasses += ` xl:grid-cols-${xlCols}`;
+    if (gap) gridClasses += ` gap-${gap}`;
+    if (mdGap) gridClasses += ` md:gap-${mdGap}`;
+    if (lgGap) gridClasses += ` lg:gap-${lgGap}`;
+    if (xlGap) gridClasses += ` xl:gap-${xlGap}`;
+%>
+<div class="grid md:grid-cols-2 gap-x-10 gap-y-4">
+    <% for (let i = 1; i <= results; i += 1) { %>
+        <a
+            href="/tin-tuc/thong-tin-quy-hoach/1/day-la-mot-tin-tuc"
+            class="border-b-2 border-gray-100 pb-4 hover:text-encacap-main"
+        >
+            <div class="flex">
+                <div
+                    class="
+                        flex-shrink-0
+                        w-20
+                        md:w-32
+                        h-20
+                        md:h-32
+                        rounded-md
+                        overflow-hidden
+                        border-2 border-gray-200
+                    "
+                >
+                    <img
+                        src="/assets/images/news/01.jpg"
+                        alt="Thông tin quy hoạch"
+                        class="w-full h-full object-cover object-center"
+                    />
+                </div>
+                <div>
+                    <div class="flex h-full items-center">
+                        <div class="ml-4">
+                            <div class="font-semibold">
+                                Quy hoạch chung đô thị mới Nhơn Trạch (Đồng Nai) đến
+                                năm 2035, tầm nhìn đến năm 2050 có gì?
+                            </div>
+                            <div
+                                class="flex items-center mt-1 text-gray-500 text-sm"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    class="w-4 mr-2"
+                                >
+                                    <path
+                                        d="M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    ></path>
+                                    <path
+                                        d="m15.71 15.18-3.1-1.85c-.54-.32-.98-1.09-.98-1.72v-4.1"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                                12/10/2021
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    <% } %>
+</div>

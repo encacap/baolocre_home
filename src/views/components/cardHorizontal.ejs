@@ -1,0 +1,936 @@
+<% 
+    const { grid: gridConfigs, isHighlight } = locals;
+    const { cols, mdCols, lgCols, xlCols, gap, mdGap, lgGap, xlGap } = gridConfigs;
+    let gridClasses = "grid";
+    if (cols) gridClasses += ` grid-cols-${cols}`;
+    if (mdCols) gridClasses += ` md:grid-cols-${mdCols}`;
+    if (lgCols) gridClasses += ` lg:grid-cols-${lgCols}`;
+    if (xlCols) gridClasses += ` xl:grid-cols-${xlCols}`;
+    if (gap) gridClasses += ` gap-${gap}`;
+    if (mdGap) gridClasses += ` md:gap-${mdGap}`;
+    if (lgGap) gridClasses += ` lg:gap-${lgGap}`;
+    if (xlGap) gridClasses += ` xl:gap-${xlGap}`;
+%> 
+<div class="<%= gridClasses %>">
+    <% if (isHighlight) { %>
+        <a
+            href="/real_estate_detail.html"
+            class="
+                md:shadow-md md:rounded-md
+                border-b-2
+                md:border-b-0
+                border-gray-100
+                bg-white
+                overflow-hidden
+                duration-200
+                md:hover:shadow-lg
+            "
+        >
+            <div class="group block mb-4 md:mb-0">
+                <div class="w-full h-44 md:h-44 mx-0 mb-4 md:mb-0">
+                    <img
+                        src="/assets/images/slider/01.jpg"
+                        class="
+                            object-cover object-center
+                            w-full
+                            h-full
+                            rounded-md
+                            md:rounded-none
+                        "
+                        alt="Bất động sản đang bán 1"
+                    />
+                </div>
+                <div
+                    class="
+                        flex-1 flex flex-col
+                        justify-center
+                        md:block
+                        py-0
+                        md:py-4
+                        pr-4
+                        md:px-5
+                    "
+                >
+                    <div
+                        class="
+                            block
+                            md:h-12
+                            mb-1
+                            md:mb-0
+                            font-semibold
+                            uppercase
+                            md:line-clamp-2
+                            text-encacap-main
+                            duration-200
+                        "
+                    >
+                        Đất công xã Phước Khánh Nhơn Trạch
+                    </div>
+                    <div class="mb-1 md:mb-2 md:mt-2 font-semibold">
+                        <span>16 triệu/m<sup>2</sup></span>
+                        <span class="px-1 md:px-2 text-gray-400">·</span>
+                        <span>120 m<sup>2</sup></span>
+                    </div>
+                    <div class="flex items-center" style="margin-left: -2px">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="w-4 mr-1 ml-px"
+                        >
+                            <path
+                                d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            ></path>
+                            <path
+                                d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            ></path>
+                        </svg>
+                        Nhơn Trạch, Đồng Nai
+                    </div>
+                    <div class="flex md:hidden">
+                        <div
+                            class="
+                                flex-1 flex
+                                items-center
+                                justify-center
+                                border-2 border-gray-100
+                                bg-gray-50
+                                rounded-md
+                                mt-3
+                                md:mt-5 md:my-2
+                                py-2
+                                px-2
+                                text-center
+                                font-semibold
+                                text-sm
+                            "
+                        >
+                            <ion-icon
+                                name="call-outline"
+                                class="mr-2 md:mt-0.5"
+                            ></ion-icon>
+                            0582 419 433
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>    
+    <% } %>
+    <a
+        href="/real_estate_detail.html"
+        class="
+            group
+            md:shadow-md md:rounded-md
+            border-b-2
+            md:border-b-0
+            border-gray-100
+            bg-white
+            overflow-hidden
+            duration-200
+            md:hover:shadow-lg
+        "
+    >
+        <div
+            class="
+                block
+                md:hidden
+                py-3
+                md:px-4
+                font-semibold
+                uppercase
+                duration-200
+                text-encacap-main
+            "
+        >
+            Đất công xã Phước Khánh Nhơn Trạch
+        </div>
+        <div class="flex md:block mb-4 md:mb-0">
+            <div class="md:w-full w-28 h-28 md:h-44 mr-4 md:mr-0">
+                <img
+                    src="/assets/images/slider/01.jpg"
+                    class="
+                        object-cover object-center
+                        w-full
+                        h-full
+                        rounded-md
+                        md:rounded-none
+                    "
+                    alt="Bất động sản đang bán 1"
+                />
+            </div>
+            <div
+                class="
+                    flex-1 flex flex-col
+                    justify-center
+                    md:block
+                    py-0
+                    md:py-4 md:px-5
+                "
+            >
+                <div
+                    class="
+                        hidden
+                        md:block md:h-12
+                        font-semibold
+                        text-encacap-main
+                        uppercase
+                        duration-200
+                        md:line-clamp-2
+                    "
+                >
+                    Đất công xã Phước Khánh Nhơn Trạch
+                </div>
+                <div class="mb-1 md:mb-2 md:mt-2 font-semibold">
+                    <span>16 triệu/m<sup>2</sup></span>
+                    <span class="px-1 md:px-2 text-gray-400">·</span>
+                    <span>120 m<sup>2</sup></span>
+                </div>
+                <div class="flex items-center" style="margin-left: -3px">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-1 ml-px"
+                    >
+                        <path
+                            d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                        <path
+                            d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                    </svg>
+                    Nhơn Trạch, Đồng Nai
+                </div>
+                <div class="flex md:hidden">
+                    <div
+                        class="
+                            flex-1 flex
+                            items-center
+                            justify-center
+                            border-2 border-gray-100
+                            bg-gray-50
+                            rounded-md
+                            mt-3
+                            md:mt-5 md:my-2
+                            py-2
+                            px-2
+                            text-center
+                            font-semibold
+                            text-sm
+                        "
+                    >
+                        <ion-icon
+                            name="call-outline"
+                            class="mr-2 md:mt-0.5"
+                        ></ion-icon>
+                        0582 419 433
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <a
+        href="/real_estate_detail.html"
+        class="
+            group
+            md:shadow-md md:rounded-md
+            border-b-2
+            md:border-b-0
+            border-gray-100
+            bg-white
+            overflow-hidden
+            duration-200
+            md:hover:shadow-lg
+        "
+    >
+        <div
+            class="
+                block
+                md:hidden
+                py-3
+                md:px-4
+                font-semibold
+                uppercase
+                text-encacap-main
+            "
+        >
+            Đất công xã Phước Khánh Nhơn Trạch
+        </div>
+        <div class="flex md:block mb-4 md:mb-0">
+            <div class="md:w-full w-28 h-28 md:h-44 mr-4 md:mr-0">
+                <img
+                    src="/assets/images/slider/01.jpg"
+                    class="
+                        object-cover object-center
+                        w-full
+                        h-full
+                        rounded-md
+                        md:rounded-none
+                    "
+                    alt="Bất động sản đang bán 1"
+                />
+            </div>
+            <div
+                class="
+                    flex-1 flex flex-col
+                    justify-center
+                    md:block
+                    py-0
+                    md:py-4 md:px-5
+                "
+            >
+                <div
+                    class="
+                        hidden
+                        md:block md:h-12
+                        font-semibold
+                        text-encacap-main
+                        uppercase
+                        duration-200
+                        md:line-clamp-2
+                    "
+                >
+                    Đất công xã Phước Khánh Nhơn Trạch
+                </div>
+                <div class="mb-1 md:mb-2 md:mt-2 font-semibold">
+                    <span>16 triệu/m<sup>2</sup></span>
+                    <span class="px-1 md:px-2 text-gray-400">·</span>
+                    <span>120 m<sup>2</sup></span>
+                </div>
+                <div class="flex items-center" style="margin-left: -3px">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-1 ml-px"
+                    >
+                        <path
+                            d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                        <path
+                            d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                    </svg>
+                    Nhơn Trạch, Đồng Nai
+                </div>
+                <div class="flex md:hidden">
+                    <div
+                        class="
+                            flex-1 flex
+                            items-center
+                            justify-center
+                            border-2 border-gray-100
+                            bg-gray-50
+                            rounded-md
+                            mt-3
+                            md:mt-5 md:my-2
+                            py-2
+                            px-2
+                            text-center
+                            font-semibold
+                            text-sm
+                        "
+                    >
+                        <ion-icon
+                            name="call-outline"
+                            class="mr-2 md:mt-0.5"
+                        ></ion-icon>
+                        0582 419 433
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <a
+        href="/real_estate_detail.html"
+        class="
+            group
+            md:shadow-md md:rounded-md
+            border-b-2
+            md:border-b-0
+            border-gray-100
+            bg-white
+            overflow-hidden
+            duration-200
+            md:hover:shadow-lg
+        "
+    >
+        <div
+            class="
+                block
+                md:hidden
+                py-3
+                md:px-4
+                font-semibold
+                uppercase
+                text-encacap-main
+            "
+        >
+            Đất công xã Phước Khánh Nhơn Trạch
+        </div>
+        <div class="flex md:block mb-4 md:mb-0">
+            <div class="md:w-full w-28 h-28 md:h-44 mr-4 md:mr-0">
+                <img
+                    src="/assets/images/slider/01.jpg"
+                    class="
+                        object-cover object-center
+                        w-full
+                        h-full
+                        rounded-md
+                        md:rounded-none
+                    "
+                    alt="Bất động sản đang bán 1"
+                />
+            </div>
+            <div
+                class="
+                    flex-1 flex flex-col
+                    justify-center
+                    md:block
+                    py-0
+                    md:py-4 md:px-5
+                "
+            >
+                <div
+                    class="
+                        hidden
+                        md:block md:h-12
+                        font-semibold
+                        text-encacap-main
+                        uppercase
+                        duration-200
+                        md:line-clamp-2
+                    "
+                >
+                    Đất công xã Phước Khánh Nhơn Trạch
+                </div>
+                <div class="mb-1 md:mb-2 md:mt-2 font-semibold">
+                    <span>16 triệu/m<sup>2</sup></span>
+                    <span class="px-1 md:px-2 text-gray-400">·</span>
+                    <span>120 m<sup>2</sup></span>
+                </div>
+                <div class="flex items-center" style="margin-left: -3px">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-1 ml-px"
+                    >
+                        <path
+                            d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                        <path
+                            d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                    </svg>
+                    Nhơn Trạch, Đồng Nai
+                </div>
+                <div class="flex md:hidden">
+                    <div
+                        class="
+                            flex-1 flex
+                            items-center
+                            justify-center
+                            border-2 border-gray-100
+                            bg-gray-50
+                            rounded-md
+                            mt-3
+                            md:mt-5 md:my-2
+                            py-2
+                            px-2
+                            text-center
+                            font-semibold
+                            text-sm
+                        "
+                    >
+                        <ion-icon
+                            name="call-outline"
+                            class="mr-2 md:mt-0.5"
+                        ></ion-icon>
+                        0582 419 433
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <a
+        href="/real_estate_detail.html"
+        class="
+            group
+            md:shadow-md md:rounded-md
+            border-b-2
+            md:border-b-0
+            border-gray-100
+            bg-white
+            overflow-hidden
+            duration-200
+            md:hover:shadow-lg
+        "
+    >
+        <div
+            class="
+                block
+                md:hidden
+                py-3
+                md:px-4
+                font-semibold
+                uppercase
+                text-encacap-main
+            "
+        >
+            Đất công xã Phước Khánh Nhơn Trạch
+        </div>
+        <div class="flex md:block mb-4 md:mb-0">
+            <div class="md:w-full w-28 h-28 md:h-44 mr-4 md:mr-0">
+                <img
+                    src="/assets/images/slider/01.jpg"
+                    class="
+                        object-cover object-center
+                        w-full
+                        h-full
+                        rounded-md
+                        md:rounded-none
+                    "
+                    alt="Bất động sản đang bán 1"
+                />
+            </div>
+            <div
+                class="
+                    flex-1 flex flex-col
+                    justify-center
+                    md:block
+                    py-0
+                    md:py-4 md:px-5
+                "
+            >
+                <div
+                    class="
+                        hidden
+                        md:block md:h-12
+                        font-semibold
+                        text-encacap-main
+                        uppercase
+                        duration-200
+                        md:line-clamp-2
+                    "
+                >
+                    Đất công xã Phước Khánh Nhơn Trạch
+                </div>
+                <div class="mb-1 md:mb-2 md:mt-2 font-semibold">
+                    <span>16 triệu/m<sup>2</sup></span>
+                    <span class="px-1 md:px-2 text-gray-400">·</span>
+                    <span>120 m<sup>2</sup></span>
+                </div>
+                <div class="flex items-center" style="margin-left: -3px">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-1 ml-px"
+                    >
+                        <path
+                            d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                        <path
+                            d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                    </svg>
+                    Nhơn Trạch, Đồng Nai
+                </div>
+                <div class="flex md:hidden">
+                    <div
+                        class="
+                            flex-1 flex
+                            items-center
+                            justify-center
+                            border-2 border-gray-100
+                            bg-gray-50
+                            rounded-md
+                            mt-3
+                            md:mt-5 md:my-2
+                            py-2
+                            px-2
+                            text-center
+                            font-semibold
+                            text-sm
+                        "
+                    >
+                        <ion-icon
+                            name="call-outline"
+                            class="mr-2 md:mt-0.5"
+                        ></ion-icon>
+                        0582 419 433
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <a
+        href="/real_estate_detail.html"
+        class="
+            group
+            md:shadow-md md:rounded-md
+            border-b-2
+            md:border-b-0
+            border-gray-100
+            bg-white
+            overflow-hidden
+            duration-200
+            md:hover:shadow-lg
+        "
+    >
+        <div
+            class="
+                block
+                md:hidden
+                py-3
+                md:px-4
+                font-semibold
+                uppercase
+                text-encacap-main
+            "
+        >
+            Đất công xã Phước Khánh Nhơn Trạch
+        </div>
+        <div class="flex md:block mb-4 md:mb-0">
+            <div class="md:w-full w-28 h-28 md:h-44 mr-4 md:mr-0">
+                <img
+                    src="/assets/images/slider/01.jpg"
+                    class="
+                        object-cover object-center
+                        w-full
+                        h-full
+                        rounded-md
+                        md:rounded-none
+                    "
+                    alt="Bất động sản đang bán 1"
+                />
+            </div>
+            <div
+                class="
+                    flex-1 flex flex-col
+                    justify-center
+                    md:block
+                    py-0
+                    md:py-4 md:px-5
+                "
+            >
+                <div
+                    class="
+                        hidden
+                        md:block md:h-12
+                        font-semibold
+                        text-encacap-main
+                        uppercase
+                        duration-200
+                        md:line-clamp-2
+                    "
+                >
+                    Đất công xã Phước Khánh Nhơn Trạch
+                </div>
+                <div class="mb-1 md:mb-2 md:mt-2 font-semibold">
+                    <span>16 triệu/m<sup>2</sup></span>
+                    <span class="px-1 md:px-2 text-gray-400">·</span>
+                    <span>120 m<sup>2</sup></span>
+                </div>
+                <div class="flex items-center" style="margin-left: -3px">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-1 ml-px"
+                    >
+                        <path
+                            d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                        <path
+                            d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                    </svg>
+                    Nhơn Trạch, Đồng Nai
+                </div>
+                <div class="flex md:hidden">
+                    <div
+                        class="
+                            flex-1 flex
+                            items-center
+                            justify-center
+                            border-2 border-gray-100
+                            bg-gray-50
+                            rounded-md
+                            mt-3
+                            md:mt-5 md:my-2
+                            py-2
+                            px-2
+                            text-center
+                            font-semibold
+                            text-sm
+                        "
+                    >
+                        <ion-icon
+                            name="call-outline"
+                            class="mr-2 md:mt-0.5"
+                        ></ion-icon>
+                        0582 419 433
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <a
+        href="/real_estate_detail.html"
+        class="
+            group
+            md:shadow-md md:rounded-md
+            border-b-2
+            md:border-b-0
+            border-gray-100
+            bg-white
+            overflow-hidden
+            duration-200
+            md:hover:shadow-lg
+        "
+    >
+        <div
+            class="
+                block
+                md:hidden
+                py-3
+                md:px-4
+                font-semibold
+                uppercase
+                text-encacap-main
+            "
+        >
+            Đất công xã Phước Khánh Nhơn Trạch
+        </div>
+        <div class="flex md:block mb-4 md:mb-0">
+            <div class="md:w-full w-28 h-28 md:h-44 mr-4 md:mr-0">
+                <img
+                    src="/assets/images/slider/01.jpg"
+                    class="
+                        object-cover object-center
+                        w-full
+                        h-full
+                        rounded-md
+                        md:rounded-none
+                    "
+                    alt="Bất động sản đang bán 1"
+                />
+            </div>
+            <div
+                class="
+                    flex-1 flex flex-col
+                    justify-center
+                    md:block
+                    py-0
+                    md:py-4 md:px-5
+                "
+            >
+                <div
+                    class="
+                        hidden
+                        md:block md:h-12
+                        font-semibold
+                        text-encacap-main
+                        uppercase
+                        duration-200
+                        md:line-clamp-2
+                    "
+                >
+                    Đất công xã Phước Khánh Nhơn Trạch
+                </div>
+                <div class="mb-1 md:mb-2 md:mt-2 font-semibold">
+                    <span>16 triệu/m<sup>2</sup></span>
+                    <span class="px-1 md:px-2 text-gray-400">·</span>
+                    <span>120 m<sup>2</sup></span>
+                </div>
+                <div class="flex items-center" style="margin-left: -3px">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-1 ml-px"
+                    >
+                        <path
+                            d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                        <path
+                            d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                    </svg>
+                    Nhơn Trạch, Đồng Nai
+                </div>
+                <div class="flex md:hidden">
+                    <div
+                        class="
+                            flex-1 flex
+                            items-center
+                            justify-center
+                            border-2 border-gray-100
+                            bg-gray-50
+                            rounded-md
+                            mt-3
+                            md:mt-5 md:my-2
+                            py-2
+                            px-2
+                            text-center
+                            font-semibold
+                            text-sm
+                        "
+                    >
+                        <ion-icon
+                            name="call-outline"
+                            class="mr-2 md:mt-0.5"
+                        ></ion-icon>
+                        0582 419 433
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <a
+        href="/real_estate_detail.html"
+        class="
+            group
+            md:shadow-md md:rounded-md
+            border-b-2
+            md:border-b-0
+            border-gray-100
+            bg-white
+            overflow-hidden
+            duration-200
+            md:hover:shadow-lg
+        "
+    >
+        <div
+            class="
+                block
+                md:hidden
+                py-3
+                md:px-4
+                font-semibold
+                uppercase
+                text-encacap-main
+            "
+        >
+            Đất công xã Phước Khánh Nhơn Trạch
+        </div>
+        <div class="flex md:block mb-4 md:mb-0">
+            <div class="md:w-full w-28 h-28 md:h-44 mr-4 md:mr-0">
+                <img
+                    src="/assets/images/slider/01.jpg"
+                    class="
+                        object-cover object-center
+                        w-full
+                        h-full
+                        rounded-md
+                        md:rounded-none
+                    "
+                    alt="Bất động sản đang bán 1"
+                />
+            </div>
+            <div
+                class="
+                    flex-1 flex flex-col
+                    justify-center
+                    md:block
+                    py-0
+                    md:py-4 md:px-5
+                "
+            >
+                <div
+                    class="
+                        hidden
+                        md:block md:h-12
+                        font-semibold
+                        text-encacap-main
+                        uppercase
+                        duration-200
+                        md:line-clamp-2
+                    "
+                >
+                    Đất công xã Phước Khánh Nhơn Trạch
+                </div>
+                <div class="mb-1 md:mb-2 md:mt-2 font-semibold">
+                    <span>16 triệu/m<sup>2</sup></span>
+                    <span class="px-1 md:px-2 text-gray-400">·</span>
+                    <span>120 m<sup>2</sup></span>
+                </div>
+                <div class="flex items-center" style="margin-left: -3px">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-1 ml-px"
+                    >
+                        <path
+                            d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                        <path
+                            d="M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        ></path>
+                    </svg>
+                    Nhơn Trạch, Đồng Nai
+                </div>
+                <div class="flex md:hidden">
+                    <div
+                        class="
+                            flex-1 flex
+                            items-center
+                            justify-center
+                            border-2 border-gray-100
+                            bg-gray-50
+                            rounded-md
+                            mt-3
+                            md:mt-5 md:my-2
+                            py-2
+                            px-2
+                            text-center
+                            font-semibold
+                            text-sm
+                        "
+                    >
+                        <ion-icon
+                            name="call-outline"
+                            class="mr-2 md:mt-0.5"
+                        ></ion-icon>
+                        0582 419 433
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

@@ -2,11 +2,7 @@
     "env": {
         "node": true
     },
-    "extends": [
-        "airbnb-base",
-        "plugin:security/recommended",
-        "plugin:prettier/recommended"
-    ],
+    "extends": ["airbnb-base", "plugin:security/recommended", "plugin:prettier"],
     "plugins": ["security", "prettier"],
     "parserOptions": {
         "ecmaVersion": 2021
@@ -17,6 +13,7 @@
         "no-underscore-dangle": "off",
         "consistent-return": "off",
         "jest/expect-expect": "off",
-        "security/detect-object-injection": "off"
+        "security/detect-object-injection": "off",
+        "max-len": ["warn", { "code": 120 }]
     }
 }

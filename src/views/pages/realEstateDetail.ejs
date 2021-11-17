@@ -72,17 +72,30 @@
                         </div>
                     </div>
                     <div class="mt-6">
-                        <div>
-                            <span class="text-gray-400">Bất động sản bán</span>
-                            <span class="text-gray-400">/</span>
-                            <span class="text-gray-400">Đất nền</span>
-                            <span class="text-gray-400">/</span>
-                            <span class="text-gray-400">Đồng Nai</span>
-                            <span class="text-gray-400">/</span>
-                            <span class="text-gray-400">Nhơn Trạch</span>
-                            <span class="text-gray-400">/</span>
-                            <span>Phước Khánh</span>
-                        </div>
+                        <%- include('../components/breadcrumb', {
+                            breadcrumb: [
+                                {
+                                    name: "Bất động sản bán",
+                                    url: "bat-dong-san-ban"
+                                },
+                                {
+                                    name: "Đất nền",
+                                    url: "dat-nen"
+                                },
+                                {
+                                    name: "Quảng Ngãi",
+                                    url: "quang-ngai"
+                                },
+                                {
+                                    name: "Tư Nghĩa",
+                                    url: "tu-nghia"
+                                },
+                                {
+                                    name: "La Hà",
+                                    url: "la-ha"
+                                }
+                            ]
+                        }) %>
                         <div class="font-semibold py-2 text-2xl text-encacap-main uppercase">
                             Đất công xã Phước Khánh Nhơn Trạch
                         </div>

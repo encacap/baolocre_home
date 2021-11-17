@@ -25,11 +25,14 @@
                     ]}) %>
                     <div class="mt-4">
                         <div class="">
-                            <div>
-                                <span class="text-gray-400">Tin tức</span>
-                                <span class="text-gray-400">/</span>
-                                <span>Tất cả tin tức</span>
-                            </div>
+                            <%- include('../components/breadcrumb', {
+                                breadcrumb: [
+                                    {
+                                        name: "Tin tức",
+                                        url: ""
+                                    },
+                                ]
+                            }) %> 
                             <div class="font-semibold text-2xl py-2">Danh sách tin tức mới nhất</div>
                             <div>
                                 Hiện có 123 tin tức

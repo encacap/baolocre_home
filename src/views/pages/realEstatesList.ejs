@@ -24,13 +24,17 @@
                         }
                     ]}) %>
                     <div class="">
-                        <div>
-                            <a href="/bat-dong-san-ban" class="text-gray-400 hover:text-encacap-main">
-                                Bất động sản bán
-                            </a>
-                            <span class="text-gray-400">/</span>
-                            <span>Tất cả Bất động sản</span>
-                        </div>
+                        <%- include('../components/breadcrumb', {
+                            breadcrumb: [
+                                {
+                                    name: "Bất động sản bán",
+                                    url: "bat-dong-san-ban"
+                                },
+                                {
+                                    name: "Tất cả Bất động sản",
+                                }
+                            ]
+                        }) %>
                         <div class="font-semibold text-2xl py-2">Danh sách bất động sản đang được bán</div>
                         <div>
                             Hiện có 123 bất động sản

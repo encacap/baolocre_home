@@ -24,11 +24,18 @@
                         }
                     ]}) %>
                     <article class="mt-4 border-b-2 border-gray-100 pb-6">
-                        <div>
-                            <span class="text-gray-400">Tin tức</span>
-                            <span class="text-gray-400">/</span>
-                            <span>Thông tin quy hoạch</span>
-                        </div>
+                        <%- include('../components/breadcrumb', {
+                            breadcrumb: [
+                                {
+                                    name: "Tin tức",
+                                    url: "tin-tuc"
+                                },
+                                {
+                                    name: "Thông tin quy hoạch",
+                                    url: "thong-tin-quy-hoach"
+                                }
+                            ]
+                        }) %>
                         <h1 class="font-semibold text-2xl py-2">
                             Quy hoạch chung đô thị mới Nhơn Trạch (Đồng Nai) đến năm 2035, tầm nhìn đến năm 2050 có gì?
                         </h1>

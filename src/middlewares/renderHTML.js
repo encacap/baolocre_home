@@ -11,6 +11,10 @@ module.exports = (req, res, next) => {
         return;
     }
     const { path, data } = res.renderConfigs;
+    if (!path) {
+        next(new ThrowError(httpStatus.NOT_FOUND, "path is not defined"));
+        return;
+    }
     res.render(path, data, (error, html) => {
         if (error) {
             next(error);

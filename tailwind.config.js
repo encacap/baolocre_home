@@ -15,6 +15,8 @@ module.exports = {
                     },
                     main: "#FB8500",
                     yellow: "#FFB703",
+                    facebook: "#1877f2",
+                    zalo: "#03a5fa",
                 },
             },
         },

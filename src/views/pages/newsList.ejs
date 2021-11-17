@@ -1,8 +1,9 @@
+<% const { contactInformation } = locals %>
 <!DOCTYPE html>
 <html lang="en">
     <%- include('../partials/head', { title: "Tin tức" }) %>
     <body>
-        <%- include('../components/header', { activeIndex: 3 }) %>
+        <%- include('../components/header', { activeIndex: 3, contactInformation }) %>
         <main class="mx-4 lg:mx-10 xl:mx-48 pt-4 lg:pt-10 md:pb-10">
             <section class="grid md:grid-cols-4 gap-10">
                 <div class="col-span-4 lg:col-span-3">
@@ -133,7 +134,7 @@
                 </div>
             </section>
         </main>
-        <%- include('../components/footer') %>
+        <%- include('../components/footer', { contactInformation }) %>
         <%- include('../partials/foot') %> 
     </body>
 </html>

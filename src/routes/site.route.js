@@ -15,6 +15,7 @@ router.get("/tin-tuc", siteController.renderNewsPage);
 
 router.get("/", siteController.renderHomePage);
 
+router.use(siteController.getContactInformation);
 router.use(renderHTML);
 
 module.exports = router;

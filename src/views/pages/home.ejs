@@ -1,8 +1,9 @@
+<% const { contactInformation } = locals %>
 <!DOCTYPE html>
 <html lang="vi">
     <%- include('../partials/head', { title: "Trang chủ", css: ["home"] }) %>
     <body>
-        <%- include('../components/header', { isShowMobileMenu: -1 }) %>
+        <%- include('../components/header', { isShowMobileMenu: -1, contactInformation }) %>
         <main>
             <!-- Slider -->
             <section class="splide">
@@ -813,7 +814,7 @@
                 </div>
             </section>
         </main>
-        <%- include('../components/footer') %>
+        <%- include('../components/footer', { contactInformation }) %>
         <%- include('../partials/foot', { js: ["home"] }) %> 
     </body>
 </html>

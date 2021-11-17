@@ -2,7 +2,7 @@
     "env": {
         "node": true
     },
-    "extends": ["airbnb-base", "plugin:security/recommended", "plugin:prettier"],
+    "extends": ["airbnb-base", "plugin:security/recommended", "prettier"],
     "plugins": ["security", "prettier"],
     "parserOptions": {
         "ecmaVersion": 2021

@@ -1,4 +1,4 @@
-<% const { contactInformation } = locals %>
+<% const { contactInformation, estates } = locals %>
 <!DOCTYPE html>
 <html lang="vi">
     <%- include('../partials/head', { title: "Trang chủ", css: ["home"] }) %>
@@ -443,7 +443,8 @@
                         },
                         isHighlight: true,
                         results: 8,
-                    }) %> 
+                        estates: estates.results,
+                    }) %>
                 </div>
                 <div class="flex justify-center mt-10">
                     <a

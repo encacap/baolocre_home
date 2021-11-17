@@ -4,10 +4,7 @@ const siteController = require("../controllers/site.controller");
 
 const router = express.Router();
 
-router.get(
-    "/bat-dong-san-ban/:category/:city/:district/:ward/:id/:slug",
-    siteController.renderRealEstatePage
-);
+router.get("/bat-dong-san-ban/:category/:city/:district/:ward/:id/:slug", siteController.renderRealEstatePage);
 router.get("/bat-dong-san-ban", siteController.renderRealEstatesPage);
 
 router.get("/tin-tuc/:category/:id/:slug", siteController.renderNewsDetailPage);

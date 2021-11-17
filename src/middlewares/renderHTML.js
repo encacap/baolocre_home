@@ -5,9 +5,7 @@ const ThrowError = require("../utils/ThrowError");
 
 module.exports = (req, res, next) => {
     if (!res.renderConfigs) {
-        next(
-            new ThrowError(httpStatus.NOT_FOUND, "renderConfigs is not defined")
-        );
+        next(new ThrowError(httpStatus.NOT_FOUND, "renderConfigs is not defined"));
         return;
     }
     const { path, data } = res.renderConfigs;

@@ -28,7 +28,7 @@ app.use(
         contentSecurityPolicy: {
             useDefaults: false,
             directives: {
-                defaultSrc: ["'self' 'unsafe-inline'", "i.icomoon.io"],
+                defaultSrc: ["'self' 'unsafe-inline'", "res.cloudinary.com"],
                 scriptSrc: ["'self'", "unpkg.com"],
                 connectSrc: ["'self'", "unpkg.com"],
                 objectSrc: ["'none'"],

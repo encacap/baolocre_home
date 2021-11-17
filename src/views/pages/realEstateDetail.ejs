@@ -1,4 +1,4 @@
-<% const { contactInformation } = locals %>
+<% const { contactInformation, sameAreaEstates, randomEstates, estate } = locals %>
 <!DOCTYPE html>
 <html lang="en">
     <%- include('../partials/head', { title: "Bất động sản đang bán", css: ["real_estate_detail"] }) %>
@@ -306,6 +306,7 @@
                                 mdGap: 4,
                             },
                             results: 3,
+                            estates: sameAreaEstates.results,
                         }) %>
                     </div>
                     <div
@@ -322,7 +323,8 @@
                                     lgCols: 3,
                                     mdGap: 4,
                                 },
-                                results: 6
+                                results: 6,
+                                estates: randomEstates.results,
                             }) %>
                         </div>
                     </div>

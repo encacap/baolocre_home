@@ -1,3 +1,9 @@
+const removeMarkdown = require("remove-markdown");
+
+const { defaultAvatarForContact } = require("../config/config");
+
+const removeMarkdownFormat = (string) => removeMarkdown(string).replace(/\n/g, ". ");
+
 const convertStringToSlug = (string) => {
     let slug = string.toLowerCase();
     slug = slug.replace(/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/g, "a");
@@ -23,15 +29,79 @@ const normalizeSquareAreaString = (string) => {
 
 const normalizeEstateData = (data) => {
     const estate = data;
-    const { id, title, category, price, area, location, pictures } = estate;
+    const { id, title, category, price, area, location, pictures, contact, description } = estate;
     const { city, district, ward, street } = location;
+    const { avatar, name, phone, zalo, email } = contact;
+    const propertiesDescriptions = [
+        {
+            name: "Số tờ",
+            key: "page",
+        },
+        {
+            name: "Số thửa",
+            key: "plot",
+        },
+        {
+            name: "Hướng",
+            key: "direction",
+        },
+        {
+            name: "Phòng khách",
+            key: "livingRoom",
+        },
+        {
+            name: "Phòng ngủ",
+            key: "bedroom",
+        },
+        {
+            name: "Phòng tắm",
+            key: "bathroom",
+        },
+    ];
+    estate.properties = propertiesDescriptions
+        .map((property) => ({ name: property.name, value: estate[property.key] }))
+        .filter((property) => property.value);
+    estate.contact = {
+        avatar: avatar || defaultAvatarForContact,
+        name,
+        phone,
+        friendlyPhone: phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3"),
+        zalo,
+        email,
+    };
     estate.price = normalizeSquareAreaString(price);
     estate.area = normalizeSquareAreaString(area);
-    estate.location = `${city.name}, ${district.name}, ${ward.name}, ${street}`;
+    estate.plainDescription = removeMarkdownFormat(description);
+    estate.city = city.name;
+    estate.district = district.name;
+    estate.location = `${street ? `${street}, ` : ""}${ward.name}, ${district.name}, ${city.name}`;
     estate.shortLocation = `${city.name}, ${district.name}`;
+    estate.shortLocationReserved = `${district.name}, ${city.name}`;
     estate.url = `/bat-dong-san-ban/${category.slug}/${city.slug}/${district.slug}/${
         ward.slug
     }/${id}/${convertStringToSlug(title)}`;
+    estate.breadcrumb = [
+        {
+            name: "Bất động sản bán",
+            url: "bat-dong-san-ban",
+        },
+        {
+            name: category.name,
+            url: category.slug,
+        },
+        {
+            name: city.name,
+            url: city.slug,
+        },
+        {
+            name: district.name,
+            url: district.slug,
+        },
+        {
+            name: ward.name,
+            url: ward.slug,
+        },
+    ];
     estate.pictures = pictures
         .map((image) => {
             const { origin, cloudName, type, action, version, folder, publicId, format, isAvatar } = image;
@@ -57,7 +127,7 @@ const normalizeEstateData = (data) => {
             const originOptions = "q_auto,f_auto";
             const thumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_300";
             const largeThumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_400";
-            const smallThumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_60";
+            const smallThumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_80";
             const results = {
                 origin: generateUrl(originOptions),
                 thumbnail: generateUrl(thumbnailOptions),
@@ -67,11 +137,11 @@ const normalizeEstateData = (data) => {
             };
             if (isAvatar) {
                 estate.avatar = results;
-                return [];
+                return undefined;
             }
             return results;
         })
-        .filter((image) => image);
+        .filter((picture) => picture);
     return estate;
 };
 

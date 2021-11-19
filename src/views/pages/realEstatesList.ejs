@@ -1,4 +1,4 @@
-<% const { contactInformation } = locals %>
+<% const { contactInformation, estates } = locals %>
 <!DOCTYPE html>
 <html lang="vi">
     <%- include('../partials/head', { title: "Bất động sản đang bán" }) %>
@@ -47,7 +47,7 @@
                     <div
                         class="my-4 divide-y-2 md:divide-none divide-gray-100 border-b-2 md:border-b-0 border-gray-100"
                     >
-                        <%- include('../components/estatesVertical') %>
+                        <%- include('../components/estatesVertical', { estates: estates.results }) %>
                     </div>
                     <div class="flex w-full pb-4 md:pb-0 md:pt-6">
                         <%- include('../components/pagination') %>

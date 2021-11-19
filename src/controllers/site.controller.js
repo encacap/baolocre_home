@@ -34,9 +34,12 @@ const renderHomePage = catchAsync(async (req, res, next) => {
 });
 
 const renderRealEstatesPage = catchAsync(async (req, res, next) => {
+    const estates = await estateService.queryEstates({}, { limit: 8 });
     res.renderConfigs = {
         path: "pages/realEstatesList",
-        data: {},
+        data: {
+            estates: normalizeEstatesData(estates),
+        },
     };
     next();
 });

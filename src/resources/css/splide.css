@@ -271,3 +271,15 @@
     right: 0.5em;
     top: 0;
 }
+
+.splide__video {
+    @apply absolute top-0 z-30 w-full h-full;
+
+    &__wrapper {
+        @apply w-full h-full;
+
+        iframe {
+            @apply w-full h-full;
+        }
+    }
+}

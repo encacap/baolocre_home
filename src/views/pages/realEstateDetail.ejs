@@ -2,7 +2,7 @@
     const { contactInformation, sameAreaEstates, randomEstates, estate } = locals;
     const { contact } = estate;
     const estateAvatar = estate.avatar;
-    const estatePictures = estate.pictures || [];
+    const estatePictures = [estateAvatar, ...estate.pictures];
     const estateProperties = estate.properties || [];
 %>
 <!DOCTYPE html>
@@ -34,44 +34,13 @@
                         <div class="splide -mx-4 md:-mx-0 -mt-4 md:-mt-0 bg-black md:rounded-md overflow-hidden">
                             <div class="splide__track">
                                 <ul class="splide__list">
-                                    <li class="splide__slide relative">
-                                        <div 
-                                            class="
-                                                absolute
-                                                top-0
-                                                left-0
-                                                z-0
-                                                w-full
-                                                h-full
-                                                bg-no-repeat
-                                                bg-center
-                                                bg-cover
-                                            "
-                                            style="
-                                                background-image: url(<%= estateAvatar.smallThumbnail %>);
-                                                filter: blur(8px);
-                                            "
-                                        ></div>
-                                        <div 
-                                            class="
-                                                absolute
-                                                top-0
-                                                left-0
-                                                w-full
-                                                h-full
-                                            "
-                                            style="background-color: rgba(0, 0, 0, 0.3);"
-                                        ></div>
-                                        <img
-                                            src="<%= estateAvatar.origin %>"
-                                            alt="Hình ảnh đại diện của <%= estate.title %>"
-                                            class="absolute z-20 w-full h-full object-contain object-center"
-                                            loading="lazy"
-                                            decoding="async"
-                                        />
-                                    </li>
                                     <% estatePictures.forEach(picture => { %>
-                                        <li class="splide__slide relative">
+                                        <li
+                                            class="splide__slide relative"
+                                            <% if (picture.type === "video") { %>
+                                                data-splide-youtube="<%= picture.video %>"
+                                            <% } %>
+                                        >
                                             <div 
                                                 class="
                                                     absolute
@@ -101,37 +70,123 @@
                                             ></div>
                                             <img
                                                 src="<%= picture.origin %>"
-                                                alt="Hình ảnh đại diện của <%= estate.title %>"
+                                                alt="Hình ảnh chi tiết của <%= estate.title %>"
                                                 class="absolute z-20 w-full h-full object-contain object-center"
                                                 loading="lazy"
                                                 decoding="async"
                                             />
+                                            <% if (picture.type === "video") { %>
+                                                <div
+                                                    class="
+                                                        play-button-container
+                                                        absolute
+                                                        top-0
+                                                        z-20
+                                                        w-full
+                                                        h-full
+                                                        flex
+                                                        items-center
+                                                        justify-center
+                                                        text-red-500
+                                                        cursor-pointer
+                                                    "
+                                                >
+                                                    <div class="video-play-button">
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 24 24"
+                                                            fill="currentColor"
+                                                            class="w-20"
+                                                        >
+                                                            <path
+                                                                d="M17 4H7C4 4 2 6 2 9v6c0 3 2 5 5 5h10c3 0 5-2 5-5V9c0-3-2-5-5-5zm-3.11 9.03l-2.47 1.48c-1 .6-1.82.14-1.82-1.03v-2.97c0-1.17.82-1.63 1.82-1.03l2.47 1.48c.95.58.95 1.5 0 2.07z"
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="video-loading-spinner hidden">
+                                                        <div
+                                                            class="
+                                                                w-14
+                                                                h-14
+                                                                border-4
+                                                                border-white
+                                                                rounded-full
+                                                                animate-spin
+                                                            "
+                                                            style="
+                                                                border-top-color: transparent;
+                                                            "
+                                                        ></div>
+                                                    </div>
+                                                </div>
+                                            <% } %>
                                         </li>
                                     <% }); %>
                                 </ul>
+                                <div
+                                    class="
+                                        absolute
+                                        bottom-4
+                                        lg:bottom-10
+                                        right-4
+                                        lg:right-10
+                                        bg-black
+                                        bg-opacity-50
+                                        px-4
+                                        py-1
+                                        rounded-md
+                                        text-white
+                                        text-sm
+                                        font-semibold
+                                    "
+                                >
+                                    <span id="splideSelectedIndex">1</span>
+                                    <span>/</span>
+                                    <span id="totalImageAndVideo">
+                                        <%= estatePictures.length %>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div id="thumbnail-slider" class="splide hidden md:block mt-2">
                             <div class="splide__track">
                                 <ul class="splide__list">
-                                    <li class="splide__slide box-border">
-                                        <img
-                                            src="<%= estateAvatar.smallThumbnail %>"
-                                            alt="Chi tiết Bất động sản bán"
-                                            class="w-full h-full object-cover object-center"
-                                            loading="lazy"
-                                            decoding="async"
-                                        />
-                                    </li>
                                     <% estatePictures.forEach(picture => { %>
-                                        <li class="splide__slide box-border">
+                                        <li class="splide__slide relative box-border">
                                             <img
                                                 src="<%= picture.smallThumbnail %>"
-                                                alt="Chi tiết Bất động sản bán"
+                                                alt="Hình ảnh chi tiết của <%= estate.title %>"
                                                 class="w-full h-full object-cover object-center"
                                                 loading="lazy"
                                                 decoding="async"
                                             />
+                                            <% if (picture.type === "video") { %>
+                                                <div
+                                                    class="
+                                                        absolute
+                                                        top-0
+                                                        left-0
+                                                        right-0
+                                                        bottom-0
+                                                        z-10
+                                                        flex
+                                                        items-center
+                                                        justify-center
+                                                        text-white
+                                                    "
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24"
+                                                        fill="currentColor"
+                                                        class="w-7"
+                                                    >
+                                                        <path
+                                                            d="M17 4H7C4 4 2 6 2 9v6c0 3 2 5 5 5h10c3 0 5-2 5-5V9c0-3-2-5-5-5zm-3.11 9.03l-2.47 1.48c-1 .6-1.82.14-1.82-1.03v-2.97c0-1.17.82-1.63 1.82-1.03l2.47 1.48c.95.58.95 1.5 0 2.07z"
+                                                        ></path>
+                                                    </svg>
+                                                </div>
+                                            <% } %>
                                         </li>
                                     <% }); %>
                                 </ul>

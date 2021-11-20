@@ -23,41 +23,76 @@
                     absolute
                     bottom-4
                     right-4
+                    z-20
                     flex
                     items-center
                     bg-black
                     opacity-70
                     rounded-md
-                    px-3
+                    pl-3
                     py-1
                     text-white
                     text-sm
                     font-semibold
                 "
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="-2 -2 24 24"
-                    fill="currentColor"
-                    class="w-5 mr-2"
-                >
-                    <path
-                        d="M2 8v10h12V8H2zm2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2zm2 0h8a2 2 0 0 1 2 2v4h2V2H6v4zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
-                        fill="currentColor"
-                    >
-                    </path>
-                    <path
-                        d="M7 6a3 3 0 1 1 6 0h-2a1 1 0 0 0-2 0H7zm1.864 13.518l2.725-4.672a1 1 0 0 1 1.6-.174l1.087 1.184 1.473-1.354-1.088-1.183a3 3 0 0 0-4.8.52L7.136 18.51l1.728 1.007zm6.512-12.969a2.994 2.994 0 0 1 3.285.77l1.088 1.183-1.473 1.354-1.087-1.184A1 1 0 0 0 16 8.457V8c0-.571-.24-1.087-.624-1.451z"
-                        fill="currentColor"
-                    >
-                    </path>
-                </svg>
-                <%= firstEstate.pictures?.length + 1 || 1 %>
+                <% if (firstEstate.totalImages > 0) { %>
+                    <div class="flex items-center mr-3">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="-2 -2 24 24"
+                            fill="currentColor"
+                            class="w-5 mr-2"
+                        >
+                            <path
+                                d="M2 8v10h12V8H2zm2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2zm2 0h8a2 2 0 0 1 2 2v4h2V2H6v4zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                                fill="currentColor"
+                            >
+                            </path>
+                            <path
+                                d="M7 6a3 3 0 1 1 6 0h-2a1 1 0 0 0-2 0H7zm1.864 13.518l2.725-4.672a1 1 0 0 1 1.6-.174l1.087 1.184 1.473-1.354-1.088-1.183a3 3 0 0 0-4.8.52L7.136 18.51l1.728 1.007zm6.512-12.969a2.994 2.994 0 0 1 3.285.77l1.088 1.183-1.473 1.354-1.087-1.184A1 1 0 0 0 16 8.457V8c0-.571-.24-1.087-.624-1.451z"
+                                fill="currentColor"
+                            >
+                            </path>
+                        </svg>
+                        <%= firstEstate.totalImages %>
+                    </div>
+                <% } %>
+                <% if (firstEstate.totalVideos > 0) { %>
+                    <div class="flex items-center mr-3">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="w-5 mr-2"
+                        >
+                            <path
+                                d="M17 20H7c-3 0-5-2-5-5V9c0-3 2-5 5-5h10c3 0 5 2 5 5v6c0 3-2 5-5 5Z"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-miterlimit="10"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                d="m11.4 9.5 2.5 1.5c.9.6.9 1.5 0 2.1l-2.5 1.5c-1 .6-1.8.1-1.8-1v-3c0-1.3.8-1.7 1.8-1.1Z"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-miterlimit="10"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                        </svg>
+                        <%= firstEstate.totalVideos %>
+                    </div>
+                <% } %>
             </div>
             <img
                 src="<%= firstEstate.avatar.largeThumbnail %>"
                 alt="<%= firstEstate.title %>"
                 class="
+                    relative
+                    z-0
                     w-full
                     h-full
                     object-cover object-center
@@ -67,6 +102,35 @@
                 loading="lazy"
                 decoding="async"
             />
+            <% if (firstEstate.avatar.type === "video") { %>
+                <div
+                    class="
+                        absolute
+                        top-0
+                        left-0
+                        right-0
+                        bottom-0
+                        z-10
+                        flex
+                        items-center
+                        justify-center
+                        text-white
+                        duration-200
+                        hover:text-red-500
+                    "
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="w-12"
+                    >
+                        <path
+                            d="M17 4H7C4 4 2 6 2 9v6c0 3 2 5 5 5h10c3 0 5-2 5-5V9c0-3-2-5-5-5zm-3.11 9.03l-2.47 1.48c-1 .6-1.82.14-1.82-1.03v-2.97c0-1.17.82-1.63 1.82-1.03l2.47 1.48c.95.58.95 1.5 0 2.07z"
+                        ></path>
+                    </svg>
+                </div>
+            <% } %>
         </a>
         <div
             class="
@@ -166,43 +230,79 @@
                     <div
                         class="
                             absolute
-                            bottom-4
-                            right-4
+                            bottom-0
+                            md:bottom-4
+                            md:right-4
+                            z-20
                             flex
                             items-center
+                            justify-center
+                            w-full
+                            md:w-auto
                             bg-black
                             opacity-70
                             rounded-md
-                            px-3
+                            pl-3
                             py-1
                             text-white
                             text-sm
                             font-semibold
                         "
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="-2 -2 24 24"
-                            fill="currentColor"
-                            class="w-5 mr-2"
-                        >
-                            <path
-                                d="M2 8v10h12V8H2zm2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2zm2 0h8a2 2 0 0 1 2 2v4h2V2H6v4zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
-                                fill="currentColor"
+                        <% if (estate.totalImages > 0) { %>
+                            <div class="flex items-center mr-3">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="-2 -2 24 24"
+                                    fill="currentColor"
+                                    class="w-5 mr-2"
+                                >
+                                    <path
+                                        d="M2 8v10h12V8H2zm2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2zm2 0h8a2 2 0 0 1 2 2v4h2V2H6v4zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                                        fill="currentColor"
+                                    >
+                                    </path>
+                                    <path
+                                        d="M7 6a3 3 0 1 1 6 0h-2a1 1 0 0 0-2 0H7zm1.864 13.518l2.725-4.672a1 1 0 0 1 1.6-.174l1.087 1.184 1.473-1.354-1.088-1.183a3 3 0 0 0-4.8.52L7.136 18.51l1.728 1.007zm6.512-12.969a2.994 2.994 0 0 1 3.285.77l1.088 1.183-1.473 1.354-1.087-1.184A1 1 0 0 0 16 8.457V8c0-.571-.24-1.087-.624-1.451z"
+                                        fill="currentColor"
+                                    >
+                                    </path>
+                                </svg>
+                                <%= estate.totalImages %>
+                            </div>
+                        <% } %>
+                        <% if (estate.totalVideos > 0) { %>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                class="w-5 mr-2"
                             >
-                            </path>
-                            <path
-                                d="M7 6a3 3 0 1 1 6 0h-2a1 1 0 0 0-2 0H7zm1.864 13.518l2.725-4.672a1 1 0 0 1 1.6-.174l1.087 1.184 1.473-1.354-1.088-1.183a3 3 0 0 0-4.8.52L7.136 18.51l1.728 1.007zm6.512-12.969a2.994 2.994 0 0 1 3.285.77l1.088 1.183-1.473 1.354-1.087-1.184A1 1 0 0 0 16 8.457V8c0-.571-.24-1.087-.624-1.451z"
-                                fill="currentColor"
-                            >
-                            </path>
-                        </svg>
-                        <%= estate.pictures?.length + 1 || 1 %>
+                                <path
+                                    d="M17 20H7c-3 0-5-2-5-5V9c0-3 2-5 5-5h10c3 0 5 2 5 5v6c0 3-2 5-5 5Z"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                                <path
+                                    d="m11.4 9.5 2.5 1.5c.9.6.9 1.5 0 2.1l-2.5 1.5c-1 .6-1.8.1-1.8-1v-3c0-1.3.8-1.7 1.8-1.1Z"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-miterlimit="10"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </svg>
+                        <% } %>
                     </div>
                     <img
                         src="<%= estate.avatar.thumbnail %>"
                         alt="<%= estate.title %>"
                         class="
+                            relative
+                            z-0
                             w-full
                             h-full
                             object-cover object-center
@@ -212,6 +312,35 @@
                         loading="lazy"
                         decoding="async"
                     />
+                    <% if (estate.avatar.type === "video") { %>
+                        <div
+                            class="
+                                absolute
+                                top-0
+                                left-0
+                                right-0
+                                bottom-0
+                                z-10
+                                flex
+                                items-center
+                                justify-center
+                                text-white
+                                duration-200
+                                hover:text-red-500
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="w-12"
+                            >
+                                <path
+                                    d="M17 4H7C4 4 2 6 2 9v6c0 3 2 5 5 5h10c3 0 5-2 5-5V9c0-3-2-5-5-5zm-3.11 9.03l-2.47 1.48c-1 .6-1.82.14-1.82-1.03v-2.97c0-1.17.82-1.63 1.82-1.03l2.47 1.48c.95.58.95 1.5 0 2.07z"
+                                ></path>
+                            </svg>
+                        </div>
+                    <% } %>
                 </a>
                 <div
                     class="

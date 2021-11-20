@@ -19,7 +19,7 @@
         "build:css:full": "cross-env NODE_ENV=development npm run postcss",
         "build:js": "cross-env NODE_ENV=production webpack --config webpack.config.js",
         "watch:js": "npm run build:js -- -w",
-        "watch:css": "npm run build:css -- -w",
+        "watch:css": "cross-env NODE_ENV=production npm run postcss -- -w",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "prettier": "prettier --check **/*.js",
@@ -76,6 +76,7 @@
     },
     "devDependencies": {
         "@splidejs/splide": "^3.2.7",
+        "@splidejs/splide-extension-video": "^0.5.14",
         "@tailwindcss/line-clamp": "^0.2.2",
         "autoprefixer": "^10.4.0",
         "cssnano": "^5.0.10",

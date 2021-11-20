@@ -1,6 +1,7 @@
 {
     "env": {
-        "node": true
+        "node": true,
+        "browser": true
     },
     "extends": ["airbnb-base", "plugin:security/recommended", "prettier"],
     "plugins": ["security", "prettier"],

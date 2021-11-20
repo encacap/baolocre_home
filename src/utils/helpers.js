@@ -32,6 +32,8 @@ const normalizeEstateData = (data) => {
     const { id, title, category, price, area, location, pictures, contact, description } = estate;
     const { city, district, ward, street } = location;
     const { avatar, name, phone, zalo, email } = contact;
+    let totalVideos = 0;
+    let totalImages = 0;
     const propertiesDescriptions = [
         {
             name: "Số tờ",
@@ -104,8 +106,20 @@ const normalizeEstateData = (data) => {
     ];
     estate.pictures = pictures
         .map((image) => {
-            const { origin, cloudName, type, action, version, folder, publicId, format, isAvatar } = image;
-            const generateUrl = (options) => {
+            let results;
+            const {
+                origin,
+                cloudName,
+                type,
+                action,
+                version,
+                folder,
+                publicId,
+                name: imageName,
+                format,
+                isAvatar,
+            } = image;
+            const generateImageUrl = (options) => {
                 let url = `${origin}/${cloudName}/${type}/${action}/`;
                 if (options) {
                     url += `${options}/`;
@@ -117,23 +131,38 @@ const normalizeEstateData = (data) => {
                 url += `${publicId}.${format}`;
                 return url;
             };
+            const generateVideoImageUrl = () => `${origin}/${cloudName}/${publicId}/${imageName}.${format}`;
+            const generateYoutubeVideoUrl = () => `https://www.youtube.com/watch?v=${publicId}`;
             if (type !== "image") {
+                const imageVideoUrl = generateVideoImageUrl();
+                totalVideos += 1;
+                results = {
+                    video: generateYoutubeVideoUrl(),
+                    origin: imageVideoUrl,
+                    thumbnail: imageVideoUrl,
+                    largeThumbnail: imageVideoUrl,
+                    smallThumbnail: imageVideoUrl,
+                    isAvatar,
+                    type,
+                };
                 if (isAvatar) {
-                    estate.avatar = image;
+                    estate.avatar = results;
                     return [];
                 }
-                return image;
+                return results;
             }
             const originOptions = "q_auto,f_auto";
             const thumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_300";
             const largeThumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_400";
             const smallThumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_80";
-            const results = {
-                origin: generateUrl(originOptions),
-                thumbnail: generateUrl(thumbnailOptions),
-                largeThumbnail: generateUrl(largeThumbnailOptions),
-                smallThumbnail: generateUrl(smallThumbnailOptions),
+            totalImages += 1;
+            results = {
+                origin: generateImageUrl(originOptions),
+                thumbnail: generateImageUrl(thumbnailOptions),
+                largeThumbnail: generateImageUrl(largeThumbnailOptions),
+                smallThumbnail: generateImageUrl(smallThumbnailOptions),
                 isAvatar,
+                type,
             };
             if (isAvatar) {
                 estate.avatar = results;
@@ -142,6 +171,11 @@ const normalizeEstateData = (data) => {
             return results;
         })
         .filter((picture) => picture);
+    if (!estate.avatar) {
+        estate.avatar = estate.pictures.shift();
+    }
+    estate.totalVideos = totalVideos;
+    estate.totalImages = totalImages;
     return estate;
 };
 

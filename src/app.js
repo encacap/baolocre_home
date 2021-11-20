@@ -28,8 +28,8 @@ app.use(
         contentSecurityPolicy: {
             useDefaults: false,
             directives: {
-                defaultSrc: ["'self' 'unsafe-inline'", "res.cloudinary.com"],
-                scriptSrc: ["'self'", "unpkg.com"],
+                defaultSrc: ["'self' 'unsafe-inline'", "res.cloudinary.com", "www.youtube.com", "img.youtube.com"],
+                scriptSrc: ["'self'", "unpkg.com", "www.youtube.com"],
                 connectSrc: ["'self'", "unpkg.com"],
                 objectSrc: ["'none'"],
                 upgradeInsecureRequests: [],

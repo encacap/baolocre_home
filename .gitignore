@@ -5,10 +5,10 @@ package-lock.json
 # VSCode settings and keybindings
 .vscode
 
-# Build folder and unnessasary resources
+# Build folder and unnessasary tracking resources
 dist
-assets/css
-assets/js
+src/assets/css
+src/assets/js
 
 # Environment varibales
 .env*

@@ -1,0 +1,128 @@
+<% const { contactInformation, estates } = locals %>
+<!DOCTYPE html>
+<html lang="vi">
+    <%- include('../partials/head', { title: "Bất động sản đang bán" }) %>
+    <body>
+        <%- include('../components/header', { activeIndex: 2, contactInformation }) %>
+        <main class="mx-4 lg:mx-10 xl:mx-48 pt-4 lg:pt-10 md:pb-10">
+            <section class="grid grid-cols-4 gap-10">
+                <div class="col-span-4 lg:col-span-3">
+                    <%- include('../components/category', {categories: [
+                        {
+                            name: "BĐS nghỉ dưỡng",
+                            url: "/bat-dong-san-ban/bat-dong-san-nghi-duong",
+                            icon: "/assets/images/icons/bat-dong-san-nghi-duong.jpg"
+                        },
+                        {
+                            name: "Đất nền",
+                            url: "/bat-dong-san-ban/dat-nen",
+                            icon: "/assets/images/icons/dat-nen.jpg"
+                        },
+                        {
+                            name: "Nhà phố",
+                            url: "/bat-dong-san-ban/nha-pho",
+                            icon: "/assets/images/icons/nha-pho.jpg"
+                        }
+                    ]}) %>
+                    <div class="">
+                        <%- include('../components/breadcrumb', {
+                            breadcrumb: [
+                                {
+                                    name: "Bất động sản bán",
+                                    url: "bat-dong-san-ban"
+                                },
+                                {
+                                    name: "Tất cả Bất động sản",
+                                }
+                            ]
+                        }) %>
+                        <div class="font-semibold text-2xl py-2">Danh sách bất động sản đang được bán</div>
+                        <div>
+                            Hiện có 123 bất động sản
+                            <span class="text-gray-400"
+                                ><span class="mx-1 md:mx-2">•</span> Đang hiển thị trang 1 trên tổng số 13 trang</span
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="my-4 divide-y-2 md:divide-none divide-gray-100 border-b-2 md:border-b-0 border-gray-100"
+                    >
+                        <%- include('../components/estatesVertical', { estates: estates.results }) %>
+                    </div>
+                    <div class="flex w-full pb-4 md:pb-0 md:pt-6">
+                        <%- include('../components/pagination') %>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="border-2 border-gray-100 rounded-md py-4 px-5">
+                        <div class="border-b-2 border-gray-100 pb-4 font-semibold">Lọc theo khoảng giá</div>
+                        <div class="mt-3">
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >Thấp hơn 500 triệu</a
+                            >
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >500 triệu - 1 tỷ</a
+                            >
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >1 tỷ - 2 tỷ</a
+                            >
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >2 tỷ - 3 tỷ</a
+                            >
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >3 tỷ - 4 tỷ</a
+                            >
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >4 tỷ - 5 tỷ</a
+                            >
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >Cao hơn 5 tỷ</a
+                            >
+                        </div>
+                    </div>
+                    <div class="mt-10 border-2 border-gray-100 rounded-md py-4 px-5">
+                        <div class="border-b-2 border-gray-100 pb-4 font-semibold">Lọc theo diện tích</div>
+                        <div class="mt-3">
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >Nhỏ hơn 50 m<sup>2</sup></a
+                            >
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main">
+                                50 m<sup>2</sup> - 100 m<sup>2</sup>
+                            </a>
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main">
+                                100 m<sup>2</sup> - 200 m<sup>2</sup>
+                            </a>
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main">
+                                200 m<sup>2</sup> - 300 m<sup>2</sup>
+                            </a>
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main">
+                                300 m<sup>2</sup> - 400 m<sup>2</sup>
+                            </a>
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main">
+                                400 m<sup>2</sup> - 500 m<sup>2</sup>
+                            </a>
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >Lớn hơn 500 m<sup>2</sup></a
+                            >
+                        </div>
+                    </div>
+                    <div class="mt-10 border-2 border-encacap-main rounded-md py-4 px-5">
+                        <div class="border-b-2 border-encacap-main pb-4 font-semibold text-encacap-main">
+                            BĐS theo khu vực
+                        </div>
+                        <div class="mt-3">
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >Hồ Chí Minh (123)</a
+                            >
+                            <a href="/real_estate_detail.html" class="block py-1 duration-200 hover:text-encacap-main"
+                                >Đồng Nai (123)</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <%- include('../components/footer', { contactInformation }) %>
+        <%- include('../partials/foot') %> 
+    </body>
+</html>

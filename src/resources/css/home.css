@@ -1,0 +1,42 @@
+/** Slider **/
+.splide__pagination {
+    @apply hidden;
+}
+.splide__slide {
+    @apply mx-2.5 my-0 overflow-hidden duration-200;
+    --height: 560px;
+    width: calc(var(--height) * 16 / 9);
+    height: var(--height);
+}
+.splide__arrow {
+    &--prev {
+        @apply left-10;
+    }
+    &--next {
+        @apply right-10;
+    }
+}
+
+#searchContainer {
+    margin-top: -56px;
+}
+
+@media (max-width: 768px) {
+    #searchContainer {
+        @apply mt-0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .splide__slide {
+        --height: 320px;
+    }
+    .splide__arrow {
+        &--prev {
+            @apply left-4;
+        }
+        &--next {
+            @apply right-4;
+        }
+    }
+}

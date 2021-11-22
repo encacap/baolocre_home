@@ -1,0 +1,46 @@
+/** Slider **/
+.splide__pagination {
+    @apply hidden;
+}
+
+.splide__slide {
+    @apply overflow-hidden rounded-lg duration-200;
+    --height: 480px;
+    width: calc(var(--height) * 16 / 9);
+    height: var(--height);
+}
+
+#thumbnail-slider .splide__slide {
+    @apply border-2 border-solid border-gray-300;
+}
+
+#thumbnail-slider .splide__slide:not(:last-child) {
+    @apply mr-2.5;
+}
+
+#thumbnail-slider .splide__slide.is-active {
+    @apply border-encacap-main;
+}
+
+.splide__arrow {
+    &--prev {
+        @apply left-10;
+    }
+    &--next {
+        @apply right-10;
+    }
+}
+
+@media (max-width: 1024px) {
+    .splide__slide {
+        --height: 320px;
+    }
+    .splide__arrow {
+        &--prev {
+            @apply left-4;
+        }
+        &--next {
+            @apply right-4;
+        }
+    }
+}

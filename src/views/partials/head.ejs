@@ -1,0 +1,18 @@
+<% const {title, css} = locals %>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/app.min.css" />
+    <% if (css?.length > 0) { %>
+        <% css.forEach(filename => { %>
+            <link rel="stylesheet" href="/assets/css/<%= filename %>.min.css" />
+        <% }) %> 
+    <% } %>
+    <link
+        rel="shortcut icon"
+        href="/assets/images/logo.png"
+        type="image/x-icon"
+    />
+    <title><%= title %> - Bất động sản nghỉ dưỡng Bảo Lộc</title>
+</head>

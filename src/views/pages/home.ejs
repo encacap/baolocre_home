@@ -1,0 +1,821 @@
+<% const { contactInformation, estates } = locals %>
+<!DOCTYPE html>
+<html lang="vi">
+    <%- include('../partials/head', { title: "Trang chủ", css: ["home"] }) %>
+    <body>
+        <%- include('../components/header', { isShowMobileMenu: -1, contactInformation }) %>
+        <main>
+            <!-- Slider -->
+            <section class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list flex items-center h-full">
+                        <li class="splide__slide">
+                            <img
+                                src="/assets/images/slider/01.jpg"
+                                alt="Slider 01"
+                                style="
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                "
+                            />
+                        </li>
+                        <li class="splide__slide h-full">
+                            <img
+                                src="/assets/images/slider/02.webp"
+                                alt="Slider 01"
+                                class="w-full object-cover"
+                            />
+                        </li>
+                        <li class="splide__slide">
+                            <img
+                                src="/assets/images/slider/03.webp"
+                                alt="Slider 01"
+                                class="w-full object-contain object-center"
+                            />
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- Search -->
+            <section
+                class="
+                    relative
+                    z-10
+                    border-b-2 border-gray-100
+                    md:border-b-0 md:shadow-md md:rounded-md md:mx-4
+                    lg:mx-10
+                    xl:mx-48
+                    overflow-hidden
+                "
+                id="searchContainer"
+            >
+                <div
+                    class="
+                        hidden
+                        md:flex
+                        items-center
+                        bg-encacap-blue
+                        px-4
+                        md:px-6
+                        py-4
+                        text-white
+                        font-medium
+                        uppercase
+                    "
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="w-4 mr-2"
+                    >
+                        <path
+                            d="M11.5 21a9.5 9.5 0 1 0 0-19 9.5 9.5 0 0 0 0 19ZM22 22l-2-2"
+                            stroke="currentColor"
+                            stroke-width="2.0"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path>
+                    </svg>
+                    Tìm kiếm bất động sản
+                </div>
+                <div class="py-5 md:py-6">
+                    <div
+                        class="
+                            flex
+                            mx-4
+                            md:mx-6
+                            rounded-md
+                            border-2 border-gray-200
+                            bg-gray-100
+                        "
+                    >
+                        <div
+                            class="
+                                hidden
+                                md:flex
+                                items-center
+                                border-r-2 border-gray-200
+                                px-4
+                                py-3
+                            "
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mt-0.5">
+                                <path d="M12 18v-3M10.07 2.82 3.14 8.37c-.78.62-1.28 1.93-1.11 2.91l1.33 7.96c.24 1.42 1.6 2.57 3.04 2.57h11.2c1.43 0 2.8-1.16 3.04-2.57l1.33-7.96c.16-.98-.34-2.29-1.11-2.91l-6.93-5.54c-1.07-.86-2.8-.86-3.86-.01Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <span class="ml-2 mr-3"
+                                >Loại
+                                <span class="hidden md:inline-block">
+                                    bất động sản</span
+                                ></span
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mt-0.5">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M19.92 8.95l-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1 relative">
+                            <input
+                                type="text"
+                                class="
+                                    w-full
+                                    h-full
+                                    outline-none
+                                    rounded-md
+                                    md:rounded-l-none
+                                    bg-transparent
+                                    px-4
+                                    py-3.5
+                                    focus:ring-2
+                                    ring-encacap-main
+                                "
+                                name="search"
+                                id="search"
+                                placeholder="Tìm kiếm địa điểm, khu vực, ..."
+                            />
+                            <button
+                                class="
+                                    flex
+                                    items-center
+                                    absolute
+                                    right-2
+                                    top-2
+                                    rounded-md
+                                    px-3
+                                    py-1
+                                    bg-encacap-main
+                                    font-semibold
+                                    text-white
+                                    duration-200
+                                    hover:bg-yellow-600
+                                "
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mr-2">
+                                    <path d="M11.5 21a9.5 9.5 0 1 0 0-19 9.5 9.5 0 0 0 0 19ZM22 22l-2-2" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <span>Tìm</span>
+                                <span class="hidden md:inline-block md:ml-1"
+                                    >kiếm</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="
+                            hidden
+                            md:grid
+                            grid-cols-2
+                            md:grid-cols-3
+                            gap-4
+                            md:gap-6
+                            mx-4
+                            md:mx-6
+                            mt-4
+                            md:mt-6
+                        "
+                    >
+                        <div
+                            class="
+                                flex
+                                rounded-md
+                                border-2 border-gray-200
+                                bg-gray-100
+                                px-4
+                                py-2.5
+                            "
+                        >
+                            <div class="flex-1">Mức giá</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mt-0.5">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M19.92 8.95l-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"></path>
+                            </svg>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                rounded-md
+                                border-2 border-gray-200
+                                bg-gray-100
+                                px-4
+                                py-2.5
+                            "
+                        >
+                            <div class="flex-1">Diện tích</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mt-0.5">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M19.92 8.95l-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"></path>
+                            </svg>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                rounded-md
+                                border-2 border-gray-200
+                                bg-gray-100
+                                px-4
+                                py-2.5
+                            "
+                        >
+                            <div class="flex-1">Hướng nhà</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mt-0.5">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M19.92 8.95l-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Category -->
+            <section class="lg:px-10 xl:px-48 pt-8 md:pt-20 md:pb-4">
+                <div class="flex flex-col items-center">
+                    <div class="">
+                        <div
+                            class="
+                                text-center text-gray-400
+                                uppercase
+                                tracking-widest
+                                text-xs
+                                font-semibold
+                            "
+                        >
+                            Mọi thứ bạn cần
+                        </div>
+                        <div class="pt-3 md:pb-3 text-2xl md:text-4xl">
+                            Các danh mục
+                        </div>
+                        <div
+                            class="
+                                hidden
+                                md:block
+                                mx-auto
+                                mt-4
+                                w-20
+                                h-1
+                                bg-encacap-main
+                            "
+                        ></div>
+                    </div>
+                    <div
+                        class="
+                            grid grid-cols-3
+                            gap-4
+                            lg:gap-10
+                            w-full
+                            md:mt-10 md:pb-10
+                            px-4
+                            lg:px-0
+                        "
+                    >
+                        <a
+                            href="/bat-dong-san-ban"
+                            class="
+                                flex flex-col
+                                md:justify-center
+                                items-center
+                                w-full
+                                rounded-lg
+                                py-8
+                                md:px-10
+                                duration-200
+                                border-2 border-transparent
+                                md:border-gray-100
+                                hover:shadow-lg
+                                hover:text-encacap-main
+                                hover:border-encacap-main
+                            "
+                        >
+                            <div
+                                class="
+                                    flex
+                                    items-center
+                                    w-20
+                                    md:w-32
+                                    h-20
+                                    md:h-32
+                                    border-2 border-gray-100
+                                    rounded-full
+                                    overflow-hidden
+                                "
+                            >
+                                <img
+                                    src="/assets/images/icons/bat-dong-san-nghi-duong.jpg"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                    "
+                                    alt="Bất động sản bán"
+                                />
+                            </div>
+                            <div class="pt-6 text-center font-medium">
+                                Bất động sản bán
+                            </div>
+                        </a>
+                        <a
+                            href="/tin-tuc"
+                            class="
+                                flex flex-col
+                                md:justify-center
+                                items-center
+                                w-full
+                                rounded-lg
+                                py-8
+                                md:px-10
+                                duration-200
+                                border-2 border-transparent
+                                md:border-gray-100
+                                hover:shadow-lg
+                                hover:text-encacap-main
+                                hover:border-encacap-main
+                            "
+                        >
+                            <div
+                                class="
+                                    flex
+                                    items-center
+                                    w-20
+                                    md:w-32
+                                    h-20
+                                    md:h-32
+                                    border-2 border-gray-100
+                                    rounded-full
+                                    overflow-hidden
+                                "
+                            >
+                                <img
+                                    src="/assets/images/icons/news.png"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                    "
+                                    alt="Tin tức"
+                                />
+                            </div>
+                            <div class="pt-6 text-center font-medium">
+                                Tin tức
+                            </div>
+                        </a>
+                        <a
+                            href="/thu-vien-nha-mau"
+                            class="
+                                flex flex-col
+                                md:justify-center
+                                items-center
+                                w-full
+                                rounded-lg
+                                py-8
+                                md:px-10
+                                duration-200
+                                border-2 border-transparent
+                                md:border-gray-100
+                                hover:shadow-lg
+                                hover:text-encacap-main
+                                hover:border-encacap-main
+                            "
+                        >
+                            <div
+                                class="
+                                    flex
+                                    items-center
+                                    w-20
+                                    md:w-32
+                                    h-20
+                                    md:h-32
+                                    border-2 border-gray-100
+                                    rounded-full
+                                    overflow-hidden
+                                "
+                            >
+                                <img
+                                    src="/assets/images/icons/thu-vien-nha-mau.png"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                    "
+                                    alt="Thư viện nhà mẫu"
+                                />
+                            </div>
+                            <div class="pt-6 text-center font-medium">
+                                Thư viện nhà mẫu
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- Real Estate Sell -->
+            <section
+                class="
+                    border-t-2 border-b-2
+                    md:border-t-0 md:border-b-0
+                    border-gray-100
+                    md:px-4
+                    lg:px-10
+                    xl:px-48
+                    py-10
+                    md:py-20 md:bg-gray-100
+                "
+            >
+                <div class="px-4 md:px-0 flex flex-col items-center">
+                    <div
+                        class="
+                            text-center text-gray-400
+                            uppercase
+                            tracking-widest
+                            text-xs
+                            font-semibold
+                        "
+                    >
+                        Dành cho bạn
+                    </div>
+                    <div class="py-3 text-2xl md:text-4xl text-center">
+                        Bất động sản đang bán
+                    </div>
+                    <div class="mx-auto mt-4 w-20 h-1 bg-encacap-main"></div>
+                </div>
+                <div class="mt-10 px-4 md:px-0">
+                    <%- include("../components/estatesHorizontal", {
+                        grid: {
+                            cols: 1,
+                            mdCols: 2,
+                            lgCols: 3,
+                            xlCols: 4,
+                            gap: 0,
+                            mdGap: 4,
+                        },
+                        isHighlight: true,
+                        results: 8,
+                        estates: estates.results,
+                    }) %>
+                </div>
+                <div class="flex justify-center mt-10">
+                    <a
+                        href="/bat-dong-san-ban"
+                        class="
+                            flex
+                            items-center
+                            bg-white
+                            rounded-full
+                            border-2 border-gray-300
+                            px-6
+                            py-3
+                            font-semibold
+                            duration-200
+                            hover:border-encacap-main hover:text-encacap-main
+                        "
+                    >
+                        Xem tất cả bất động sản đang bán
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            class="w-4 ml-2"
+                            fill="none"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                                stroke-width="2"
+                                d="M14.43 5.93L20.5 12l-6.07 6.07M3.5 12h16.83"
+                            >
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <!-- Latest News -->
+            <section class="px-4 lg:px-10 xl:px-48 py-10 md:py-20">
+                <div class="flex flex-col items-center">
+                    <div
+                        class="
+                            text-center text-gray-400
+                            uppercase
+                            tracking-widest
+                            text-xs
+                            font-semibold
+                        "
+                    >
+                        Mới và nổi bật nhất
+                    </div>
+                    <div class="py-3 text-2xl md:text-4xl">Tin tức</div>
+                    <div class="mx-auto mt-4 w-20 h-1 bg-encacap-main"></div>
+                </div>
+                <div
+                    class="
+                        grid
+                        md:grid-cols-2
+                        lg:grid-cols-3
+                        md:gap-5
+                        mt-10
+                        md:divide-x-2
+                        border-b-2
+                        md:border-b-0
+                        border-gray-100
+                    "
+                >
+                    <div
+                        class="
+                            md:mr-5
+                            border-b-2 border-gray-100
+                            pb-4
+                            md:border-b-0 md:pb-0
+                            hover:text-encacap-main
+                        "
+                    >
+                        <div class="h-40">
+                            <img
+                                src="/assets/images/slider/03.webp"
+                                alt="News"
+                                class="
+                                    w-full
+                                    h-full
+                                    object-cover object-center
+                                    rounded-md
+                                "
+                            />
+                        </div>
+                        <div class="pt-4">
+                            <div class="font-semibold">
+                                Cấp thiết làm đường sắt nối sân bay
+                            </div>
+                            <div
+                                class="
+                                    flex
+                                    items-center
+                                    mt-2
+                                    text-gray-500 text-sm
+                                "
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    class="w-4 mr-2"
+                                >
+                                    <path
+                                        d="M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10Z"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    ></path>
+                                    <path
+                                        d="m15.71 15.18-3.1-1.85c-.54-.32-.98-1.09-.98-1.72v-4.1"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                                12/10/2021
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:pl-10 md:pr-5 divide-y-2 divide-gray-100">
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:pb-2 md:pt-0
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:py-2
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:pt-2 md:pb-0
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="
+                            lg:pl-10
+                            border-t-2
+                            md:hidden
+                            lg:block
+                            border-gray-100
+                            md:border-t-0
+                            divide-y-2 divide-gray-100
+                        "
+                    >
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:pt-0 md:pb-2
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:py-2
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="
+                                flex
+                                items-center
+                                py-4
+                                md:py-2
+                                hover:text-encacap-main
+                            "
+                        >
+                            <div class="w-30 h-16 mr-4">
+                                <img
+                                    src="/assets/images/slider/03.webp"
+                                    alt="News"
+                                    class="
+                                        w-full
+                                        h-full
+                                        object-cover object-center
+                                        rounded-md
+                                    "
+                                />
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">
+                                    Cấp thiết làm đường sắt nối sân bay
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-10">
+                    <a
+                        href="/real_estate_list.html"
+                        class="
+                            flex
+                            items-center
+                            bg-white
+                            rounded-full
+                            border-2 border-gray-300
+                            px-6
+                            py-3
+                            font-semibold
+                            duration-200
+                            hover:border-encacap-main hover:text-encacap-main
+                        "
+                    >
+                        Xem tất cả tin tức
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            class="w-4 ml-2"
+                            fill="none"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                                stroke-width="2"
+                                d="M14.43 5.93L20.5 12l-6.07 6.07M3.5 12h16.83"
+                            >
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <!-- Home Model Collection -->
+            <section
+                class="
+                    border-t-2 border-b-2
+                    md:border-0
+                    border-gray-100
+                    md:px-4
+                    lg:px-10
+                    xl:px-48
+                    py-10
+                    md:py-20 md:bg-gray-200
+                "
+            >
+                <div class="flex flex-col items-center">
+                    <div
+                        class="
+                            text-center text-gray-400
+                            uppercase
+                            tracking-widest
+                            text-xs
+                            font-semibold
+                        "
+                    >
+                        Dành cho bạn
+                    </div>
+                    <div class="py-3 text-2xl md:text-4xl">
+                        Thư viện nhà mẫu
+                    </div>
+                    <div class="mx-auto mt-4 w-20 h-1 bg-encacap-main"></div>
+                </div>
+            </section>
+        </main>
+        <%- include('../components/footer', { contactInformation }) %>
+        <%- include('../partials/foot', { js: ["home"] }) %> 
+    </body>
+</html>

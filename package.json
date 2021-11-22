@@ -18,12 +18,14 @@
         "build:css": "cross-env NODE_ENV=production npm run postcss",
         "build:css:full": "cross-env NODE_ENV=development npm run postcss",
         "build:js": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+        "build:copy": "node ./build/index.js",
         "watch:js": "npm run build:js -- -w",
         "watch:css": "cross-env NODE_ENV=production npm run postcss -- -w",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "prettier": "prettier --check **/*.js",
-        "prettier:fix": "prettier --write **/*.js"
+        "prettier:fix": "prettier --write **/*.js",
+        "build": "npm run build:css && npm run build:js && npm run build:copy"
     },
     "keywords": [
         "node",
@@ -86,6 +88,7 @@
         "eslint-plugin-import": "^2.18.2",
         "eslint-plugin-prettier": "^3.1.1",
         "eslint-plugin-security": "^1.4.0",
+        "fs-extra": "^10.0.0",
         "ionicons": "^6.0.0",
         "lint-staged": "^11.0.0",
         "node-mocks-http": "^1.8.0",

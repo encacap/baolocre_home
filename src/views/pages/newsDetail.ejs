@@ -86,12 +86,8 @@
                         <div class="font-semibold text-lg mt-5 md:mt-1">Có thể bạn quan tâm</div>
                         <div class="md:mt-6">
                             <%- include('../components/estatesHorizontal.ejs', {
-                                grid: {
-                                    mdCols: 2,
-                                    lgCols: 3,
-                                    mdGap: 4,
-                                },
-                                results: 6
+                                gridClasses: 'grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-0 md:gap-4',
+                                estates: []
                             }) %>
                         </div>
                     </div>

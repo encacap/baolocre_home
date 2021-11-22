@@ -1,16 +1,6 @@
 <% 
-    const { grid: gridConfigs, isHighlight, estates } = locals;
+    const { gridClasses, isHighlight, estates } = locals;
     let { results } = locals;
-    const { cols, mdCols, lgCols, xlCols, gap, mdGap, lgGap, xlGap } = gridConfigs;
-    let gridClasses = "grid";
-    if (cols) gridClasses += ` grid-cols-${cols}`;
-    if (mdCols) gridClasses += ` md:grid-cols-${mdCols}`;
-    if (lgCols) gridClasses += ` lg:grid-cols-${lgCols}`;
-    if (xlCols) gridClasses += ` xl:grid-cols-${xlCols}`;
-    if (gap) gridClasses += ` gap-${gap}`;
-    if (mdGap) gridClasses += ` md:gap-${mdGap}`;
-    if (lgGap) gridClasses += ` lg:gap-${lgGap}`;
-    if (xlGap) gridClasses += ` xl:gap-${xlGap}`;
 %>
 <div class="<%= gridClasses %>">
     <% if (isHighlight) {

@@ -433,14 +433,7 @@
                 </div>
                 <div class="mt-10 px-4 md:px-0">
                     <%- include("../components/estatesHorizontal", {
-                        grid: {
-                            cols: 1,
-                            mdCols: 2,
-                            lgCols: 3,
-                            xlCols: 4,
-                            gap: 0,
-                            mdGap: 4,
-                        },
+                        gridClasses: 'grid grid-cols-1 md:gird-cols-3 lg:grid-cols-4 gap-0 md:gap-4',
                         isHighlight: true,
                         results: 8,
                         estates: estates.results,

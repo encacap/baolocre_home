@@ -193,4 +193,5 @@ const normalizeEstatesData = (data) => {
 module.exports = {
     normalizeEstateData,
     normalizeEstatesData,
+    convertStringToSlug,
 };

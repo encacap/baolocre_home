@@ -10,6 +10,7 @@ const envVarsSchema = Joi.object()
         PORT: Joi.number().default(3000),
         MONGODB_URL: Joi.string().required().description("Mongo DB url"),
         DEFAULT_AVATAR: Joi.string().required().description("Default avatar for contact in realEstateDetail"),
+        GHN_TOKEN: Joi.string().required().description("GHN token"),
         JWT_SECRET: Joi.string().required().description("JWT secret key"),
         JWT_ACCESS_EXPIRATION_MINUTES: Joi.number().default(30).description("minutes after which access tokens expire"),
         JWT_REFRESH_EXPIRATION_DAYS: Joi.number().default(30).description("days after which refresh tokens expire"),
@@ -45,6 +46,7 @@ module.exports = {
         },
     },
     defaultAvatarForContact: envVars.DEFAULT_AVATAR,
+    ghn: envVars.GHN_TOKEN,
     jwt: {
         secret: envVars.JWT_SECRET,
         accessExpirationMinutes: envVars.JWT_ACCESS_EXPIRATION_MINUTES,

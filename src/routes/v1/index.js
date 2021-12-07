@@ -4,6 +4,8 @@ const config = require("../../config/config");
 const userRoute = require("./user.route");
 const authRoute = require("./auth.route");
 const locationRoute = require("./location.route");
+const estateRoute = require("./estate.route");
+const imageRoute = require("./image.route");
 
 const router = express.Router();
 
@@ -19,6 +21,14 @@ const defaultRoutes = [
     {
         path: "/locations",
         route: locationRoute,
+    },
+    {
+        path: "/estates",
+        route: estateRoute,
+    },
+    {
+        path: "/images",
+        route: imageRoute,
     },
 ];
 

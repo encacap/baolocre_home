@@ -5,3 +5,4 @@ module.exports.userService = require("./user.service");
 module.exports.configService = require("./config.service");
 module.exports.estateService = require("./estate.service");
 module.exports.locationService = require("./location.service");
+module.exports.imageService = require("./image.service");

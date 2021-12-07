@@ -13,6 +13,8 @@ src/assets/js
 # Environment varibales
 .env*
 !.env*.example
+cloudinary.config.js
+ecosystem.config.json
 
 # Database
 *.data.json

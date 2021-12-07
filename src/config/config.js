@@ -25,6 +25,9 @@ const envVarsSchema = Joi.object()
         SMTP_USERNAME: Joi.string().description("username for email server"),
         SMTP_PASSWORD: Joi.string().description("password for email server"),
         EMAIL_FROM: Joi.string().description("the from field in the emails sent by the app"),
+        CLOUDINARY_NAME: Joi.string().description("cloudinary cloud name"),
+        CLOUDINARY_KEY: Joi.string().description("cloudinary api key"),
+        CLOUDINARY_SECRET: Joi.string().description("cloudinary secret"),
     })
     .unknown();
 
@@ -64,5 +67,10 @@ module.exports = {
             },
         },
         from: envVars.EMAIL_FROM,
+    },
+    cloudinary: {
+        name: envVars.CLOUDINARY_NAME,
+        key: envVars.CLOUDINARY_KEY,
+        secret: envVars.CLOUDINARY_SECRET,
     },
 };

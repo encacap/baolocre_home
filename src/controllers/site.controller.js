@@ -45,9 +45,17 @@ const renderRealEstatesPage = catchAsync(async (req, res, next) => {
 });
 
 const renderRealEstatePage = catchAsync(async (req, res, next) => {
-    const randomEstates = await estateService.queryEstates({}, { limit: 6 });
-    const sameAreaEstates = await estateService.queryEstates({}, { limit: 3 });
     const estate = await estateService.getEstateById(req.params.id);
+    const randomEstates = await estateService.getRandomEstates({}, { limit: 6 });
+    const sameAreaEstates = await estateService.getRandomEstates(
+        {
+            $and: [
+                { "location.district.districtId": estate.location.district.districtId },
+                { _id: { $ne: estate._id } },
+            ],
+        },
+        { limit: 6 }
+    );
     res.renderConfigs = {
         path: "pages/realEstateDetail",
         data: {

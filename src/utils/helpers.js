@@ -21,50 +21,24 @@ const convertStringToSlug = (string) => {
 };
 
 const normalizeSquareAreaString = (string) => {
-    if (string.includes("m2")) {
-        return string.replace("m2", "m<sup>2</sup>");
+    if (String(string).includes("m2")) {
+        return String(string).replace("m2", "m<sup>2</sup>");
     }
     return string;
 };
 
 const normalizeEstateData = (data) => {
-    const estate = data;
-    const { id, title, category, price, area, location, pictures, contact, description } = estate;
+    const estate = data.toJSON?.() || data;
+    const { id, estateId, title, category, price, area, properties, location, pictures, avatar, contact, description } =
+        estate;
     const { city, district, ward, street } = location;
-    const { avatar, name, phone, zalo, email } = contact;
+    const { avatar: contactAvatar, name, phone, zalo, email } = contact;
     let totalVideos = 0;
     let totalImages = 0;
-    const propertiesDescriptions = [
-        {
-            name: "Số tờ",
-            key: "page",
-        },
-        {
-            name: "Số thửa",
-            key: "plot",
-        },
-        {
-            name: "Hướng",
-            key: "direction",
-        },
-        {
-            name: "Phòng khách",
-            key: "livingRoom",
-        },
-        {
-            name: "Phòng ngủ",
-            key: "bedroom",
-        },
-        {
-            name: "Phòng tắm",
-            key: "bathroom",
-        },
-    ];
-    estate.properties = propertiesDescriptions
-        .map((property) => ({ name: property.name, value: estate[property.key] }))
-        .filter((property) => property.value);
+    estate.customID = estateId;
+    estate.properties = properties;
     estate.contact = {
-        avatar: avatar || defaultAvatarForContact,
+        avatar: contactAvatar || defaultAvatarForContact,
         name,
         phone,
         friendlyPhone: phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3"),
@@ -72,13 +46,11 @@ const normalizeEstateData = (data) => {
         email,
     };
     estate.price = normalizeSquareAreaString(price);
-    estate.area = normalizeSquareAreaString(area);
+    estate.area = normalizeSquareAreaString(`${area}m2`);
     estate.plainDescription = removeMarkdownFormat(description);
-    estate.city = city.name;
-    estate.district = district.name;
-    estate.location = `${street ? `${street}, ` : ""}${ward.name}, ${district.name}, ${city.name}`;
-    estate.shortLocation = `${city.name}, ${district.name}`;
-    estate.shortLocationReserved = `${district.name}, ${city.name}`;
+    estate.location.long = `${street ? `${street}, ` : ""}${ward.name}, ${district.name}, ${city.name}`;
+    estate.location.short = `${city.name}, ${district.name}`;
+    estate.location.reservedShort = `${district.name}, ${city.name}`;
     estate.url = `/bat-dong-san-ban/${category.slug}/${city.slug}/${district.slug}/${
         ward.slug
     }/${id}/${convertStringToSlug(title)}`;
@@ -104,23 +76,22 @@ const normalizeEstateData = (data) => {
             url: ward.slug,
         },
     ];
-    estate.pictures = pictures
+    estate.pictures = [...pictures, { ...avatar, isAvatar: true }]
         .map((image) => {
             let results;
             const {
                 origin,
-                cloudName,
-                type,
+                name: cloudName,
+                resourceType,
                 action,
                 version,
                 folder,
                 publicId,
-                name: imageName,
                 format,
                 isAvatar,
             } = image;
             const generateImageUrl = (options) => {
-                let url = `${origin}/${cloudName}/${type}/${action}/`;
+                let url = `${origin}/${cloudName}/${resourceType}/${action}/`;
                 if (options) {
                     url += `${options}/`;
                 }
@@ -131,9 +102,9 @@ const normalizeEstateData = (data) => {
                 url += `${publicId}.${format}`;
                 return url;
             };
-            const generateVideoImageUrl = () => `${origin}/${cloudName}/${publicId}/${imageName}.${format}`;
+            const generateVideoImageUrl = () => `${origin}/${cloudName}/${publicId}/${format}`;
             const generateYoutubeVideoUrl = () => `https://www.youtube.com/watch?v=${publicId}`;
-            if (type !== "image") {
+            if (resourceType !== "image") {
                 const imageVideoUrl = generateVideoImageUrl();
                 totalVideos += 1;
                 results = {
@@ -143,7 +114,7 @@ const normalizeEstateData = (data) => {
                     largeThumbnail: imageVideoUrl,
                     smallThumbnail: imageVideoUrl,
                     isAvatar,
-                    type,
+                    type: resourceType,
                 };
                 if (isAvatar) {
                     estate.avatar = results;
@@ -162,7 +133,7 @@ const normalizeEstateData = (data) => {
                 largeThumbnail: generateImageUrl(largeThumbnailOptions),
                 smallThumbnail: generateImageUrl(smallThumbnailOptions),
                 isAvatar,
-                type,
+                type: resourceType,
             };
             if (isAvatar) {
                 estate.avatar = results;
@@ -192,9 +163,31 @@ const normalizeEstatesData = (data) => {
 
 const getRandomInteger = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
+const getEstateProperties = (estate) => {
+    const expectedProperties = {
+        living_room: "Phòng khách",
+        bedroom: "Phòng ngủ",
+        bathroom: "Phòng tắm",
+        direction: "Hướng",
+        page: "Số tờ",
+        plot: "Số thửa",
+    };
+    const properties = [];
+    Object.keys(expectedProperties).forEach((key) => {
+        if (estate[key]) {
+            properties.push({
+                name: expectedProperties[key],
+                value: estate[key],
+            });
+        }
+    });
+    return properties;
+};
+
 module.exports = {
     normalizeEstateData,
     normalizeEstatesData,
     convertStringToSlug,
     getRandomInteger,
+    getEstateProperties,
 };

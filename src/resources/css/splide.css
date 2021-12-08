@@ -279,7 +279,7 @@
         @apply w-full h-full;
 
         iframe {
-            @apply w-full h-full;
+            @apply w-full h-full px-16;
         }
     }
 }

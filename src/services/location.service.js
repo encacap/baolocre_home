@@ -1,5 +1,5 @@
-// const httpStatus = require("http-status");
-// const ThrowError = require("../utils/ThrowError");
+const httpStatus = require("http-status");
+const ThrowError = require("../utils/ThrowError");
 const { City, District, Ward } = require("../models");
 
 const createLocation = async (cityBody, districtBody, wardBody) => {
@@ -32,9 +32,27 @@ const getCities = async () => {
     return cities;
 };
 
+const getCityById = async (cityId) => {
+    const city = await City.findOne({ _id: cityId });
+    if (!city) {
+        throw new ThrowError(httpStatus.NOT_FOUND, "City not found");
+    }
+    city.set("cityId", city._id);
+    return city;
+};
+
 const getDistrictsByCityId = async (cityId) => {
     const districts = await District.find({ cityId });
     return districts;
+};
+
+const getDistrictById = async (districtId) => {
+    const district = await District.findOne({ _id: districtId });
+    if (!district) {
+        throw new ThrowError(httpStatus.NOT_FOUND, "District not found");
+    }
+    district.set("districtId", district._id);
+    return district;
 };
 
 const getWardsByDistrictId = async (districtId) => {
@@ -42,9 +60,21 @@ const getWardsByDistrictId = async (districtId) => {
     return wards;
 };
 
+const getWardById = async (wardId) => {
+    const ward = await Ward.findOne({ _id: wardId });
+    if (!ward) {
+        throw new ThrowError(httpStatus.NOT_FOUND, "Ward not found");
+    }
+    ward.set("wardId", ward._id);
+    return ward;
+};
+
 module.exports = {
     createLocation,
     getCities,
+    getCityById,
     getDistrictsByCityId,
+    getDistrictById,
     getWardsByDistrictId,
+    getWardById,
 };

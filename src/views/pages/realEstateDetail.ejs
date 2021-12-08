@@ -2,7 +2,7 @@
     const { contactInformation, sameAreaEstates, randomEstates, estate } = locals;
     const { contact } = estate;
     const estateAvatar = estate.avatar;
-    const estatePictures = [estateAvatar, ...estate.pictures];
+    const estatePictures = [estateAvatar, ...(estate.pictures.length ? estate.pictures : [])];
     const estateProperties = estate.properties || [];
 %>
 <!DOCTYPE html>
@@ -151,7 +151,11 @@
                         <div id="thumbnail-slider" class="splide hidden md:block mt-2">
                             <div class="splide__track">
                                 <ul class="splide__list">
-                                    <% estatePictures.forEach(picture => { %>
+                                    <% estatePictures.forEach(picture => { 
+                                        if (picture.length === 0) {
+                                            return;
+                                        }
+                                    %>
                                         <li class="splide__slide relative box-border">
                                             <img
                                                 src="<%= picture.smallThumbnail %>"
@@ -218,7 +222,7 @@
                                     stroke-width="1.5"
                                 ></path>
                             </svg>
-                            <%= estate.location %>
+                            <%= estate.location.long %>
                         </div>
                     </div>
                     <div
@@ -228,33 +232,49 @@
                             border-gray-100
                         "
                     >
-                        <div class="grid grid-cols-3 rid-cols-4 lg:grid-cols-5 -my-0.5">
-                            <div class="col-span-2 md:col-span-1 pb-4">
-                                <div class="w-12 h-0.5 bg-gray-100 mb-5"></div>
-                                <div class="text-encacap-main mb-1 text-sm font-semibold">Giá bán</div>
-                                <div class="py-1 font-semibold text-lg text-encacap-main"><%- estate.price %></div>
-                            </div>
-                            <div class="pb-4">
-                                <div class="w-12 h-0.5 bg-gray-100 mb-5"></div>
-                                <div class="text-encacap-main mb-1 text-sm font-semibold">Mã số</div>
-                                <div class="py-1 font-semibold text-lg text-encacap-main">#<%= estate.customID %></div>
-                            </div>
-                            <div class="pb-4">
-                                <div class="w-12 h-0.5 bg-gray-100 mb-5"></div>
-                                <div class="text-gray-400 mb-1 text-sm font-semibold">Diện tích</div>
-                                <div class="py-1 font-semibold text-lg">
-                                    <%- estate.area %>
-                                </div>
-                            </div>
-                            <% estateProperties.forEach(property => { %>
+                        <div class="-my-0.5">
+                            <div class="grid grid-cols-3 rid-cols-4 lg:grid-cols-5">
                                 <div class="pb-4">
-                                    <div class="w-12 h-0.5 bg-gray-100 mb-5"></div>
-                                    <div class="text-gray-400 mb-1 text-sm font-semibold"><%= property.name %></div>
-                                    <div class="py-1 font-semibold text-lg">
-                                        <%= property.value %>
+                                    <div class="w-12 h-0.5 mb-5"></div>
+                                    <div class="text-encacap-main mb-1 text-sm font-semibold">Giá bán</div>
+                                    <div class="py-1 font-semibold text-lg text-encacap-main"><%- estate.price %></div>
+                                </div>
+                                <div class="col-span-2 md:col-span-1 pb-4">
+                                    <div class="w-12 h-0.5 mb-5"></div>
+                                    <div class="text-encacap-main mb-1 text-sm font-semibold">Mã số</div>
+                                    <div
+                                        class="
+                                            max-w-full
+                                            mr-2
+                                            py-1
+                                            font-semibold
+                                            text-lg
+                                            text-encacap-main
+                                            overflow-hidden
+                                        "
+                                    >
+                                        # <%= estate.customId %>
                                     </div>
                                 </div>
-                            <% }) %>
+                            </div>
+                            <div class="grid grid-cols-3 rid-cols-4 lg:grid-cols-5 border-t-2 border-gray-100">
+                                <div class="pb-4">
+                                    <div class="w-12 h-0.5 border-t-1 border-gray-100 mb-5"></div>
+                                    <div class="text-gray-400 mb-1 text-sm font-semibold">Diện tích</div>
+                                    <div class="py-1 font-semibold text-lg">
+                                        <%- estate.area %>
+                                    </div>
+                                </div>
+                                <% estateProperties.forEach(property => { %>
+                                    <div class="pb-4">
+                                        <div class="w-12 h-0.5 border-t-1 border-gray-100 mb-5"></div>
+                                        <div class="text-gray-400 mb-1 text-sm font-semibold"><%= property.name %></div>
+                                        <div class="py-1 font-semibold text-lg">
+                                            <%= property.value %>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
                         </div>
                     </div>
                     <div class="flex flex-col md:hidden items-center mt-5 p-1 border-b-2 border-gray-100">
@@ -405,25 +425,26 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="md:hidden h-2 bg-gray-100"
-                        style="width: calc(100% + 40px); margin-left: -20px; margin-right: -20px"
-                    ></div>
-                    <div class="pt-4 md:pb-4">
-                        <div class="font-semibold text-lg mt-1 mb-0 md:mb-6">
-                            Bất động sản khác tại <%= estate.shortLocationReserved %>
+                    <% if (sameAreaEstates.totalResults) { %>
+                        <div
+                            class="md:hidden h-2 bg-gray-100"
+                            style="width: calc(100% + 40px); margin-left: -20px; margin-right: -20px"
+                        ></div>
+                        <div class="pt-4 md:pb-8 border-b-0 md:border-b-2 border-gray-100">
+                            <div class="font-semibold text-lg mt-1 mb-0 md:mb-6">
+                                Bất động sản khác tại <%= estate.location.reservedShort %>
+                            </div>
+                            <%- include('../components/estatesHorizontal.ejs', {
+                                gridClasses: 'grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-0 md:gap-4',
+                                estates: sameAreaEstates.results,
+                            }) %>
                         </div>
-                        <%- include('../components/estatesHorizontal.ejs', {
-                            gridClasses: 'grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-0 md:gap-4',
-                            results: 3,
-                            estates: sameAreaEstates.results,
-                        }) %>
-                    </div>
+                    <% } %>
                     <div
                         class="md:hidden h-2 bg-gray-100"
                         style="width: calc(100% + 40px); margin-left: -20px; margin-right: -20px"
                     ></div>
-                    <div class="md:mt-4 md:pt-4 border-t-0 md:border-t-2 border-gray-100">
+                    <div class="md:pt-4">
                         <div class="font-semibold text-lg mt-5 md:mt-1">Có thể bạn quan tâm</div>
                         <div class="md:mt-6">
                             <%- include('../components/estatesHorizontal.ejs', {

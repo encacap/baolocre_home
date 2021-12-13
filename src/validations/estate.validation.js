@@ -24,7 +24,7 @@ const createEstate = {
         youtube: Joi.string().allow(""),
         avatar: Joi.object().keys({
             origin: Joi.string(),
-            type: Joi.string(),
+            resourceType: Joi.string(),
             cloudName: Joi.string(),
             action: Joi.string(),
             version: Joi.number(),
@@ -35,7 +35,7 @@ const createEstate = {
         pictures: Joi.array().items(
             Joi.object().keys({
                 origin: Joi.string(),
-                type: Joi.string(),
+                resourceType: Joi.string(),
                 cloudName: Joi.string(),
                 action: Joi.string(),
                 version: Joi.number(),
@@ -48,6 +48,19 @@ const createEstate = {
     },
 };
 
+const getEstates = {
+    query: {
+        page: Joi.number().allow(""),
+        limit: Joi.number().allow(""),
+        customId: Joi.string().allow(""),
+        sortBy: Joi.string().allow(""),
+    },
+};
+
+const updateEstate = {};
+
 module.exports = {
     createEstate,
+    getEstates,
+    updateEstate,
 };

@@ -1,8 +1,9 @@
 // const httpStatus = require("http-status");
 // const ThrowError = require("../utils/ThrowError");
 const catchAsync = require("../utils/catchAsync");
+const pick = require("../utils/pick");
 const { locationService, estateService } = require("../services");
-const { getEstateProperties } = require("../utils/helpers");
+const { getEstateProperties, normalizeEstatesData } = require("../utils/helpers");
 
 const createEstate = catchAsync(async (req, res) => {
     const {
@@ -41,6 +42,23 @@ const createEstate = catchAsync(async (req, res) => {
     res.status(201).json(estate);
 });
 
+const getEstates = catchAsync(async (req, res) => {
+    const filters = pick(req.query, ["customId"]);
+    const options = pick(req.query, ["limit", "page", "sortBy"]);
+    if (filters.customId) {
+        filters.customId = { $regex: filters.customId, $options: "i" };
+    }
+    const estates = await estateService.queryEstates(filters, options);
+    res.json(normalizeEstatesData(estates));
+});
+
+const updateEstate = catchAsync(async (req, res) => {
+    const estate = await estateService.updateEstateById(req.params.id, req.body);
+    res.json(estate);
+});
+
 module.exports = {
     createEstate,
+    getEstates,
+    updateEstate,
 };

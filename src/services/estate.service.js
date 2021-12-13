@@ -26,6 +26,9 @@ const getRandomEstates = async (filters, options) => {
 
 const getEstateById = async (estateId) => {
     const estate = await Estate.findById(estateId);
+    if (!estate) {
+        throw new ThrowError(httpStatus.NOT_FOUND, "Estate not found");
+    }
     return estate;
 };
 
@@ -51,10 +54,18 @@ const getCategoryBySlug = (slug) => {
     return category;
 };
 
+const updateEstateById = async (estateId, estateBody) => {
+    const estate = await getEstateById(estateId);
+    Object.assign(estate, estateBody);
+    await estate.save();
+    return estate;
+};
+
 module.exports = {
     createEstate,
     queryEstates,
     getRandomEstates,
     getEstateById,
     getCategoryBySlug,
+    updateEstateById,
 };

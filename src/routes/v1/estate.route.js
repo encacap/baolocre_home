@@ -7,6 +7,13 @@ const estateController = require("../../controllers/estate.controller");
 
 const router = express.Router();
 
-router.route("/").post(auth("manageEstates"), validate(estateValidation.createEstate), estateController.createEstate);
+router
+    .route("/:id")
+    .patch(auth("manageEstates"), validate(estateValidation.updateEstate), estateController.updateEstate);
+
+router
+    .route("/")
+    .post(auth("manageEstates"), validate(estateValidation.createEstate), estateController.createEstate)
+    .get(auth("manageEstates"), validate(estateValidation.getEstates), estateController.getEstates);
 
 module.exports = router;

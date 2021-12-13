@@ -22,6 +22,15 @@ const estateSchema = mongoose.Schema(
         customId: {
             type: String,
         },
+        priority: {
+            type: Number,
+            default: Date.now(),
+            required: true,
+        },
+        isPublished: {
+            type: Boolean,
+            default: true,
+        },
         title: {
             type: String,
             required: true,

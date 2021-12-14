@@ -32,6 +32,14 @@ const getEstateById = async (estateId) => {
     return estate;
 };
 
+const getEstateByCustomId = async (customId) => {
+    const estate = await Estate.findOne({ customId });
+    if (!estate) {
+        throw new ThrowError(httpStatus.NOT_FOUND, "Estate not found");
+    }
+    return estate;
+};
+
 const getCategoryBySlug = (slug) => {
     const categories = {
         "nghi-duong": {
@@ -61,11 +69,18 @@ const updateEstateById = async (estateId, estateBody) => {
     return estate;
 };
 
+const deleteEstate = async (estate) => {
+    await estate.remove();
+    return estate;
+};
+
 module.exports = {
     createEstate,
     queryEstates,
     getRandomEstates,
     getEstateById,
+    getEstateByCustomId,
     getCategoryBySlug,
     updateEstateById,
+    deleteEstate,
 };

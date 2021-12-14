@@ -2,6 +2,7 @@ const catchAsync = require("../utils/catchAsync");
 const { configService, estateService } = require("../services");
 const { beautifyPhoneNumber } = require("../utils/beautifyString");
 const { normalizeEstateData, normalizeEstatesData } = require("../utils/helpers");
+const pick = require("../utils/pick");
 
 const getContactInformation = catchAsync(async (req, res, next) => {
     const contactInformation = await configService.getConfigs([
@@ -34,7 +35,8 @@ const renderHomePage = catchAsync(async (req, res, next) => {
 });
 
 const renderRealEstatesPage = catchAsync(async (req, res, next) => {
-    const estates = await estateService.queryEstates({}, { limit: 8 });
+    const options = pick(req.query, ["page"]);
+    const estates = await estateService.queryEstates({}, { ...options, limit: 18 });
     res.renderConfigs = {
         path: "pages/realEstatesList",
         data: {

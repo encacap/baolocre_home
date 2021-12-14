@@ -1,4 +1,5 @@
 const crypto = require("crypto");
+const cloudinary = require("cloudinary").v2;
 const cloudinaryConfig = require("../../cloudinary.config");
 const { getRandomInteger } = require("../utils/helpers");
 
@@ -39,6 +40,32 @@ const createSignature = () => {
     };
 };
 
+const deleteImages = async (images) => {
+    const deleteImagesByCloud = {};
+    const promises = [];
+    images.forEach((image) => {
+        const { name: cloudName } = image;
+        if (!deleteImagesByCloud[cloudName]) {
+            deleteImagesByCloud[cloudName] = [];
+        }
+        deleteImagesByCloud[cloudName].push(image);
+    });
+    Object.keys(deleteImagesByCloud).forEach((cloudName) => {
+        const deletedImages = deleteImagesByCloud[cloudName];
+        const imagesIds = deletedImages.map((image) => image.publicId);
+        const cloud = getCloudinaryConfig(cloudName);
+        cloudinary.config({
+            cloud_name: cloud.name,
+            api_key: cloud.key,
+            api_secret: cloud.secret,
+        });
+        promises.push(cloudinary.api.delete_resources(imagesIds));
+    });
+    await Promise.all(promises);
+    return images;
+};
+
 module.exports = {
     createSignature,
+    deleteImages,
 };

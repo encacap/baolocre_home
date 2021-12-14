@@ -9,7 +9,9 @@ const router = express.Router();
 
 router
     .route("/:id")
-    .patch(auth("manageEstates"), validate(estateValidation.updateEstate), estateController.updateEstate);
+    .get(auth("manageEstates"), validate(estateValidation.getEstate), estateController.getEstate)
+    .patch(auth("manageEstates"), validate(estateValidation.updateEstate), estateController.updateEstate)
+    .delete(auth("manageEstates"), validate(estateValidation.deleteEstate), estateController.deleteEstate);
 
 router
     .route("/")

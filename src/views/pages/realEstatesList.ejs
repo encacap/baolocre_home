@@ -1,4 +1,7 @@
-<% const { contactInformation, estates } = locals %>
+<%
+    const { contactInformation, estates } = locals;
+    const { page, totalPages, totalResults } = estates;
+%>
 <!DOCTYPE html>
 <html lang="vi">
     <%- include('../partials/head', { title: "Bất động sản đang bán" }) %>
@@ -38,10 +41,11 @@
                         }) %>
                         <div class="font-semibold text-2xl py-2">Danh sách bất động sản đang được bán</div>
                         <div>
-                            Hiện có 123 bất động sản
-                            <span class="text-gray-400"
-                                ><span class="mx-1 md:mx-2">•</span> Đang hiển thị trang 1 trên tổng số 13 trang</span
-                            >
+                            Hiện có <%= totalResults %> bất động sản
+                            <span class="mx-1 md:mx-2 text-gray-400">•</span>
+                            <span class="text-gray-400">
+                                Đang hiển thị trang <%= page %> trên tổng số <%= totalPages %> trang
+                            </span>
                         </div>
                     </div>
                     <div
@@ -50,7 +54,10 @@
                         <%- include('../components/estatesVertical', { estates: estates.results }) %>
                     </div>
                     <div class="flex w-full pb-4 md:pb-0 md:pt-6">
-                        <%- include('../components/pagination') %>
+                        <%- include('../components/pagination', {
+                            current: page,
+                            total: totalPages,
+                        }) %>
                     </div>
                 </div>
                 <div class="hidden lg:block">

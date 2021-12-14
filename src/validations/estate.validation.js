@@ -57,10 +57,24 @@ const getEstates = {
     },
 };
 
+const getEstate = {
+    params: {
+        id: Joi.string().required(),
+    },
+};
+
 const updateEstate = {};
+
+const deleteEstate = {
+    params: {
+        id: Joi.string().custom(objectId).required(),
+    },
+};
 
 module.exports = {
     createEstate,
     getEstates,
+    getEstate,
     updateEstate,
+    deleteEstate,
 };

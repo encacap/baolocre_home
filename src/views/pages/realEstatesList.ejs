@@ -1,10 +1,10 @@
 <%
-    const { contactInformation, estates } = locals;
+    const { contactInformation, estates, category, title } = locals;
     const { page, totalPages, totalResults } = estates;
 %>
 <!DOCTYPE html>
 <html lang="vi">
-    <%- include('../partials/head', { title: "Bất động sản đang bán" }) %>
+    <%- include('../partials/head', { title }) %>
     <body>
         <%- include('../components/header', { activeIndex: 2, contactInformation }) %>
         <main class="mx-4 lg:mx-10 xl:mx-48 pt-4 lg:pt-10 md:pb-10">
@@ -13,7 +13,7 @@
                     <%- include('../components/category', {categories: [
                         {
                             name: "BĐS nghỉ dưỡng",
-                            url: "/bat-dong-san-ban/bat-dong-san-nghi-duong",
+                            url: "/bat-dong-san-ban/nghi-duong",
                             icon: "/assets/images/icons/bat-dong-san-nghi-duong.jpg"
                         },
                         {
@@ -34,12 +34,10 @@
                                     name: "Bất động sản bán",
                                     url: "bat-dong-san-ban"
                                 },
-                                {
-                                    name: "Tất cả Bất động sản",
-                                }
+                                category || { name: "Tất cả Bất động sản" }
                             ]
                         }) %>
-                        <div class="font-semibold text-2xl py-2">Danh sách bất động sản đang được bán</div>
+                        <div class="font-semibold text-2xl py-2"><%= title %></div>
                         <div>
                             Hiện có <%= totalResults %> bất động sản
                             <span class="mx-1 md:mx-2 text-gray-400">•</span>

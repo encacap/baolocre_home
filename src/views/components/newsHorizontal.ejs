@@ -1,5 +1,5 @@
 <% 
-    const { grid: gridConfigs, results } = locals;
+    const { grid: gridConfigs, news } = locals;
     const { cols, mdCols, lgCols, xlCols, gap, mdGap, lgGap, xlGap } = gridConfigs;
     let gridClasses = "grid";
     if (cols) gridClasses += ` grid-cols-${cols}`;
@@ -12,9 +12,9 @@
     if (xlGap) gridClasses += ` xl:gap-${xlGap}`;
 %>
 <div class="grid md:grid-cols-2 gap-x-10 gap-y-4">
-    <% for (let i = 1; i <= results; i += 1) { %>
+    <% news.forEach((newsItem) => { %>
         <a
-            href="/tin-tuc/thong-tin-quy-hoach/1/day-la-mot-tin-tuc"
+            href="<%- newsItem.url %>"
             class="border-b-2 border-gray-100 pb-4 hover:text-encacap-main duration-100"
         >
             <div class="flex">
@@ -22,26 +22,25 @@
                     class="
                         flex-shrink-0
                         w-20
-                        md:w-32
+                        md:w-24
                         h-20
-                        md:h-32
+                        md:h-24
                         rounded-md
                         overflow-hidden
-                        border-2 border-gray-200
+                        bg-gray-100
                     "
                 >
                     <img
-                        src="/assets/images/news/01.jpg"
-                        alt="Thông tin quy hoạch"
-                        class="w-full h-full object-cover object-center"
+                        src="<%- newsItem.avatarURLs.thumbnail %>"
+                        alt="<%- newsItem.title %>"
+                        class="w-full h-full object-cover object-center rounded-md"
                     />
                 </div>
                 <div>
                     <div class="flex h-full items-center">
                         <div class="ml-4">
                             <div class="font-semibold">
-                                Quy hoạch chung đô thị mới Nhơn Trạch (Đồng Nai) đến
-                                năm 2035, tầm nhìn đến năm 2050 có gì?
+                                <%- newsItem.title %>
                             </div>
                             <div
                                 class="flex items-center mt-1 text-gray-500 text-sm"
@@ -67,12 +66,12 @@
                                         stroke-linejoin="round">
                                     </path>
                                 </svg>
-                                12/10/2021
+                                <%- newsItem.friendlyUpdatedTime %>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </a>
-    <% } %>
+    <% }) %>
 </div>

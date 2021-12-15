@@ -1,7 +1,7 @@
-<% const { contactInformation } = locals %>
+<% const { contactInformation, news, randomNews, suggestionEstates } = locals %>
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head', { title: "Tin tức" }) %>
+    <%- include('../partials/head', { title: news.title }) %>
     <body>
         <%- include('../components/header', { activeIndex: 3, contactInformation }) %>
         <main class="mx-4 lg:mx-10 xl:mx-48 pt-4 lg:pt-10 md:pb-10">
@@ -26,19 +26,10 @@
                     ]}) %>
                     <article class="mt-4 border-b-2 border-gray-100 pb-6">
                         <%- include('../components/breadcrumb', {
-                            breadcrumb: [
-                                {
-                                    name: "Tin tức",
-                                    url: "tin-tuc"
-                                },
-                                {
-                                    name: "Thông tin quy hoạch",
-                                    url: "thong-tin-quy-hoach"
-                                }
-                            ]
+                            breadcrumb: news.breadcrumb
                         }) %>
                         <h1 class="font-semibold text-2xl py-2">
-                            Quy hoạch chung đô thị mới Nhơn Trạch (Đồng Nai) đến năm 2035, tầm nhìn đến năm 2050 có gì?
+                            <%= news.title %>
                         </h1>
                         <div class="flex items-center mt-1 text-gray-500 text-sm border-b-2 border-gray-100 pb-5">
                             <svg
@@ -62,21 +53,11 @@
                                     stroke-linejoin="round">
                                 </path>
                             </svg>
-                            12/10/2021
+                            <%= news.friendlyUpdatedTime %>
                         </div>
-                        <p class="py-4 text-base">
-                            Trong một thời gian dài hoạt động trên thị trường mua bán đất Nhơn Trạch. Chúng tôi thấy
-                            rằng có rất nhiều khách hàng, trong quá trình tìm hiểu đã bị nhiễu trong những luồn thông
-                            tin hỗn độn mang nhiều cạm bẫy, dẫn đến việc mua phải những bất động sản không như ý. (Không
-                            đúng giá, không đúng loại đất, không đúng hạ tầng …vv…)
-                        </p>
-                        <p>
-                            <img
-                                src="https://www.viup.vn/media/ckfinder/images/Plan/6/5/quyhoach_5649/So%20d%E1%BB%93%20d%E1%BB%8Bnh%20hu%E1%BB%9Bng%20phat%20tri%E1%BB%83n%20khong%20gian%20do%20th%E1%BB%8B%20d%E1%BA%BFn%20nam%202035.jpg"
-                                alt="Hello"
-                                class="border-2 border-gray-100 rounded-md"
-                            />
-                        </p>
+                        <div class="news-content mt-4">
+                            <%- news.decodedContent %>
+                        </div>
                     </article>
                     <div
                         class="md:hidden h-2 bg-gray-100"
@@ -87,7 +68,7 @@
                         <div class="md:mt-6">
                             <%- include('../components/estatesHorizontal.ejs', {
                                 gridClasses: 'grid grid-cols-1 md:gird-cols-2 lg:grid-cols-3 gap-0 md:gap-4',
-                                estates: []
+                                estates: suggestionEstates.results
                             }) %>
                         </div>
                     </div>
@@ -101,14 +82,16 @@
                             grid: {
                                 mdCols: 2,
                             },
-                            results: 8
+                            news: randomNews.results
                         }) %>
                     </div>
                 </div>
                 <div class="hidden lg:block">
-                    <div class="relative">
+                    <form class="relative" action="/tin-tuc" method="GET">
                         <input
                             type="text"
+                            name="query"
+                            id="query"
                             class="
                                 w-full
                                 outline-none
@@ -120,7 +103,8 @@
                             "
                             placeholder="Nhập từ khoá để tìm kiếm..."
                         />
-                        <div
+                        <button
+                            type="submit"
                             class="
                                 absolute
                                 top-3
@@ -132,6 +116,8 @@
                                 px-4
                                 py-1
                                 rounded-md
+                                duration-200
+                                hover:bg-yellow-600
                             "
                         >
                             <svg
@@ -149,8 +135,8 @@
                                 ></path>
                             </svg>
                             Tìm
-                        </div>
-                    </div>
+                        </button>
+                    </form>
                     <div class="mt-10 border-2 border-gray-100 rounded-md px-5">
                         <div class="border-b-2 border-gray-100 py-4 font-semibold">Được xem nhiều nhất trong tháng</div>
                         <div class="divide-y-2 divide-gray-100">

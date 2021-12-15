@@ -4,18 +4,36 @@ const cloudinaryConfig = require("../../cloudinary.config");
 const { getRandomInteger } = require("../utils/helpers");
 
 const getCloudinaryConfig = (name) => {
+    const clouds = Object.keys(cloudinaryConfig).reduce((acc, key) => {
+        const cloudsOfType = cloudinaryConfig[key];
+        // eslint-disable-next-line no-param-reassign
+        acc = {
+            ...acc,
+            ...cloudsOfType,
+        };
+        return acc;
+    }, {});
+    const cloudKeys = Object.keys(clouds);
+
     if (name) {
-        return cloudinaryConfig[name];
+        return clouds[name];
     }
-    const clouds = Object.keys(cloudinaryConfig);
-    const cloudsLength = clouds.length;
-    return cloudinaryConfig[clouds[getRandomInteger(0, cloudsLength - 1)]];
+
+    const cloudsLength = cloudKeys.length;
+
+    return clouds[cloudKeys[getRandomInteger(0, cloudsLength - 1)]];
 };
 
-const createSignature = () => {
+const createSignature = (type) => {
     const timestamp = new Date().getTime();
+
+    if (!type) {
+        // eslint-disable-next-line no-param-reassign
+        type = "estate";
+    }
+
     const cloudinaryCloud = getCloudinaryConfig();
-    const folder = "baolocre";
+    const folder = `baolocre_${type}`;
     const eager = "c_thumb,g_center,w_300|c_thumb,g_center,w_400|c_thumb,g_center,w_80";
     const configs = {
         eager,

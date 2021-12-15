@@ -23,3 +23,22 @@ a.active::after {
     @apply absolute bottom-0 left-0 w-full h-0.5;
     content: "";
 }
+
+.news-content {
+    p {
+        @apply py-2 !important;
+    }
+
+    img {
+        @apply w-full border-2 border-gray-100 rounded-md !important;
+    }
+
+    .fr-img-wrap {
+        img {
+            @apply rounded-b-none border-b-0 !important;
+        }
+        span {
+            @apply block w-full py-2 rounded-b-md bg-gray-100 text-center text-sm;
+        }
+    }
+}

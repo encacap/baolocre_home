@@ -1,6 +1,9 @@
 const removeMarkdown = require("remove-markdown");
+const { decodeHTML } = require("entities");
+const dayjs = require("dayjs");
 
 const { defaultAvatarForContact } = require("../config/config");
+const { generateImageUrl } = require("./cloudinary");
 
 const removeMarkdownFormat = (string) => removeMarkdown(string).replace(/\n/g, ". ");
 
@@ -51,9 +54,9 @@ const normalizeEstateData = (data) => {
     estate.location.long = `${street ? `${street}, ` : ""}${ward.name}, ${district.name}, ${city.name}`;
     estate.location.short = `${city.name}, ${district.name}`;
     estate.location.reservedShort = `${district.name}, ${city.name}`;
-    estate.url = `/bat-dong-san-ban/${category.slug}/${city.slug}/${district.slug}/${
-        ward.slug
-    }/${id}/${convertStringToSlug(title)}`;
+    estate.url = `/bat-dong-san-ban/${category.slug}/${city.slug}/${district.slug}/${ward.slug}/${
+        id || estate._id
+    }/${convertStringToSlug(title)}`;
     estate.breadcrumb = [
         {
             name: "Bất động sản bán",
@@ -79,29 +82,7 @@ const normalizeEstateData = (data) => {
     estate.pictures = [...pictures, { ...avatar, isAvatar: true }]
         .map((image) => {
             let results;
-            const {
-                origin,
-                name: cloudName,
-                resourceType,
-                action,
-                version,
-                folder,
-                publicId,
-                format,
-                isAvatar,
-            } = image;
-            const generateImageUrl = (options) => {
-                let url = `${origin}/${cloudName}/${resourceType}/${action}/`;
-                if (options) {
-                    url += `${options}/`;
-                }
-                url += `v${version}/`;
-                if (folder) {
-                    url += `${folder}/`;
-                }
-                url += `${publicId}.${format}`;
-                return url;
-            };
+            const { origin, name: cloudName, resourceType, publicId, format, isAvatar } = image;
             const generateVideoImageUrl = () => `${origin}/${cloudName}/${publicId}/${format}`;
             const generateYoutubeVideoUrl = () => `https://www.youtube.com/watch?v=${publicId}`;
             if (resourceType !== "image") {
@@ -122,16 +103,15 @@ const normalizeEstateData = (data) => {
                 }
                 return results;
             }
-            const originOptions = "q_auto,f_auto";
-            const thumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_300";
-            const largeThumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_400";
-            const smallThumbnailOptions = "q_auto,f_auto,c_thumb,g_center,w_80";
+            const thumbnailOptions = "c_thumb,g_center,w_300";
+            const largeThumbnailOptions = "c_thumb,g_center,w_400";
+            const smallThumbnailOptions = "c_thumb,g_center,w_80";
             totalImages += 1;
             results = {
-                origin: generateImageUrl(originOptions),
-                thumbnail: generateImageUrl(thumbnailOptions),
-                largeThumbnail: generateImageUrl(largeThumbnailOptions),
-                smallThumbnail: generateImageUrl(smallThumbnailOptions),
+                origin: generateImageUrl(image),
+                thumbnail: generateImageUrl(image, { eager: thumbnailOptions }),
+                largeThumbnail: generateImageUrl(image, { eager: largeThumbnailOptions }),
+                smallThumbnail: generateImageUrl(image, { eager: smallThumbnailOptions }),
                 isAvatar,
                 type: resourceType,
             };
@@ -161,6 +141,40 @@ const normalizeEstatesData = (data) => {
     };
 };
 
+const normalizeNewsData = (data) => {
+    const news = data.toJSON?.() || data;
+    const { avatar, updatedAt, id, title, category } = news;
+    news.avatarURLs = {
+        original: generateImageUrl(avatar),
+        thumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_300" }),
+        largeThumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_400" }),
+        smallThumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_800" }),
+    };
+    news.url = `/tin-tuc/${category.slug}/${id || news._id}/${convertStringToSlug(title)}`;
+    news.friendlyUpdatedTime = dayjs(updatedAt).format("HH:mm:ss - DD/MM/YYYY");
+    news.decodedContent = decodeHTML(news.content);
+    news.breadcrumb = [
+        {
+            name: "Tin tức",
+            url: "tin-tuc",
+        },
+        {
+            name: category.name,
+            url: category.slug,
+        },
+    ];
+    return news;
+};
+
+const normalizeSomeNewsData = (data) => {
+    const { results } = data;
+    const newsData = results.map((news) => normalizeNewsData(news));
+    return {
+        ...data,
+        results: newsData,
+    };
+};
+
 const getRandomInteger = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 const getEstateProperties = (estate) => {
@@ -187,6 +201,8 @@ const getEstateProperties = (estate) => {
 module.exports = {
     normalizeEstateData,
     normalizeEstatesData,
+    normalizeSomeNewsData,
+    normalizeNewsData,
     convertStringToSlug,
     getRandomInteger,
     getEstateProperties,

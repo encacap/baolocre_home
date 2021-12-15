@@ -1,4 +1,4 @@
-<% const { contactInformation, estates } = locals %>
+<% const { contactInformation, estates, news } = locals %>
 <!DOCTYPE html>
 <html lang="vi">
     <%- include('../partials/head', { title: "Trang chủ", css: ["home"] }) %>
@@ -104,11 +104,12 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mt-0.5">
                                 <path d="M12 18v-3M10.07 2.82 3.14 8.37c-.78.62-1.28 1.93-1.11 2.91l1.33 7.96c.24 1.42 1.6 2.57 3.04 2.57h11.2c1.43 0 2.8-1.16 3.04-2.57l1.33-7.96c.16-.98-.34-2.29-1.11-2.91l-6.93-5.54c-1.07-.86-2.8-.86-3.86-.01Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
-                            <span class="ml-2 mr-3"
-                                >Loại
+                            <span class="ml-2 mr-3">
+                                Loại
                                 <span class="hidden md:inline-block">
-                                    bất động sản</span
-                                ></span
+                                    bất động sản
+                                    </span>
+                                </span
                             >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mt-0.5">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M19.92 8.95l-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"></path>
@@ -492,257 +493,12 @@
                     <div class="py-3 text-2xl md:text-4xl">Tin tức</div>
                     <div class="mx-auto mt-4 w-20 h-1 bg-encacap-main"></div>
                 </div>
-                <div
-                    class="
-                        grid
-                        md:grid-cols-2
-                        lg:grid-cols-3
-                        md:gap-5
-                        mt-10
-                        md:divide-x-2
-                        border-b-2
-                        md:border-b-0
-                        border-gray-100
-                    "
-                >
-                    <div
-                        class="
-                            md:mr-5
-                            border-b-2 border-gray-100
-                            pb-4
-                            md:border-b-0 md:pb-0
-                            hover:text-encacap-main
-                        "
-                    >
-                        <div class="h-40">
-                            <img
-                                src="/assets/images/slider/03.webp"
-                                alt="News"
-                                class="
-                                    w-full
-                                    h-full
-                                    object-cover object-center
-                                    rounded-md
-                                "
-                            />
-                        </div>
-                        <div class="pt-4">
-                            <div class="font-semibold">
-                                Cấp thiết làm đường sắt nối sân bay
-                            </div>
-                            <div
-                                class="
-                                    flex
-                                    items-center
-                                    mt-2
-                                    text-gray-500 text-sm
-                                "
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    class="w-4 mr-2"
-                                >
-                                    <path
-                                        d="M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10Z"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    ></path>
-                                    <path
-                                        d="m15.71 15.18-3.1-1.85c-.54-.32-.98-1.09-.98-1.72v-4.1"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                    </path>
-                                </svg>
-                                12/10/2021
-                            </div>
-                        </div>
-                    </div>
-                    <div class="md:pl-10 md:pr-5 divide-y-2 divide-gray-100">
-                        <div
-                            class="
-                                flex
-                                items-center
-                                py-4
-                                md:pb-2 md:pt-0
-                                hover:text-encacap-main
-                            "
-                        >
-                            <div class="w-30 h-16 mr-4">
-                                <img
-                                    src="/assets/images/slider/03.webp"
-                                    alt="News"
-                                    class="
-                                        w-full
-                                        h-full
-                                        object-cover object-center
-                                        rounded-md
-                                    "
-                                />
-                            </div>
-                            <div class="">
-                                <div class="font-semibold">
-                                    Cấp thiết làm đường sắt nối sân bay
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="
-                                flex
-                                items-center
-                                py-4
-                                md:py-2
-                                hover:text-encacap-main
-                            "
-                        >
-                            <div class="w-30 h-16 mr-4">
-                                <img
-                                    src="/assets/images/slider/03.webp"
-                                    alt="News"
-                                    class="
-                                        w-full
-                                        h-full
-                                        object-cover object-center
-                                        rounded-md
-                                    "
-                                />
-                            </div>
-                            <div class="">
-                                <div class="font-semibold">
-                                    Cấp thiết làm đường sắt nối sân bay
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="
-                                flex
-                                items-center
-                                py-4
-                                md:pt-2 md:pb-0
-                                hover:text-encacap-main
-                            "
-                        >
-                            <div class="w-30 h-16 mr-4">
-                                <img
-                                    src="/assets/images/slider/03.webp"
-                                    alt="News"
-                                    class="
-                                        w-full
-                                        h-full
-                                        object-cover object-center
-                                        rounded-md
-                                    "
-                                />
-                            </div>
-                            <div class="">
-                                <div class="font-semibold">
-                                    Cấp thiết làm đường sắt nối sân bay
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="
-                            lg:pl-10
-                            border-t-2
-                            md:hidden
-                            lg:block
-                            border-gray-100
-                            md:border-t-0
-                            divide-y-2 divide-gray-100
-                        "
-                    >
-                        <div
-                            class="
-                                flex
-                                items-center
-                                py-4
-                                md:pt-0 md:pb-2
-                                hover:text-encacap-main
-                            "
-                        >
-                            <div class="w-30 h-16 mr-4">
-                                <img
-                                    src="/assets/images/slider/03.webp"
-                                    alt="News"
-                                    class="
-                                        w-full
-                                        h-full
-                                        object-cover object-center
-                                        rounded-md
-                                    "
-                                />
-                            </div>
-                            <div class="">
-                                <div class="font-semibold">
-                                    Cấp thiết làm đường sắt nối sân bay
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="
-                                flex
-                                items-center
-                                py-4
-                                md:py-2
-                                hover:text-encacap-main
-                            "
-                        >
-                            <div class="w-30 h-16 mr-4">
-                                <img
-                                    src="/assets/images/slider/03.webp"
-                                    alt="News"
-                                    class="
-                                        w-full
-                                        h-full
-                                        object-cover object-center
-                                        rounded-md
-                                    "
-                                />
-                            </div>
-                            <div class="">
-                                <div class="font-semibold">
-                                    Cấp thiết làm đường sắt nối sân bay
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="
-                                flex
-                                items-center
-                                py-4
-                                md:py-2
-                                hover:text-encacap-main
-                            "
-                        >
-                            <div class="w-30 h-16 mr-4">
-                                <img
-                                    src="/assets/images/slider/03.webp"
-                                    alt="News"
-                                    class="
-                                        w-full
-                                        h-full
-                                        object-cover object-center
-                                        rounded-md
-                                    "
-                                />
-                            </div>
-                            <div class="">
-                                <div class="font-semibold">
-                                    Cấp thiết làm đường sắt nối sân bay
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%- include('../components/newsSpecial.ejs', {
+                    news: news.results,
+                }); %>
                 <div class="flex justify-center mt-10">
                     <a
-                        href="/real_estate_list.html"
+                        href="/tin-tuc"
                         class="
                             flex
                             items-center
@@ -756,7 +512,11 @@
                             hover:border-encacap-main hover:text-encacap-main
                         "
                     >
-                        Xem tất cả tin tức
+                        Xem thêm
+                        <span class="mx-1">
+                            <%- (news.totalResults - news.limit > 0) ? news.totalResults - news.limit : 0 %>
+                        </span>
+                        tin tức khác
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"

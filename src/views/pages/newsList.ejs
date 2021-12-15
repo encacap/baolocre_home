@@ -1,7 +1,7 @@
-<% const { contactInformation } = locals %>
+<% const { contactInformation, news, title, category, query } = locals %>
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head', { title: "Tin tức" }) %>
+    <%- include('../partials/head', { title }) %>
     <body>
         <%- include('../components/header', { activeIndex: 3, contactInformation }) %>
         <main class="mx-4 lg:mx-10 xl:mx-48 pt-4 lg:pt-10 md:pb-10">
@@ -30,17 +30,21 @@
                                 breadcrumb: [
                                     {
                                         name: "Tin tức",
-                                        url: ""
+                                        url: "tin-tuc"
                                     },
+                                    category || {}
                                 ]
                             }) %> 
-                            <div class="font-semibold text-2xl py-2">Danh sách tin tức mới nhất</div>
+                            <div class="font-semibold text-2xl py-2"><%= title %></div>
                             <div>
-                                Hiện có 123 tin tức
-                                <span class="text-gray-400"
-                                    ><span class="mx-1 md:mx-2">•</span> Đang hiển thị trang 1 trên tổng số 13
-                                    trang</span
-                                >
+                                Hiện có <%- news.totalResults %> tin tức
+                                <span class="text-gray-400">
+                                    <span class="mx-1 md:mx-2">•</span>
+                                    Đang hiển thị trang
+                                    <%- news.page %>
+                                    trên tổng số
+                                    <%- news.totalPages %> trang
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -49,17 +53,22 @@
                             grid: {
                                 mdCols: 2
                             },
-                            results: 10
+                            news: news.results
                         }) %>
                     </div>
                     <div class="flex w-full my-4 md:mt-10 md:mb-0">
-                        <%- include('../components/pagination') %>
+                        <%- include('../components/pagination', {
+                            current: news.page,
+                            total: news.totalPages,
+                        }) %>
                     </div>
                 </div>
                 <div class="hidden lg:block">
-                    <div class="relative">
+                    <form class="relative" action="/tin-tuc" method="GET">
                         <input
                             type="text"
+                            name="query"
+                            id="query"
                             class="
                                 w-full
                                 outline-none
@@ -70,8 +79,10 @@
                                 focus:ring-encacap-main
                             "
                             placeholder="Nhập từ khoá để tìm kiếm..."
+                            value="<%- query %>"
                         />
-                        <div
+                        <button
+                            type="submit"
                             class="
                                 absolute
                                 top-3
@@ -83,6 +94,8 @@
                                 px-4
                                 py-1
                                 rounded-md
+                                duration-200
+                                hover:bg-yellow-600
                             "
                         >
                             <svg
@@ -100,8 +113,8 @@
                                 ></path>
                             </svg>
                             Tìm
-                        </div>
-                    </div>
+                        </button>
+                    </form>
                     <div class="mt-10 border-2 border-gray-100 rounded-md px-5">
                         <div class="border-b-2 border-gray-100 py-4 font-semibold">Được xem nhiều nhất trong tháng</div>
                         <div class="divide-y-2 divide-gray-100">

@@ -4,7 +4,8 @@ const catchAsync = require("../utils/catchAsync");
 const { imageService } = require("../services");
 
 const createSignature = catchAsync(async (req, res) => {
-    const signature = imageService.createSignature();
+    const { type } = req.query;
+    const signature = imageService.createSignature(type);
     res.send(signature);
 });
 

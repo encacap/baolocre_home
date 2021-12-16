@@ -144,13 +144,15 @@ const normalizeEstatesData = (data) => {
 const normalizeNewsData = (data) => {
     const news = data.toJSON?.() || data;
     const { avatar, updatedAt, id, title, category } = news;
-    news.avatarURLs = {
-        original: generateImageUrl(avatar),
-        thumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_300" }),
-        largeThumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_400" }),
-        smallThumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_800" }),
-    };
-    news.url = `/tin-tuc/${category.slug}/${id || news._id}/${convertStringToSlug(title)}`;
+    if (avatar) {
+        news.avatarURLs = {
+            original: generateImageUrl(avatar),
+            thumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_300" }),
+            largeThumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_400" }),
+            smallThumbnail: generateImageUrl(avatar, { eager: "c_thumb,g_center,w_800" }),
+        };
+    }
+    news.url = `/tin-tuc/${category?.slug}/${id || news._id}/${convertStringToSlug(title)}`;
     news.friendlyUpdatedTime = dayjs(updatedAt).format("HH:mm:ss - DD/MM/YYYY");
     news.decodedContent = decodeHTML(news.content);
     news.breadcrumb = [
@@ -159,8 +161,8 @@ const normalizeNewsData = (data) => {
             url: "tin-tuc",
         },
         {
-            name: category.name,
-            url: category.slug,
+            name: category?.name,
+            url: category?.slug,
         },
     ];
     return news;

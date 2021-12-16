@@ -30,7 +30,7 @@ const getContactInformation = catchAsync(async (req, res, next) => {
 
 const renderHomePage = catchAsync(async (req, res, next) => {
     const estates = await estateService.queryEstates({}, { limit: 8 });
-    const news = await newsService.queryNews({}, { limit: 7 });
+    const news = await newsService.queryNews({ isPublished: true }, { limit: 7 });
     res.renderConfigs = {
         path: "pages/home",
         data: {
@@ -113,7 +113,10 @@ const renderNewsPage = catchAsync(async (req, res, next) => {
         filters.$text = { $search: searchQuery };
         title = `Kết quả tìm kiếm cho từ khóa '${searchQuery}'`;
     }
-    const news = await newsService.queryNews(filters, { ...options, limit: 18, sortBy: "updatedAt:desc" });
+    const news = await newsService.queryNews(
+        { ...filters, isPublished: true },
+        { ...options, limit: 18, sortBy: "updatedAt:desc" }
+    );
     res.renderConfigs = {
         path: "pages/newsList",
         data: {
@@ -135,7 +138,7 @@ const renderNewsDetailPage = catchAsync(async (req, res, next) => {
     const { id: newsId } = req.params;
     const news = await newsService.getNewsById(newsId);
     const suggestionEstates = await estateService.getRandomEstates({}, { limit: 6 });
-    const randomNews = await newsService.getRandomNews({}, { limit: 6 });
+    const randomNews = await newsService.getRandomNews({ isPublished: true }, { limit: 6 });
     res.renderConfigs = {
         path: "pages/newsDetail",
         data: {

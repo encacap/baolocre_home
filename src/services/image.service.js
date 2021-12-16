@@ -61,6 +61,9 @@ const createSignature = (type) => {
 const deleteImages = async (images) => {
     const deleteImagesByCloud = {};
     const promises = [];
+    if (images.length === 0) {
+        return images;
+    }
     images.forEach((image) => {
         const { name: cloudName } = image;
         if (!deleteImagesByCloud[cloudName]) {

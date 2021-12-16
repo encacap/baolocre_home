@@ -3,9 +3,9 @@ const { objectId } = require("./custom.validation");
 
 const createNews = {
     body: {
-        title: Joi.string().required(),
-        category: Joi.string().required(),
-        content: Joi.string().required(),
+        title: Joi.string().allow(""),
+        category: Joi.string().allow(""),
+        content: Joi.string().allow(""),
         source: Joi.string().allow(""),
         avatar: Joi.object().keys({
             origin: Joi.string(),
@@ -29,6 +29,7 @@ const createNews = {
                 format: Joi.string(),
             })
         ),
+        isPublished: Joi.boolean().default(true),
     },
 };
 
@@ -37,6 +38,8 @@ const getSomeNews = {
         page: Joi.number().allow(""),
         limit: Joi.number().allow(""),
         sortBy: Joi.string().allow(""),
+        title: Joi.string().allow(""),
+        isPublished: Joi.boolean().allow(""),
     },
 };
 
@@ -46,8 +49,26 @@ const getNews = {
     },
 };
 
+const updateNews = {
+    params: {
+        id: Joi.custom(objectId).required(),
+    },
+    body: {
+        ...createNews.body,
+        priority: Joi.number().allow(""),
+    },
+};
+
+const deleteNews = {
+    params: {
+        id: Joi.custom(objectId).required(),
+    },
+};
+
 module.exports = {
     createNews,
     getSomeNews,
     getNews,
+    updateNews,
+    deleteNews,
 };

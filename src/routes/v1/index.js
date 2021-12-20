@@ -7,6 +7,7 @@ const locationRoute = require("./location.route");
 const estateRoute = require("./estate.route");
 const imageRoute = require("./image.route");
 const newsRoute = require("./news.route");
+const configRoute = require("./config.route");
 
 const router = express.Router();
 
@@ -34,6 +35,10 @@ const defaultRoutes = [
     {
         path: "/news",
         route: newsRoute,
+    },
+    {
+        path: "/configs",
+        route: configRoute,
     },
 ];
 

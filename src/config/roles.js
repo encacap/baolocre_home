@@ -11,6 +11,8 @@ const allRoles = {
         "manageEstates",
         "getNews",
         "manageNews",
+        "getConfigs",
+        "manageConfigs",
     ],
 };
 

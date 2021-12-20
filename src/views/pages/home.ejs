@@ -1,4 +1,4 @@
-<% const { contactInformation, estates, news } = locals %>
+<% const { contactInformation, estates, news, slider } = locals %>
 <!DOCTYPE html>
 <html lang="vi">
     <%- include('../partials/head', { title: "Trang chủ", css: ["home"] }) %>
@@ -6,37 +6,25 @@
         <%- include('../components/header', { isShowMobileMenu: -1, contactInformation }) %>
         <main>
             <!-- Slider -->
-            <section class="splide">
-                <div class="splide__track">
-                    <ul class="splide__list flex items-center h-full">
-                        <li class="splide__slide">
-                            <img
-                                src="/assets/images/slider/01.jpg"
-                                alt="Slider 01"
-                                style="
-                                    width: 100%;
-                                    height: 100%;
-                                    object-fit: cover;
-                                "
-                            />
-                        </li>
-                        <li class="splide__slide h-full">
-                            <img
-                                src="/assets/images/slider/02.webp"
-                                alt="Slider 01"
-                                class="w-full object-cover"
-                            />
-                        </li>
-                        <li class="splide__slide">
-                            <img
-                                src="/assets/images/slider/03.webp"
-                                alt="Slider 01"
-                                class="w-full object-contain object-center"
-                            />
-                        </li>
-                    </ul>
-                </div>
-            </section>
+            <% if (slider.length > 0) { %>
+                <section class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list flex items-center h-full">
+                            <% slider.forEach(image => { %>
+                                <li class="splide__slide">
+                                    <img
+                                        src="<%= image.url %>"
+                                        alt="Hình ảnh giới thiêu"
+                                        class="w-full h-full object-cover"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </section>
+            <% } %>
             <!-- Search -->
             <section
                 class="

@@ -35,15 +35,6 @@ const getNews = catchAsync(async (req, res) => {
     res.status(200).json(normalizeNewsData(news));
 });
 
-const deleteNews = catchAsync(async (req, res) => {
-    const { id: newsId } = req.params;
-    const news = await newsService.getNewsById(newsId);
-    const { avatar, pictures } = news;
-    const newsPictures = [avatar, ...pictures];
-    await Promise.all([newsService.deleteNews(news), imageService.deleteImages(newsPictures)]);
-    res.status(204).end();
-});
-
 const updateNews = catchAsync(async (req, res) => {
     const { id: newsId } = req.params;
     const { category: categorySlug, isPublished } = req.body;
@@ -57,16 +48,23 @@ const updateNews = catchAsync(async (req, res) => {
     if (newsBody.avatar?.publicId !== avatar?.publicId) {
         unnecessaryPictures.push({ ...avatar });
     }
-    newsBody?.pictures?.forEach((picture) => {
-        if (pictures.some((p) => p.publicId === picture.publicId)) {
-            unnecessaryPictures.push(picture);
-        }
-    });
+    if (newsBody.pictures?.length) {
+        unnecessaryPictures.push(...pictures);
+    }
     await Promise.all([
         newsService.updateNews(news, newsBody, isPublished),
         imageService.deleteImages(unnecessaryPictures),
     ]);
     res.status(200).json(normalizeNewsData(news));
+});
+
+const deleteNews = catchAsync(async (req, res) => {
+    const { id: newsId } = req.params;
+    const news = await newsService.getNewsById(newsId);
+    const { avatar, pictures } = news;
+    const newsPictures = [avatar, ...pictures];
+    await Promise.all([newsService.deleteNews(news), imageService.deleteImages(newsPictures)]);
+    res.status(204).end();
 });
 
 module.exports = {

@@ -7,17 +7,17 @@ const {
     normalizeSomeNewsData,
     normalizeNewsData,
 } = require("../utils/helpers");
+const { generateImageUrl } = require("../utils/cloudinary");
 const pick = require("../utils/pick");
 
 const getContactInformation = catchAsync(async (req, res, next) => {
-    const contactInformation = await configService.getConfigs([
-        "youtube",
-        "facebook",
-        "zaloNumber",
-        "phoneNumber",
-        "address",
-    ]);
-    contactInformation.friendlyPhoneNumber = beautifyPhoneNumber(contactInformation.phoneNumber);
+    let contactInformation = await configService.getConfigs(["youtube", "facebook", "zalo", "phone", "address"]);
+    contactInformation = contactInformation.reduce((information, config) => {
+        // eslint-disable-next-line no-param-reassign
+        information[config.name] = config.value;
+        return information;
+    }, {});
+    contactInformation.friendlyPhoneNumber = beautifyPhoneNumber(contactInformation.phone);
     const renderConfigs = { ...res.renderConfigs };
     renderConfigs.data = {
         ...renderConfigs.data,
@@ -29,13 +29,23 @@ const getContactInformation = catchAsync(async (req, res, next) => {
 });
 
 const renderHomePage = catchAsync(async (req, res, next) => {
-    const estates = await estateService.queryEstates({}, { limit: 8 });
-    const news = await newsService.queryNews({ isPublished: true }, { limit: 7 });
+    const [estates, news, sliderConfig] = await Promise.all([
+        estateService.queryEstates({}, { limit: 8 }),
+        newsService.queryNews({ isPublished: true }, { limit: 7 }),
+        configService.getConfigs(["slider"]),
+    ]);
+    let slider = sliderConfig;
+    slider = JSON.parse(slider[0].value);
+    slider = slider.map((item) => ({
+        ...item,
+        url: generateImageUrl(item),
+    }));
     res.renderConfigs = {
         path: "pages/home",
         data: {
             estates: normalizeEstatesData(estates),
             news: normalizeSomeNewsData(news),
+            slider,
         },
     };
     next();
@@ -69,6 +79,7 @@ const renderRealEstatesPage = catchAsync(async (req, res, next) => {
                       url: category.slug,
                   }
                 : undefined,
+            searchQuery,
         },
     };
     next();
@@ -76,22 +87,26 @@ const renderRealEstatesPage = catchAsync(async (req, res, next) => {
 
 const renderRealEstatePage = catchAsync(async (req, res, next) => {
     const estate = await estateService.getEstateById(req.params.id);
-    const randomEstates = await estateService.getRandomEstates({}, { limit: 6 });
-    const sameAreaEstates = await estateService.getRandomEstates(
-        {
-            $and: [
-                { "location.district.districtId": estate.location.district.districtId },
-                { _id: { $ne: estate._id } },
-            ],
-        },
-        { limit: 6 }
-    );
+    const [randomEstates, sameAreaEstates, news] = await Promise.all([
+        estateService.getRandomEstates({}, { limit: 6 }),
+        estateService.getRandomEstates(
+            {
+                $and: [
+                    { "location.district.districtId": estate.location.district.districtId },
+                    { _id: { $ne: estate._id } },
+                ],
+            },
+            { limit: 6 }
+        ),
+        newsService.getRandomNews({ isPublished: true }, { limit: 20 }),
+    ]);
     res.renderConfigs = {
         path: "pages/realEstateDetail",
         data: {
             estate: normalizeEstateData(estate),
             randomEstates: normalizeEstatesData(randomEstates),
             sameAreaEstates: normalizeEstatesData(sameAreaEstates),
+            news: normalizeSomeNewsData(news),
         },
     };
     next();
@@ -136,9 +151,11 @@ const renderNewsPage = catchAsync(async (req, res, next) => {
 
 const renderNewsDetailPage = catchAsync(async (req, res, next) => {
     const { id: newsId } = req.params;
-    const news = await newsService.getNewsById(newsId);
-    const suggestionEstates = await estateService.getRandomEstates({}, { limit: 6 });
-    const randomNews = await newsService.getRandomNews({ isPublished: true }, { limit: 6 });
+    const [news, suggestionEstates, randomNews] = await Promise.all([
+        newsService.getNewsById(newsId),
+        estateService.getRandomEstates({}, { limit: 6 }),
+        newsService.getRandomNews({ isPublished: true }, { limit: 20 }),
+    ]);
     res.renderConfigs = {
         path: "pages/newsDetail",
         data: {

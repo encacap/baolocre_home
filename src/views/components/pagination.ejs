@@ -1,4 +1,4 @@
-<% const { current, total } = locals; %>
+<% const { current, total, query } = locals; %>
 <% if (total > 1) { %>
     <div
         class="
@@ -11,7 +11,7 @@
         "
     >
         <a
-            href="?page=<%= current - 1 %>"
+            href="?page=<%= current - 1 %><%- query ? `&query=${query}` : "" %>"
             class="
                 relative
                 inline-flex
@@ -46,7 +46,7 @@
         <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
         <% for (let i = 1; i <= total; i += 1) { %>
             <a
-                href="?page=<%= i %>"
+                href="?page=<%= i %><%- query ? `&query=${query}` : "" %>"
                 class="
                     <%- i === current ? "z-10 bg-yellow-100 border-encacap-main text-encacap-main" : "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" %>
                     relative
@@ -118,7 +118,7 @@
             ...
         </span> -->
         <a
-            href="?page=<%= current + 1 %>"
+            href="?page=<%= current + 1 %><%- query ? `&query=${query}` : "" %>"
             class="
                 relative
                 inline-flex

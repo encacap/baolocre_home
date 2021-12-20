@@ -8,5 +8,6 @@ const imageController = require("../../controllers/image.controller");
 const router = express.Router();
 
 router.route("/signature").get(auth("manageImages"), imageController.createSignature);
+router.route("/delete").post(auth("manageImages"), imageController.deleteImages);
 
 module.exports = router;

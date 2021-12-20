@@ -9,6 +9,15 @@ const createSignature = catchAsync(async (req, res) => {
     res.send(signature);
 });
 
+const deleteImages = catchAsync(async (req, res) => {
+    const { images } = req.body;
+    if (images.length > 0) {
+        await imageService.deleteImages(images);
+    }
+    res.sendStatus(204);
+});
+
 module.exports = {
     createSignature,
+    deleteImages,
 };

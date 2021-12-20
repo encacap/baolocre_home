@@ -3,3 +3,4 @@ module.exports.userController = require("./user.controller");
 module.exports.locationController = require("./location.controller");
 module.exports.estateController = require("./estate.controller");
 module.exports.newsController = require("./news.controller");
+module.exports.configController = require("./config.controller");

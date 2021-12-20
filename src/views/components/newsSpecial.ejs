@@ -106,7 +106,7 @@
                     />
                 </div>
                 <div class="">
-                    <div class="font-semibold">
+                    <div class="font-semibold line-clamp-2">
                         <%= newsItem.title %>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
     <% if (newsLength > 1) { %>
         <div
             class="
-                lg:pl-3
+                lg:pl-6
                 border-t-2
                 md:hidden
                 lg:block
@@ -131,7 +131,7 @@
             const newsItems = news.splice(0, 3);
             newsItems.forEach((newsItem) => {
         %>
-            <a
+        <a
                 href="<%= newsItem.url %>"
                 class="
                     flex
@@ -140,16 +140,7 @@
                     hover:text-encacap-main
                 "
             >
-            <div
-                class="
-                    flex
-                    items-center
-                    py-4
-                    md:pt-0 md:pb-2
-                    hover:text-encacap-main
-                "
-            >
-                <div class="flex-shrink-0 w-30 h-16 mr-4">
+                <div class="flex-shrink-0 w-24 h-16 mr-4">
                     <img
                         src="<%= newsItem.avatarURLs.thumbnail %>"
                         alt="<%= newsItem.title %>"
@@ -162,11 +153,10 @@
                     />
                 </div>
                 <div class="">
-                    <div class="font-semibold">
+                    <div class="font-semibold line-clamp-2">
                         <%= newsItem.title %>
                     </div>
                 </div>
-            </div>
             </a>
         <% }) %>
         </div>

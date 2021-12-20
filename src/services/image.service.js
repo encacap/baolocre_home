@@ -77,7 +77,6 @@ const deleteImages = async (images) => {
     Object.keys(deleteImagesByCloud).forEach((cloudName) => {
         const deletedImages = deleteImagesByCloud[cloudName];
         const imagesIds = deletedImages.map((image) => image.publicId);
-        console.log(cloudName);
         const cloud = getCloudinaryConfig(cloudName);
         cloudinary.config({
             cloud_name: cloud.name,

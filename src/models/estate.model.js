@@ -192,6 +192,8 @@ const estateSchema = mongoose.Schema(
     }
 );
 
+estateSchema.index({ title: "text" });
+
 estateSchema.plugin(toJSON);
 estateSchema.plugin(paginate);
 

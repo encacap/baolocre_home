@@ -81,7 +81,9 @@
                     Tìm kiếm bất động sản
                 </div>
                 <div class="py-5 md:py-6">
-                    <div
+                    <form
+                        action="/bat-dong-san-ban"
+                        method="get"
                         class="
                             flex
                             mx-4
@@ -91,7 +93,7 @@
                             bg-gray-100
                         "
                     >
-                        <div
+                        <!-- <div
                             class="
                                 hidden
                                 md:flex
@@ -114,7 +116,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 mt-0.5">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M19.92 8.95l-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"></path>
                             </svg>
-                        </div>
+                        </div> -->
                         <div class="flex-1 relative">
                             <input
                                 type="text"
@@ -123,18 +125,18 @@
                                     h-full
                                     outline-none
                                     rounded-md
-                                    md:rounded-l-none
                                     bg-transparent
                                     px-4
                                     py-3.5
                                     focus:ring-2
                                     ring-encacap-main
                                 "
-                                name="search"
-                                id="search"
+                                name="query"
+                                id="query"
                                 placeholder="Tìm kiếm địa điểm, khu vực, ..."
                             />
                             <button
+                                type="submit"
                                 class="
                                     flex
                                     items-center
@@ -160,8 +162,8 @@
                                 >
                             </button>
                         </div>
-                    </div>
-                    <div
+                    </form>
+                    <!-- <div
                         class="
                             hidden
                             md:grid
@@ -220,7 +222,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M19.92 8.95l-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"></path>
                             </svg>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <!-- Category -->

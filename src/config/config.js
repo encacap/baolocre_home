@@ -8,6 +8,7 @@ const envVarsSchema = Joi.object()
     .keys({
         NODE_ENV: Joi.string().valid("production", "development", "test").required(),
         PORT: Joi.number().default(3000),
+        URL: Joi.string().required(),
         MONGODB_URL: Joi.string().required().description("Mongo DB url"),
         DEFAULT_AVATAR: Joi.string().required().description("Default avatar for contact in realEstateDetail"),
         GHN_TOKEN: Joi.string().required().description("GHN token"),
@@ -28,6 +29,9 @@ const envVarsSchema = Joi.object()
         CLOUDINARY_NAME: Joi.string().description("cloudinary cloud name"),
         CLOUDINARY_KEY: Joi.string().description("cloudinary api key"),
         CLOUDINARY_SECRET: Joi.string().description("cloudinary secret"),
+        SEO_DESCRIPTION: Joi.string().description("SEO description"),
+        SEO_IMAGE: Joi.string().description("SEO image"),
+        SEO_SITE: Joi.string().description("SEO site"),
     })
     .unknown();
 
@@ -40,6 +44,7 @@ if (error) {
 module.exports = {
     env: envVars.NODE_ENV,
     port: envVars.PORT,
+    url: envVars.URL,
     mongoose: {
         url: envVars.MONGODB_URL + (envVars.NODE_ENV === "test" ? "-test" : ""),
         options: {
@@ -72,5 +77,10 @@ module.exports = {
         name: envVars.CLOUDINARY_NAME,
         key: envVars.CLOUDINARY_KEY,
         secret: envVars.CLOUDINARY_SECRET,
+    },
+    SEO: {
+        description: envVars.SEO_DESCRIPTION,
+        image: envVars.SEO_IMAGE,
+        site: envVars.SEO_SITE,
     },
 };

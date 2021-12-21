@@ -12,8 +12,8 @@
     },
     "scripts": {
         "start": "node src/index.js",
-        "pm2:start": "pm2 start ecosystem.config.json --no-daemon --only production",
-        "pm2:restart": "pm2 start ecosystem.config.json --no-daemon",
+        "pm2:start": "pm2 start ecosystem.config.js --no-daemon --only production",
+        "pm2:restart": "pm2 start ecosystem.config.js --no-daemon",
         "dev": "cross-env NODE_ENV=development nodemon src/index.js",
         "dev:nomailer": "cross-env NODE_ENV=development nodemon src/index.js --nomailer",
         "postcss": "postcss ./src/resources/css/app.css ./src/resources/css/home.css ./src/resources/css/real_estate_detail.css -d ./src/assets/css/ --map --ext .min.css",

@@ -1,0 +1,20 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# VSCode settings and keybindings
+.vscode
+
+# Build folder and unnessasary tracking resources
+dist
+src/assets/css
+src/assets/js
+
+# Environment varibales
+.env*
+!.env*.example
+cloudinary.config.js
+ecosystem.config.js
+
+# Database
+*.data.json

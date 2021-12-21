@@ -14,7 +14,7 @@ src/assets/js
 .env*
 !.env*.example
 cloudinary.config.js
-ecosystem.config.json
+ecosystem.config.js
 
 # Database
 *.data.json

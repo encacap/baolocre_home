@@ -1,4 +1,4 @@
 module.exports = {
     excludeFiles: ["estates.data.json", "LICENSE"],
-    includeFiles: [".gitignore"],
+    includeFiles: [".gitignore", "package.json", "README.md"],
 };

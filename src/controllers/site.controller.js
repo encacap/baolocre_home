@@ -1,4 +1,5 @@
 const catchAsync = require("../utils/catchAsync");
+const ENVConfig = require("../config/config");
 const { configService, estateService, newsService } = require("../services");
 const { beautifyPhoneNumber } = require("../utils/beautifyString");
 const {
@@ -19,9 +20,17 @@ const getContactInformation = catchAsync(async (req, res, next) => {
     }, {});
     contactInformation.friendlyPhoneNumber = beautifyPhoneNumber(contactInformation.phone);
     const renderConfigs = { ...res.renderConfigs };
+    const SEO = renderConfigs?.data?.SEO || {};
+    const defaultSEO = ENVConfig.SEO;
+    defaultSEO.url = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
+    defaultSEO.image = `${ENVConfig.url}${defaultSEO.image}`;
     renderConfigs.data = {
         ...renderConfigs.data,
         contactInformation,
+        SEO: {
+            ...defaultSEO,
+            ...SEO,
+        },
     };
     res.renderConfigs = renderConfigs;
     next();
@@ -86,7 +95,8 @@ const renderRealEstatesPage = catchAsync(async (req, res, next) => {
 });
 
 const renderRealEstatePage = catchAsync(async (req, res, next) => {
-    const estate = await estateService.getEstateById(req.params.id);
+    let estate = await estateService.getEstateById(req.params.id);
+    estate = normalizeEstateData(estate);
     const [randomEstates, sameAreaEstates, news] = await Promise.all([
         estateService.getRandomEstates({}, { limit: 6 }),
         estateService.getRandomEstates(
@@ -103,10 +113,14 @@ const renderRealEstatePage = catchAsync(async (req, res, next) => {
     res.renderConfigs = {
         path: "pages/realEstateDetail",
         data: {
-            estate: normalizeEstateData(estate),
+            estate,
             randomEstates: normalizeEstatesData(randomEstates),
             sameAreaEstates: normalizeEstatesData(sameAreaEstates),
             news: normalizeSomeNewsData(news),
+            SEO: {
+                description: estate.plainDescription,
+                image: estate.avatar.origin || estate.avatar.original,
+            },
         },
     };
     next();
@@ -156,12 +170,17 @@ const renderNewsDetailPage = catchAsync(async (req, res, next) => {
         estateService.getRandomEstates({}, { limit: 6 }),
         newsService.getRandomNews({ isPublished: true }, { limit: 20 }),
     ]);
+    const newsData = normalizeNewsData(news);
     res.renderConfigs = {
         path: "pages/newsDetail",
         data: {
-            news: normalizeNewsData(news),
+            news: newsData,
             suggestionEstates: normalizeEstatesData(suggestionEstates),
             randomNews: normalizeSomeNewsData(randomNews),
+        },
+        SEO: {
+            description: newsData.plainDescription,
+            image: newsData.avatarURLs.original,
         },
     };
     next();

@@ -44,11 +44,15 @@ const renderHomePage = catchAsync(async (req, res, next) => {
         configService.getConfigs(["slider"]),
     ]);
     let slider = sliderConfig;
-    slider = JSON.parse(slider[0].value);
-    slider = slider.map((item) => ({
-        ...item,
-        url: generateImageUrl(item),
-    }));
+    if (slider) {
+        slider = JSON.parse(slider[0].value);
+        slider = slider.map((item) => ({
+            ...item,
+            url: generateImageUrl(item),
+        }));
+    } else {
+        slider = [];
+    }
     res.renderConfigs = {
         path: "pages/home",
         data: {

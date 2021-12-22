@@ -1,6 +1,6 @@
 const catchAsync = require("../utils/catchAsync");
 const ENVConfig = require("../config/config");
-const { configService, estateService, newsService } = require("../services");
+const { configService, estateService, newsService, sitemapService } = require("../services");
 const { beautifyPhoneNumber } = require("../utils/beautifyString");
 const {
     normalizeEstateData,
@@ -190,6 +190,16 @@ const renderNewsDetailPage = catchAsync(async (req, res, next) => {
     next();
 });
 
+const renderSitemap = catchAsync(async (req, res) => {
+    const estates = await estateService.queryEstates({ isPublished: true }, { limit: 1000000 });
+    const newsArray = await newsService.queryNews({ isPublished: true }, { limit: 1000000 });
+    const estateData = normalizeEstatesData(estates);
+    const newsData = normalizeSomeNewsData(newsArray);
+    const sitemap = await sitemapService.generateSitemap(ENVConfig.url, estateData.results, newsData.results);
+    res.set("Content-Type", "text/xml");
+    res.send(sitemap);
+});
+
 module.exports = {
     renderHomePage,
     renderRealEstatesPage,
@@ -197,4 +207,5 @@ module.exports = {
     renderNewsPage,
     renderNewsDetailPage,
     getContactInformation,
+    renderSitemap,
 };

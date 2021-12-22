@@ -1,8 +1,8 @@
 <%
-    const { css, SEO } = locals;
-    const siteName = SEO.site;
+    const { css } = locals;
+    const SEO = locals.SEO || {};
+    const { description, image, url, publishedTime, modifiedTime, site: siteName } = SEO;
     const title = `${locals.title} - ${siteName}`;
-    const { description, image, url, publishedTime, modifiedTime } = SEO;
 %>
 <head>
     <meta charset="UTF-8" />

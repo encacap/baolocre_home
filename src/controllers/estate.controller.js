@@ -1,5 +1,5 @@
 const httpStatus = require("http-status");
-const ThrowError = require("../utils/ThrowError");
+const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
 const pick = require("../utils/pick");
 const { locationService, estateService, imageService } = require("../services");
@@ -62,7 +62,7 @@ const getEstate = catchAsync(async (req, res) => {
         estate = await estateService.getEstateByCustomId(estateId);
     }
     if (!estate) {
-        throw new ThrowError(httpStatus.NOT_FOUND, "Estate not found");
+        throw new ApiError(httpStatus.NOT_FOUND, "Estate not found");
     }
     res.json(normalizeEstateData(estate));
 });

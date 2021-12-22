@@ -7,3 +7,5 @@ module.exports.estateService = require("./estate.service");
 module.exports.locationService = require("./location.service");
 module.exports.imageService = require("./image.service");
 module.exports.newsService = require("./news.service");
+module.exports.sitemapService = require("./sitemap.service");
+module.exports.categoryService = require("./category.service");

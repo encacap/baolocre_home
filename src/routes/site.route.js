@@ -12,6 +12,8 @@ router.get("/tin-tuc/:category/:id/:slug", siteController.renderNewsDetailPage);
 router.get("/tin-tuc/:category", siteController.renderNewsPage);
 router.get("/tin-tuc", siteController.renderNewsPage);
 
+router.get("/sitemap.xml", siteController.renderSitemap);
+
 router.get("/", siteController.renderHomePage);
 
 router.use(siteController.getContactInformation);

@@ -21,6 +21,7 @@ const errorConverter = (err, req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
     let { statusCode, message } = err;
+    const { isAPI } = err;
     if (config.env === "production" && !err.isOperational) {
         statusCode = httpStatus.INTERNAL_SERVER_ERROR;
         message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
@@ -40,9 +41,15 @@ const errorHandler = (err, req, res, next) => {
 
     res.status(statusCode);
 
-    if (statusCode === httpStatus.NOT_FOUND) {
-        res.render("errors/404");
-        return;
+    if (!isAPI) {
+        if (statusCode === httpStatus.NOT_FOUND) {
+            res.render("errors/404");
+            return;
+        }
+        if (statusCode === httpStatus.INTERNAL_SERVER_ERROR) {
+            res.render("errors/500");
+            return;
+        }
     }
 
     res.send(response);

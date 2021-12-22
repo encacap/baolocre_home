@@ -64,6 +64,8 @@ const getCategoryBySlug = (slug) => {
 
 const updateEstateById = async (estateId, estateBody) => {
     const estate = await getEstateById(estateId);
+    // eslint-disable-next-line no-param-reassign
+    delete estateBody._id;
     Object.assign(estate, estateBody);
     await estate.save();
     return estate;

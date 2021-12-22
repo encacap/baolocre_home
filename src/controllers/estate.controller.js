@@ -3,7 +3,7 @@ const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
 const pick = require("../utils/pick");
 const { locationService, estateService, imageService } = require("../services");
-const { getEstateProperties, normalizeEstatesData, normalizeEstateData } = require("../utils/helpers");
+const { getEstateProperties, normalizeEstatesData } = require("../utils/helpers");
 const { isMongoObjectId } = require("../utils/validator");
 
 const createEstate = catchAsync(async (req, res) => {
@@ -64,12 +64,33 @@ const getEstate = catchAsync(async (req, res) => {
     if (!estate) {
         throw new ApiError(httpStatus.NOT_FOUND, "Estate not found");
     }
-    res.json(normalizeEstateData(estate));
+    res.json(estate);
 });
 
 const updateEstate = catchAsync(async (req, res) => {
-    const estate = await estateService.updateEstateById(req.params.id, req.body);
-    res.json(estate);
+    const { id: estateId } = req.params;
+    const { body: estateBody } = req;
+    const estate = await estateService.getEstateById(estateId);
+    const { avatar, pictures } = estate;
+    const { avatar: updatedAvatar, pictures: updatedPictures } = estateBody;
+    const { category: categorySlug } = estateBody;
+    const category = estateService.getCategoryBySlug(categorySlug);
+    estateBody.category = category;
+    const unnecessaryPictures = [];
+    if (avatar.publicId !== updatedAvatar.publicId) {
+        unnecessaryPictures.push(avatar);
+    }
+    pictures.forEach((picture) => {
+        const { publicId } = picture;
+        if (!updatedPictures.find((updatedPicture) => updatedPicture.publicId === publicId)) {
+            unnecessaryPictures.push(picture);
+        }
+    });
+    const [updatedEstate] = await Promise.all([
+        estateService.updateEstateById(estateId, estateBody),
+        imageService.deleteImages(unnecessaryPictures),
+    ]);
+    res.json(updatedEstate);
 });
 
 const deleteEstate = catchAsync(async (req, res) => {

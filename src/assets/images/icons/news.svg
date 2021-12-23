@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
+    <path fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" d="M3.5,6.5h-3V19c0,0.8,0.7,1.5,1.5,1.5h20c0.8,0,1.5-0.7,1.5-1.5V3.5h-20V19     c0,0.8-0.7,1.5-1.5,1.5" />
+    <path fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" d="M5.5,10.5v-4h1c0.6,0,1,0.4,1,1v3" />
+    <polyline fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" points="11.5 6.5 9.5 6.5 9.5 10.5 11.5 10.5" />
+    <line x1="9.5" x2="11" y1="8.5" y2="8.5" stroke-width="0.7" fill="none" stroke="#004a79" stroke-linecap="round" stroke-linejoin="round" />
+    <polyline fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" points="13.5 6.5 13.5 9 14.5 10.5 15.5 9 15.5 6.5" />
+    <polyline fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" points="15.5 6.5 15.5 9 16.5 10.5 17.5 9 17.5 6.5" />
+    <path fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" d="M21.5,6.5h-1c-0.6,0-1,0.4-1,1l0,0c0,0.6,0.4,1,1,1l0,0c0.6,0,1,0.4,1,1l0,0c0,0.6-0.4,1-1,1      h-1" />
+    <rect width="7" height="5" x="5.5" y="12.5" fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" />
+    <line x1="14.5" x2="21.5" y1="13.5" y2="13.5" fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" />
+    <line x1="14.5" x2="21.5" y1="15.5" y2="15.5" fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" />
+    <line x1="14.5" x2="21.5" y1="17.5" y2="17.5" fill="none" stroke="#004a79" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

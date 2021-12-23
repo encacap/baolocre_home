@@ -99,7 +99,7 @@ const normalizeEstateData = (data) => {
                 };
                 if (isAvatar) {
                     estate.avatar = results;
-                    return [];
+                    return {};
                 }
                 return results;
             }
@@ -121,7 +121,7 @@ const normalizeEstateData = (data) => {
             }
             return results;
         })
-        .filter((picture) => picture);
+        .filter((picture) => picture?.origin);
     if (!estate.avatar) {
         estate.avatar = estate.pictures.shift();
     }

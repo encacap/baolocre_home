@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         home: ["./src/resources/js/home.js"],
         real_estate_detail: ["./src/resources/js/realEstateDetail.js"],
+        zalo: ["./src/resources/js/zalo.js"],
     },
     output: {
         filename: "[name].min.js",

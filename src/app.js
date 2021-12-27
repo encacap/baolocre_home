@@ -29,10 +29,10 @@ app.use(
             useDefaults: false,
             directives: {
                 defaultSrc: ["'self' 'unsafe-inline'"],
-                scriptSrc: ["'self'", "unpkg.com", "www.youtube.com"],
-                connectSrc: ["'self'", "unpkg.com"],
+                scriptSrc: ["'self'", "unpkg.com", "www.youtube.com", "stc.za.zaloapp.com"],
+                connectSrc: ["'self'", "unpkg.com", "za.zalo.me", "sp.zalo.me"],
                 imgSrc: ["'self'", "res.cloudinary.com", "www.youtube.com", "img.youtube.com", "data:"],
-                frameSrc: ["'self'", "www.youtube.com"],
+                frameSrc: ["'self'", "www.youtube.com", "sp.zalo.me"],
                 objectSrc: ["'none'"],
                 upgradeInsecureRequests: [],
             },

@@ -41,6 +41,29 @@ const renderSplide = () => {
     thumbnails.mount();
 };
 
+const handleZaloShare = () => {
+    const realZaloShareButton = document.querySelector(".zalo-share-button");
+    const maskZaloShareButton = document.querySelector("#zalo_share");
+    maskZaloShareButton.onclick = () => {
+        realZaloShareButton.click();
+    };
+    realZaloShareButton.style.display = "none";
+};
+
+const handleFacebookShare = () => {
+    const facebookShareButton = document.querySelector("#facebook_share");
+    facebookShareButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.open(
+            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`,
+            "sharer",
+            "width=626,height=436"
+        );
+    });
+};
+
 (() => {
     renderSplide();
+    handleZaloShare();
+    handleFacebookShare();
 })();

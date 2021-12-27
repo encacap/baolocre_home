@@ -14,8 +14,8 @@
             <% if (typeof file === "string") { %>
                 <link rel="stylesheet" href="/assets/css/<%= file %>.min.css" />
             <% } else { %>
-                <% const {fileName, version} = file %> 
-                <link rel="stylesheet" href="/assets/css/<%= fileName %>.min.css?version=<%= version %>" />
+                <% const {name, version} = file %> 
+                <link rel="stylesheet" href="/assets/css/<%= name %>.min.css?version=<%= version %>" />
             <% } %>
         <% }) %> 
     <% } %>

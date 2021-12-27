@@ -31,6 +31,10 @@
     }
 }
 
+.zalo-share-button {
+    @apply absolute top-0 left-0 z-0 invisible w-full h-full bg-gray-50 !important;
+}
+
 @media (max-width: 1024px) {
     .splide__slide {
         --height: 320px;

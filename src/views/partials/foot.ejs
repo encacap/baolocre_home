@@ -1,9 +1,9 @@
 <% const { js } = locals %>
-<% const renderScriptTag = (path, type) => { %>
+<% const renderScriptTag = (path, type, version = "1.0.0") => { %>
     <% if (type === 'module') { %>
-        <script src="<%= path %>" type="module" defer></script>
+        <script src="<%= path %>?version=<%= version %>" type="module" defer></script>
     <% } else { %>
-        <script src="<%= path %>" defer></script>
+        <script src="<%= path %>?version=<%= version %>" defer></script>
     <% } %> 
 <% } %> 
 <% if (js?.length > 0) { %>
@@ -17,13 +17,13 @@
                 <% renderScriptTag(`/assets/js/${file}.min.js`) %>
             <% } %>
         <% } else { %>
-            <% const {src, type} = file %>
-            <% if (src.includes("http") || src.includes("https")) { %>
-                <% renderScriptTag(src, type) %>
-            <% } else if (src.includes(".js")) { %>
-                <% renderScriptTag(`/assets/js/${src}`, type) %>
+            <% const {name, type, version} = file %>
+            <% if (name.includes("http") || name.includes("https")) { %>
+                <% renderScriptTag(name, type, version) %>
+            <% } else if (name.includes(".js")) { %>
+                <% renderScriptTag(`/assets/js/${name}`, type, version) %>
             <% } else { %>
-                <% renderScriptTag(`/assets/js/${src}.min.js`, type) %>
+                <% renderScriptTag(`/assets/js/${name}.min.js`, type, version) %>
             <% } %>
         <% } %>
     <% }) %>

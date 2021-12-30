@@ -7,7 +7,7 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head', { title: estate.title, css: [{name: "real_estate_detail", version: "211227"}] }) %>
+    <%- include('../partials/head', { title: estate.title, css: [{name: "real_estate_detail", version: "211227"}], estate, contactInformation }) %>
     <body class="overflow-x-hidden">
         <%- include('../components/header', { activeIndex: 2, contactInformation }) %>
         <main class="mx-4 lg:mx-10 xl:mx-48 pt-4 lg:pt-10 pb-10">

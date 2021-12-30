@@ -5,19 +5,6 @@ const { toJSON, paginate } = require("./plugins");
 const Counter = require("./counter.model");
 
 const estateSchema = mongoose.Schema(
-    /**
-     *  avatar: {
-            origin: 'http://res.cloudinary.com',
-            type: 'image',
-            cloudName: 'encacap',
-            action: 'upload',
-            version: 1638953981,
-            publicId: 'baolocre/v1krjdi3ec8trfbrybqs',
-            format: 'png'
-        },
-        pictures: [],
-        description: '',
-     */
     {
         customId: {
             type: String,
@@ -192,7 +179,7 @@ const estateSchema = mongoose.Schema(
     }
 );
 
-estateSchema.index({ title: "text" });
+estateSchema.index({ title: "text", customId: "text" });
 
 estateSchema.plugin(toJSON);
 estateSchema.plugin(paginate);

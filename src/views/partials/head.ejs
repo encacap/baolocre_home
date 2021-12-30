@@ -1,8 +1,14 @@
 <%
-    const { css } = locals;
+    const { css, estate, contactInformation } = locals;
     const SEO = locals.SEO || {};
-    const { description, image, url, publishedTime, modifiedTime, site: siteName } = SEO;
+    const { image, url, publishedTime, modifiedTime, site: siteName } = SEO;
+    let { description } = SEO;
     const title = `${locals.title} - ${siteName}`;
+
+    if (estate) {
+        const { location, price } = estate;
+        description = `Giá bán: ${price}. Vị trí: ${location.long}. ${description}. Điện thoại: ${contactInformation.phone}. Địa chỉ: ${contactInformation.address}`;
+    }
 %>
 <head>
     <meta charset="UTF-8" />

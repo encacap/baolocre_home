@@ -9,8 +9,7 @@ const removeFroalaCopyright = (description) => {
     if (!description) return "";
     const standardDescription = description;
     if (standardDescription.includes("Powered by")) {
-        console.log(standardDescription);
-        const startIndex = standardDescription.lastIndexOf(`&lt;p>&lt;p data-f-id="pbf"`);
+        const startIndex = standardDescription.lastIndexOf(`&lt;p data-f-id="pbf"`);
         return standardDescription.substring(0, startIndex);
     }
     return standardDescription;

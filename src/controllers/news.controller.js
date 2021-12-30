@@ -3,11 +3,12 @@
 const catchAsync = require("../utils/catchAsync");
 const pick = require("../utils/pick");
 const { newsService, imageService } = require("../services");
-const { normalizeSomeNewsData, normalizeNewsData } = require("../utils/helpers");
+const { normalizeSomeNewsData, normalizeNewsData, removeFroalaCopyright } = require("../utils/helpers");
 
 const createNews = catchAsync(async (req, res) => {
     const { isPublished } = req.body;
     const newsBody = pick(req.body, ["title", "content", "avatar", "pictures", "source", "category", "isPublished"]);
+    newsBody.content = removeFroalaCopyright(newsBody.content);
     let category = {};
     if (newsBody.category) category = newsService.getCategoryBySlug(newsBody.category);
     const news = await newsService.createNews({ ...newsBody, category }, isPublished);
@@ -42,6 +43,7 @@ const updateNews = catchAsync(async (req, res) => {
     const { avatar, pictures } = news;
     const unnecessaryPictures = [];
     const newsBody = pick(req.body, ["title", "content", "avatar", "pictures", "source", "isPublished"]);
+    newsBody.content = removeFroalaCopyright(newsBody.content);
     if (isPublished) {
         newsBody.category = newsService.getCategoryBySlug(categorySlug);
     }

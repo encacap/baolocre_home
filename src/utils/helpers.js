@@ -5,6 +5,17 @@ const dayjs = require("dayjs");
 const { defaultAvatarForContact } = require("../config/config");
 const { generateImageUrl } = require("./cloudinary");
 
+const removeFroalaCopyright = (description) => {
+    if (!description) return "";
+    const standardDescription = description;
+    if (standardDescription.includes("Powered by")) {
+        const startIndex = standardDescription.indexOf(`<p data-f-id="pbf"`);
+        const endIndex = standardDescription.indexOf("</p>");
+        return standardDescription.substring(0, startIndex) + standardDescription.substring(endIndex + 4);
+    }
+    return standardDescription;
+};
+
 const removeHTMLFormat = (string) => (string ? striptags(string).replace(/\n/g, ". ") : "");
 
 const convertStringToSlug = (string) => {
@@ -210,4 +221,5 @@ module.exports = {
     convertStringToSlug,
     getRandomInteger,
     getEstateProperties,
+    removeFroalaCopyright,
 };

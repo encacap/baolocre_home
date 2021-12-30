@@ -3,7 +3,7 @@ const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
 const pick = require("../utils/pick");
 const { locationService, estateService, imageService } = require("../services");
-const { getEstateProperties, normalizeEstatesData } = require("../utils/helpers");
+const { getEstateProperties, normalizeEstatesData, removeFroalaCopyright } = require("../utils/helpers");
 const { isMongoObjectId } = require("../utils/validator");
 
 const createEstate = catchAsync(async (req, res) => {
@@ -16,6 +16,7 @@ const createEstate = catchAsync(async (req, res) => {
         street,
         contact_name: contactName,
         contact_phone: contactPhone,
+        description,
     } = req.body;
     const [city, district, ward] = await Promise.all([
         locationService.getCityById(cityId),
@@ -38,6 +39,7 @@ const createEstate = catchAsync(async (req, res) => {
             name: contactName,
             phone: contactPhone,
         },
+        description: removeFroalaCopyright(description),
     };
     const estate = await estateService.createEstate(estateBody);
     res.status(201).json(estate);
@@ -72,10 +74,11 @@ const updateEstate = catchAsync(async (req, res) => {
     const { body: estateBody } = req;
     const estate = await estateService.getEstateById(estateId);
     const { avatar, pictures } = estate;
-    const { avatar: updatedAvatar, pictures: updatedPictures } = estateBody;
+    const { avatar: updatedAvatar, pictures: updatedPictures, description } = estateBody;
     const { category: categorySlug } = estateBody;
     const category = estateService.getCategoryBySlug(categorySlug);
     estateBody.category = category;
+    estateBody.description = removeFroalaCopyright(description);
     const unnecessaryPictures = [];
     if (avatar.publicId !== updatedAvatar.publicId) {
         unnecessaryPictures.push(avatar);

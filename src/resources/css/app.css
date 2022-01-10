@@ -72,11 +72,11 @@ a.active::after {
     }
 
     ul {
-        @apply px-10 list-disc;
+        @apply px-5 list-disc;
     }
 
     ol {
-        @apply px-10 list-decimal;
+        @apply px-5 list-decimal;
     }
 
     a {

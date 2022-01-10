@@ -1,6 +1,7 @@
-const { decodeHTML } = require("entities");
-const striptags = require("striptags");
 const dayjs = require("dayjs");
+const showdown = require("showdown");
+const removeMarkdown = require("remove-markdown");
+const { decodeHTML } = require("entities");
 
 const { defaultAvatarForContact } = require("../config/config");
 const { generateImageUrl } = require("./cloudinary");
@@ -15,7 +16,12 @@ const removeFroalaCopyright = (description) => {
     return standardDescription;
 };
 
-const removeHTMLFormat = (string) => (string ? striptags(string).replace(/\n/g, ". ") : "");
+const removeMarkdownFormat = (string) => (string ? removeMarkdown(string) : "");
+
+const convertMarkdownToHTML = (markdown) => {
+    const converter = new showdown.Converter();
+    return converter.makeHtml(markdown);
+};
 
 const convertStringToSlug = (string) => {
     let slug = string.toLowerCase();
@@ -44,7 +50,7 @@ const normalizeEstateData = (data) => {
     const estate = data.toJSON?.() || data;
     const { id, estateId, title, category, price, area, properties, location, pictures, avatar, contact } = estate;
     let { description = "" } = estate;
-    description = decodeHTML(description);
+    description = convertMarkdownToHTML(description);
     const { city, district, ward, street } = location;
     const { avatar: contactAvatar, name, phone, zalo, email } = contact;
     let totalVideos = 0;
@@ -62,7 +68,7 @@ const normalizeEstateData = (data) => {
     estate.price = normalizeSquareAreaString(price);
     estate.area = normalizeSquareAreaString(`${area}m2`);
     estate.description = description;
-    estate.plainDescription = removeHTMLFormat(description);
+    estate.plainDescription = removeMarkdownFormat(description);
     estate.location.long = `${street ? `${street}, ` : ""}${ward.name}, ${district.name}, ${city.name}`;
     estate.location.short = `${city.name}, ${district.name}`;
     estate.location.reservedShort = `${district.name}, ${city.name}`;

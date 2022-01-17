@@ -19,11 +19,11 @@ const createEstate = catchAsync(async (req, res) => {
         description,
     } = req.body;
     const [city, district, ward] = await Promise.all([
-        locationService.getCityById(cityId),
-        locationService.getDistrictById(districtId),
-        locationService.getWardById(wardId),
+        cityId && locationService.getCityById(cityId),
+        districtId && locationService.getDistrictById(districtId),
+        wardId && locationService.getWardById(wardId),
     ]);
-    const category = estateService.getCategoryBySlug(categorySlug);
+    const category = estateService.getCategoryBySlug(categorySlug, false);
     const estateBody = {
         ...req.body,
         customId,
@@ -46,13 +46,17 @@ const createEstate = catchAsync(async (req, res) => {
 });
 
 const getEstates = catchAsync(async (req, res) => {
-    const filters = pick(req.query, ["customId"]);
+    const filters = pick(req.query, ["customId", "isPublished"]);
     const options = pick(req.query, ["limit", "page", "sortBy"]);
     if (filters.customId) {
         filters.customId = { $regex: filters.customId, $options: "i" };
     }
     const estates = await estateService.queryEstates(filters, options);
-    res.json(normalizeEstatesData(estates));
+    if (filters.isPublished) {
+        res.json(normalizeEstatesData(estates));
+    } else {
+        res.json(estates);
+    }
 });
 
 const getEstate = catchAsync(async (req, res) => {
@@ -74,11 +78,40 @@ const updateEstate = catchAsync(async (req, res) => {
     const { body: estateBody } = req;
     const estate = await estateService.getEstateById(estateId);
     const { avatar, pictures } = estate;
-    const { avatar: updatedAvatar, pictures: updatedPictures, description } = estateBody;
+    const { avatar: updatedAvatar, pictures: updatedPictures } = estateBody;
     const { category: categorySlug } = estateBody;
-    const category = estateService.getCategoryBySlug(categorySlug);
+    const category = estateService.getCategoryBySlug(categorySlug, false);
+    const { city: cityId, district: districtId, ward: wardId, street } = estateBody;
+    const [city, district, ward] = await Promise.all([
+        cityId && locationService.getCityById(cityId),
+        districtId && locationService.getDistrictById(districtId),
+        wardId && locationService.getWardById(wardId),
+    ]);
+    estateBody.location = { street };
+
+    if (city) {
+        estateBody.location.city = {
+            cityId: city._id,
+            name: city.name,
+            slug: city.slug,
+        };
+    }
+    if (district) {
+        estateBody.location.district = {
+            districtId: district._id,
+            name: district.name,
+            slug: district.slug,
+        };
+    }
+    if (ward) {
+        estateBody.location.ward = {
+            wardId: ward._id,
+            name: ward.name,
+            slug: ward.slug,
+        };
+    }
+
     estateBody.category = category;
-    estateBody.description = removeFroalaCopyright(description);
     const unnecessaryPictures = [];
     if (avatar.publicId !== updatedAvatar.publicId) {
         unnecessaryPictures.push(avatar);

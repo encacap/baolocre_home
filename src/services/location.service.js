@@ -33,6 +33,9 @@ const getCities = async () => {
 };
 
 const getCityById = async (cityId) => {
+    if (!cityId) {
+        return null;
+    }
     const city = await City.findOne({ _id: cityId });
     if (!city) {
         throw new ThrowError(httpStatus.NOT_FOUND, "City not found");

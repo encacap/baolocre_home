@@ -40,7 +40,7 @@ const getEstateByCustomId = async (customId) => {
     return estate;
 };
 
-const getCategoryBySlug = (slug) => {
+const getCategoryBySlug = (slug, throwError = true) => {
     const categories = {
         "nghi-duong": {
             name: "Nghỉ dưỡng",
@@ -56,7 +56,7 @@ const getCategoryBySlug = (slug) => {
         },
     };
     const category = categories[slug];
-    if (!category) {
+    if (!category && throwError) {
         throw new ThrowError(httpStatus.NOT_FOUND, "Category not found");
     }
     return category;

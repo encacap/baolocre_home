@@ -39,7 +39,7 @@ const getContactInformation = catchAsync(async (req, res, next) => {
 
 const renderHomePage = catchAsync(async (req, res, next) => {
     const [estates, news, sliderConfig] = await Promise.all([
-        estateService.queryEstates({}, { limit: 8 }),
+        estateService.queryEstates({ isPublished: true }, { limit: 8 }),
         newsService.queryNews({ isPublished: true }, { limit: 7 }),
         configService.getConfigs(["slider"]),
     ]);
@@ -80,7 +80,10 @@ const renderRealEstatesPage = catchAsync(async (req, res, next) => {
         filters.$text = { $search: searchQuery };
         title = `Kết quả tìm kiếm cho từ khóa '${searchQuery}'`;
     }
-    const estates = await estateService.queryEstates(filters, { ...options, limit: 18 });
+    const estates = await estateService.queryEstates(
+        { isPublished: true, ...filters },
+        { ...options, limit: 18, sortBy: "priority:desc" }
+    );
     res.renderConfigs = {
         path: "pages/realEstatesList",
         data: {
@@ -102,12 +105,13 @@ const renderRealEstatePage = catchAsync(async (req, res, next) => {
     let estate = await estateService.getEstateById(req.params.id);
     estate = normalizeEstateData(estate);
     const [randomEstates, sameAreaEstates, news] = await Promise.all([
-        estateService.getRandomEstates({}, { limit: 6 }),
+        estateService.getRandomEstates({ isPublished: true }, { limit: 6 }),
         estateService.getRandomEstates(
             {
                 $and: [
                     { "location.district.districtId": estate.location.district.districtId },
                     { _id: { $ne: estate._id } },
+                    { isPublished: true },
                 ],
             },
             { limit: 6 }
@@ -171,7 +175,7 @@ const renderNewsDetailPage = catchAsync(async (req, res, next) => {
     const { id: newsId } = req.params;
     const [news, suggestionEstates, randomNews] = await Promise.all([
         newsService.getNewsById(newsId),
-        estateService.getRandomEstates({}, { limit: 6 }),
+        estateService.getRandomEstates({ isPublished: true }, { limit: 6 }),
         newsService.getRandomNews({ isPublished: true }, { limit: 20 }),
     ]);
     const newsData = normalizeNewsData(news);

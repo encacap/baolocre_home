@@ -20,24 +20,19 @@ const estateSchema = mongoose.Schema(
         },
         title: {
             type: String,
-            required: true,
         },
         price: {
             type: String,
-            required: true,
         },
         area: {
             type: Number,
-            required: true,
         },
         category: {
             name: {
                 type: String,
-                required: true,
             },
             slug: {
                 type: String,
-                required: true,
             },
         },
         properties: {
@@ -56,43 +51,34 @@ const estateSchema = mongoose.Schema(
             city: {
                 cityId: {
                     type: mongoose.Schema.Types.ObjectId,
-                    required: true,
                 },
                 name: {
                     type: String,
-                    required: true,
                 },
                 slug: {
                     type: String,
-                    required: true,
                 },
             },
             district: {
                 districtId: {
                     type: mongoose.Schema.Types.ObjectId,
-                    required: true,
                 },
                 name: {
                     type: String,
-                    required: true,
                 },
                 slug: {
                     type: String,
-                    required: true,
                 },
             },
             ward: {
                 wardId: {
                     type: mongoose.Schema.Types.ObjectId,
-                    required: true,
                 },
                 name: {
                     type: String,
-                    required: true,
                 },
                 slug: {
                     type: String,
-                    required: true,
                 },
             },
             street: {
@@ -102,11 +88,9 @@ const estateSchema = mongoose.Schema(
         contact: {
             name: {
                 type: String,
-                required: true,
             },
             phone: {
                 type: String,
-                required: true,
             },
         },
         description: {

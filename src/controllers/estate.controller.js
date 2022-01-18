@@ -80,6 +80,7 @@ const updateEstate = catchAsync(async (req, res) => {
     const { avatar, pictures } = estate;
     const { avatar: updatedAvatar, pictures: updatedPictures } = estateBody;
     const { category: categorySlug } = estateBody;
+    const { contact_name: contactName, contact_phone: contactPhone } = estateBody;
     const category = estateService.getCategoryBySlug(categorySlug, false);
     const { city: cityId, district: districtId, ward: wardId, street } = estateBody;
     const [city, district, ward] = await Promise.all([
@@ -88,6 +89,7 @@ const updateEstate = catchAsync(async (req, res) => {
         wardId && locationService.getWardById(wardId),
     ]);
     estateBody.location = { street };
+    estateBody.contact = { name: contactName, phone: contactPhone };
 
     if (city) {
         estateBody.location.city = {

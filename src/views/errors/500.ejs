@@ -13,6 +13,10 @@
                     <div class="mb-8 py-2 px-4 text-gray-500">
                         Có thể chúng tôi đang khắc phục lỗi này. Hãy thử tải lại trang.
                     </div>
+                    <div class="border-2 border-red-500 bg-red-100 px-10 py-6">
+                        <div><span>Chi tiết:</span> <%- error.message %></div>
+                        <div><%- error.stack %></div>
+                    </div>
                     <a
                         href=""
                         class="
@@ -32,12 +36,4 @@
             </div>
         </main>
     </body>
-    <% if (error) { %>
-        <script>
-            console.group('%cError', 'font-weight: bold; color: red;');
-            console.error(<%- error.message %>);
-            console.error(<%- error.stack %>);
-            console.groupEnd();
-        </script>
-    <% } %>
 </html>

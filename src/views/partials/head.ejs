@@ -3,7 +3,7 @@
     const SEO = locals.SEO || {};
     const { image, url, publishedTime, modifiedTime, site: siteName } = SEO;
     let { description } = SEO;
-    const title = `${locals.title} - ${siteName}`;
+    const title = `${locals.title} - ${siteName || "Bất động sản nghỉ dưỡng Bảo Lộc"}`;
 
     if (estate) {
         const { location, price } = estate;

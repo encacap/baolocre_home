@@ -1,3 +1,4 @@
+<% const { error } = locals %>
 <!DOCTYPE html>
 <html lang="vi">
     <%- include('../partials/head', { title: "Đã xảy ra lỗi" }) %>
@@ -31,4 +32,9 @@
             </div>
         </main>
     </body>
+    <% if (error) { %>
+        <script>
+            console.error(<%- error %>);
+        </script>
+    <% } %>
 </html>

@@ -47,7 +47,7 @@ const errorHandler = (err, req, res, next) => {
             return;
         }
         if (statusCode === httpStatus.INTERNAL_SERVER_ERROR) {
-            res.render("errors/500");
+            res.render("errors/500", { error: err });
             return;
         }
     }

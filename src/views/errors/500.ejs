@@ -34,7 +34,10 @@
     </body>
     <% if (error) { %>
         <script>
-            console.error(<%- error %>);
+            console.group('%cError', 'font-weight: bold; color: red;');
+            console.error(<%- error.message %>);
+            console.error(<%- error.stack %>);
+            console.groupEnd();
         </script>
     <% } %>
 </html>

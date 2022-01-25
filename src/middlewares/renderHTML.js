@@ -19,15 +19,16 @@ module.exports = (req, res, next) => {
             return;
         }
         res.send(
-            minify(html, {
-                removeAttributeQuotes: true,
-                html5: true,
-                removeComments: true,
-                removeEmptyAttributes: true,
-                collapseWhitespace: true,
-                keepClosingSlash: true,
-                minifyCSS: true,
-            })
+            html
+            // minify(html, {
+            //     removeAttributeQuotes: true,
+            //     html5: true,
+            //     removeComments: true,
+            //     removeEmptyAttributes: true,
+            //     collapseWhitespace: true,
+            //     keepClosingSlash: true,
+            //     minifyCSS: true,
+            // })
         );
     });
 };

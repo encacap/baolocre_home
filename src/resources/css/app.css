@@ -38,8 +38,12 @@ a.active::after {
             @apply rounded-b-none border-b-0 !important;
         }
         span {
-            @apply block w-full py-2 rounded-b-md bg-gray-100 text-center text-sm;
+            @apply block w-full py-2 text-sm text-center bg-gray-100 rounded-b-md;
         }
+    }
+
+    a {
+        @apply font-semibold text-encacap-main hover:underline;
     }
 }
 
@@ -80,6 +84,6 @@ a.active::after {
     }
 
     a {
-        @apply text-encacap-main font-semibold;
+        @apply font-semibold text-encacap-main;
     }
 }

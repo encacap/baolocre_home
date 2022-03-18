@@ -1,33 +1,18 @@
 module.exports = {
-    apps: [
-        {
-            name: "production",
-            script: "./src/index.js",
-            env: {
-                NODE_ENV: "production",
-                PORT: 3000,
-                URL: "https://www.diaocbaoloc.com.vn",
-                MONGODB_URL: "mongodb://127.0.0.1:27017/baolocre",
-                DEFAULT_AVATAR: "/assets/images/product-logo.jpg",
-
-                GHN_TOKEN: "thisisghntoken",
-
-                JWT_SECRET: "thisissecrettoken",
-                JWT_ACCESS_EXPIRATION_MINUTES: 120,
-                JWT_REFRESH_EXPIRATION_DAYS: 30,
-                JWT_RESET_PASSWORD_EXPIRATION_MINUTES: 10,
-                JWT_VERIFY_EMAIL_EXPIRATION_MINUTES: 10,
-
-                SMTP_HOST: "email-server",
-                SMTP_PORT: 587,
-                SMTP_USERNAME: "email-server-username",
-                SMTP_PASSWORD: "email-server-password",
-                EMAIL_FROM: "support@yourapp.com",
-
-                SEO_DESCRIPTION: "Bất động sản nghỉ dưỡng Bảo Lộc.",
-                SEO_IMAGE: "/assets/images/product-logo.jpg",
-                SEO_SITE: "Bất động sản nghỉ dưỡng Bảo Lộc",
-            },
+    estate: {
+        "cloud_name": {
+            key: 123456789,
+            secret: "cloudinary_secret_key",
+            name: "cloud_name",
+            preset: "unsigned_upload",
         },
-    ],
+    },
+    news: {
+        "cloud_name": {
+            key: 123456789,
+            secret: "cloudinary_secret_key",
+            name: "cloud_name",
+            preset: "unsigned_upload",
+        },
+    },
 };

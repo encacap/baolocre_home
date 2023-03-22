@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+    mongodb:
+        image: mongo:6.0.5-jammy
+        container_name: baolocre-mongodb
+        restart: unless-stopped
+        ports:
+            - 27017:27017
+        volumes:
+            - ../../.mongodb:/data/db
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: root
+            MONGO_INITDB_DATABASE: baolocre
+        networks:
+            - baolocre
+    app:
+        container_name: baolocre-prod
+        build:
+            context: ../../.
+            dockerfile: ./.docker/prod/Dockerfile
+        restart: unless-stopped
+        image: baolocreprod
+        ports:
+            - 3002:3002
+        depends_on:
+            - mongodb
+        environment:
+            - MONGODB_URL=mongodb://root:root@mongodb:27017/baolocre?retryWrites=true&w=majority&authSource=admin
+        env_file:
+            - ../../.env.production
+        networks:
+            - baolocre
+
+networks:
+    baolocre:
+        driver: bridge
+
+volumes:
+    mongodb:
+        driver: local

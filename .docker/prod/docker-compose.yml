@@ -15,7 +15,7 @@ services:
             MONGO_INITDB_DATABASE: baolocre
         networks:
             - baolocre
-    app:
+    baolocre:
         container_name: baolocre-prod
         build:
             context: ../../.
